@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>这世界，我来过</title>
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="manifest" href="/manifest.json">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0A0A0A;
+      --text: #F5F5F5;
+      --text-secondary: #A8A29E;
+      --accent: #D97757;
+      --accent-hover: #E8896A;
+      --card-bg: rgba(255,255,255,0.05);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* 导航 */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 32px;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .nav-btn {
+      padding: 10px 20px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+      border-radius: 100px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .nav-btn.primary {
+      background: var(--accent);
+    }
+
+    .nav-btn.primary:hover {
+      background: var(--accent-hover);
+    }
+
+    /* 主内容区 */
+    .main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 随机故事展示 */
+    .story-view {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 32px 100px;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.8s ease;
+    }
+
+    .story-view::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.95) 0%, rgba(10,10,10,0.4) 40%, rgba(10,10,10,0.2) 100%);
+    }
+
+    .story-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .story-age {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .story-message {
+      font-size: 1.75rem;
+      font-weight: 400;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+      white-space: pre-wrap;
+    }
+
+    .story-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .story-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: opacity 0.3s;
+    }
+
+    .story-user:hover {
+      opacity: 0.8;
+    }
+
+    .story-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .story-controls {
+      position: absolute;
+      bottom: 100px;
+      right: 32px;
+      display: flex;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .control-btn {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .control-btn:hover {
+      background: rgba(255,255,255,0.2);
+      transform: scale(1.1);
+    }
+
+    .control-btn.primary {
+      background: var(--accent);
+    }
+
+    /* 用户主页 */
+    .profile-view {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      padding: 100px 32px 32px;
+      overflow-y: auto;
+    }
+
+    .profile-view.active {
+      display: block;
+    }
+
+    .profile-header {
+      max-width: 800px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0 auto 24px;
+    }
+
+    .profile-name {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .profile-bio {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+    }
+
+    .profile-timeline {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 48px;
+      bottom: -48px;
+      width: 2px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .timeline-item:last-child::before {
+      display: none;
+    }
+
+    .timeline-year {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      z-index: 1;
+    }
+
+    .timeline-content {
+      flex: 1;
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 16px;
+    }
+
+    .timeline-age {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .timeline-message {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    .timeline-date {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-top: 16px;
+    }
+
+    /* 年份探索 */
+    .year-explorer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      padding: 100px 32px 32px;
+      overflow-y: auto;
+    }
+
+    .year-explorer.active {
+      display: block;
+    }
+
+    .year-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .year-header h2 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .year-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .year-card {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--card-bg);
+      border-radius: 16px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 2px solid transparent;
+      gap: 8px;
+    }
+
+    .year-card:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .year-card .count {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .year-card.has-content {
+      background: rgba(217, 119, 87, 0.2);
+      border-color: var(--accent);
+    }
+
+    /* 年份故事列表 */
+    .year-stories {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .year-stories.active {
+      display: block;
+    }
+
+    .year-story-card {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: 16px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .year-story-card:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateX(4px);
+    }
+
+    .year-story-user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .year-story-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .year-story-message {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* 写作界面 */
+    .write-view {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      padding: 100px 32px 32px;
+      overflow-y: auto;
+    }
+
+    .write-view.active {
+      display: block;
+    }
+
+    .write-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .write-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+
+    .write-header h2 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .write-step {
+      margin-bottom: 32px;
+    }
+
+    .write-step label {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 12px;
+      color: var(--text-secondary);
+    }
+
+    .write-input {
+      width: 100%;
+      padding: 20px;
+      background: var(--card-bg);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      color: var(--text);
+      font-size: 1.1rem;
+      font-family: inherit;
+      transition: all 0.3s;
+    }
+
+    .write-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .write-textarea {
+      min-height: 300px;
+      resize: vertical;
+      line-height: 1.8;
+      font-size: 1.2rem;
+    }
+
+    .write-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .write-btn {
+      flex: 1;
+      padding: 20px;
+      border: none;
+      border-radius: 16px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .write-btn.secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+
+    .write-btn.secondary:hover {
+      background: rgba(255,255,255,0.15);
+    }
+
+    .write-btn.primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .write-btn.primary:hover {
+      background: var(--accent-hover);
+    }
+
+    /* 预览确认 */
+    .preview-view {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 250;
+      padding: 100px 32px 32px;
+      overflow-y: auto;
+    }
+
+    .preview-view.active {
+      display: block;
+    }
+
+    .preview-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .preview-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 48px;
+      margin-bottom: 32px;
+    }
+
+    .preview-age {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .preview-message {
+      font-size: 1.5rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      margin-bottom: 32px;
+    }
+
+    .preview-warning {
+      background: rgba(217, 119, 87, 0.15);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 32px;
+      color: var(--accent);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* 搜索 */
+    .search-view {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      padding: 100px 32px 32px;
+      overflow-y: auto;
+    }
+
+    .search-view.active {
+      display: block;
+    }
+
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 20px 24px;
+      background: var(--card-bg);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .search-results {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .search-result-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .search-result-item:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* 提示 */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(20px);
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      z-index: 300;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translate(-50%, 20px); }
+      to { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .story-message {
+        font-size: 1.4rem;
+      }
+      
+      .story-view {
+        padding: 0 24px 80px;
+      }
+      
+      .story-controls {
+        bottom: 80px;
+        right: 24px;
+      }
+      
+      .nav {
+        padding: 16px 24px;
+      }
+
+      .timeline-item {
+        gap: 16px;
+      }
+
+      .preview-card {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 导航 -->
+  <nav class="nav">
+    <div class="nav-logo" onclick="showHome()">这世界，我来过</div>
+    <div class="nav-actions">
+      <button class="nav-btn" onclick="showSearch()">搜索</button>
+      <button class="nav-btn" onclick="showYears()">年份</button>
+      <button class="nav-btn primary" onclick="showWrite()">写一笔</button>
+    </div>
+  </nav>
+
+  <!-- 主内容：随机故事 -->
+  <main class="main" id="homeView">
+    <div class="story-view" id="storyView">
+      <div class="story-content">
+        <span class="story-age" id="storyAge">25岁 · 2018年</span>
+        <p class="story-message" id="storyMessage">第一份工作，第一个月工资，给妈妈买了一条围巾。她笑了，我也笑了。</p>
+        <div class="story-meta">
+          <div class="story-user" onclick="showProfile('小明')">
+            <div class="story-avatar" id="storyAvatar">明</div>
+            <span id="storyUser">小明</span>
+          </div>
+          <span>·</span>
+          <span id="storyDate">2024年2月</span>
+        </div>
+      </div>
+      <div class="story-controls">
+        <button class="control-btn" onclick="prevStory()">←</button>
+        <button class="control-btn primary" onclick="nextStory()">→</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 用户主页 -->
+  <div class="profile-view" id="profileView">
+    <div class="profile-header">
+      <div class="profile-avatar" id="profileAvatar">明</div>
+      <h1 class="profile-name" id="profileName">小明</h1>
+      <p class="profile-bio" id="profileBio">记录生活，留下痕迹</p>
+      <button class="nav-btn" onclick="hideProfile()">返回</button>
+    </div>
+    <div class="profile-timeline" id="profileTimeline"></div>
+  </div>
+
+  <!-- 年份探索 -->
+  <div class="year-explorer" id="yearExplorer">
+    <div class="year-header">
+      <h2>选择年份</h2>
+      <button class="nav-btn" onclick="hideYears()">关闭</button>
+    </div>
+    <div class="year-grid" id="yearGrid"></div>
+    <div class="year-stories" id="yearStories"></div>
+  </div>
+
+  <!-- 写作界面 -->
+  <div class="write-view" id="writeView">
+    <div class="write-container">
+      <div class="write-header">
+        <h2>留下痕迹</h2>
+        <button class="nav-btn" onclick="hideWrite()">关闭</button>
+      </div>
+      
+      <div class="write-step">
+        <label>这是你几岁？</label>
+        <input type="number" class="write-input" id="writeAge" placeholder="例如：25">
+      </div>
+
+      <div class="write-step">
+        <label>哪一年？</label>
+        <input type="number" class="write-input" id="writeYear" placeholder="例如：2018">
+      </div>
+
+      <div class="write-step">
+        <label>写点什么（可以很长，可以很短）</label>
+        <textarea class="write-input write-textarea" id="writeMessage" placeholder="那年发生了什么？你在想什么？想写多少就写多少..."></textarea>
+      </div>
+
+      <div class="write-actions">
+        <button class="write-btn secondary" onclick="hideWrite()">取消</button>
+        <button class="write-btn primary" onclick="previewWrite()">预览</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 预览确认 -->
+  <div class="preview-view" id="previewView">
+    <div class="preview-container">
+      <div class="write-header">
+        <h2>确认发布</h2>
+        <button class="nav-btn" onclick="hidePreview()">返回编辑</button>
+      </div>
+      
+      <div class="preview-card">
+        <span class="preview-age" id="previewAge">25岁 · 2018年</span>
+        <p class="preview-message" id="previewMessage"></p>
+      </div>
+
+      <div class="preview-warning">
+        ⚠️ 发布后不可修改、不可删除。这是你留给世界的痕迹，请确认内容。
+      </div>
+
+      <div class="write-actions">
+        <button class="write-btn secondary" onclick="hidePreview()">返回编辑</button>
+        <button class="write-btn primary" onclick="confirmPublish()">确认发布</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索 -->
+  <div class="search-view" id="searchView">
+    <div class="search-container">
+      <div class="write-header">
+        <h2>搜索</h2>
+        <button class="nav-btn" onclick="hideSearch()">关闭</button>
+      </div>
+      <input type="text" class="search-input" id="searchInput" placeholder="搜索用户名..." oninput="handleSearch()">
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <script>
+    // 示例数据 - 包含多个用户的完整时间线
+    const users = {
+      '小明': {
+        bio: '普通上班族，喜欢记录生活',
+        entries: [
+          { age: 22, year: 2015, message: '大学毕业了。四年过得真快，好像昨天才刚拖着行李箱走进校园。', date: '2024年1月' },
+          { age: 25, year: 2018, message: '第一份工作，第一个月工资，给妈妈买了一条围巾。她笑了，我也笑了。', date: '2024年2月' },
+          { age: 28, year: 2021, message: '升职了。虽然加班很多，但看到成果的时候觉得值得。', date: '2024年3月' },
+          { age: 30, year: 2023, message: '三十岁了。没有立起来，但学会了接受自己的普通。', date: '2024年3月' }
+        ]
+      },
+      '阿花': {
+        bio: '摄影师，用镜头记录世界',
+        entries: [
+          { age: 18, year: 2008, message: '高考结束，感觉整个世界都在向我招手。那个夏天，阳光很烈，未来很远。', date: '2024年1月' },
+          { age: 22, year: 2012, message: '买了第一台相机，开始学摄影。世界突然变得不一样了，每个角落都有故事。', date: '2024年2月' },
+          { age: 26, year: 2016, message: '第一次办个人影展。来了很多人，有人哭了。那一刻觉得，摄影真的能传递情感。', date: '2024年2月' },
+          { age: 30, year: 2020, message: '疫情那年，没法出门拍照。在家整理了以前的照片，发现时间过得真快。', date: '2024年3月' }
+        ]
+      },
+      '老王': {
+        bio: '程序员，两个孩子的爸爸',
+        entries: [
+          { age: 28, year: 2015, message: '结婚了。她说愿意的时候，我觉得自己是世界上最幸运的人。', date: '2024年1月' },
+          { age: 30, year: 2017, message: '女儿出生了。抱着她的时候，手都在抖。', date: '2024年2月' },
+          { age: 33, year: 2020, message: '三十而立。虽然还没有完全立起来，但至少知道自己要什么了。', date: '2024年3月' },
+          { age: 35, year: 2022, message: '儿子出生了。现在是儿女双全了。累并快乐着。', date: '2024年3月' }
+        ]
+      },
+      '李阿姨': {
+        bio: '退休教师，喜欢种花',
+        entries: [
+          { age: 55, year: 2015, message: '退休了。忙碌了一辈子，终于可以停下来看看风景。', date: '2024年1月' },
+          { age: 58, year: 2018, message: '开始学画画。没想到这个年纪还能发现新的爱好。', date: '2024年2月' },
+          { age: 60, year: 2020, message: '花开了。种了三年的兰花终于开了。等待是值得的。', date: '2024年3月' },
+          { age: 63, year: 2023, message: '孙子会叫奶奶了。心都化了。', date: '2024年3月' }
+        ]
+      },
+      '演示用户': {
+        bio: '只是来看看',
+        entries: [
+          { age: 5, year: 1995, message: '幼儿园的第一天，哭了一整天，但第二天就不哭了。', date: '2024年1月' }
+        ]
+      }
+    };
+
+    // 扁平化故事列表用于随机展示
+    const stories = [];
+    Object.entries(users).forEach(([username, userData]) => {
+      userData.entries.forEach(entry => {
+        stories.push({
+          ...entry,
+          user: username,
+          photo: `https://images.unsplash.com/photo-${Math.random() > 0.5 ? '1507003211169-0a1dd7228f2d' : '1523050854058-8df90110c9f1'}?w=1200`
+        });
+      });
+    });
+
+    let currentStory = 0;
+    let currentDraft = null;
+
+    // 渲染随机故事
+    function renderStory(index) {
+      const story = stories[index];
+      document.getElementById('storyView').style.backgroundImage = `url(${story.photo})`;
+      document.getElementById('storyAge').textContent = `${story.age}岁 · ${story.year}年`;
+      document.getElementById('storyMessage').textContent = story.message;
+      document.getElementById('storyUser').textContent = story.user;
+      document.getElementById('storyAvatar').textContent = story.user.charAt(0);
+      document.getElementById('storyDate').textContent = story.date;
+    }
+
+    function nextStory() {
+      currentStory = (currentStory + 1) % stories.length;
+      renderStory(currentStory);
+    }
+
+    function prevStory() {
+      currentStory = (currentStory - 1 + stories.length) % stories.length;
+      renderStory(currentStory);
+    }
+
+    // 用户主页
+    function showProfile(username) {
+      const user = users[username];
+      if (!user) return;
+
+      document.getElementById('profileName').textContent = username;
+      document.getElementById('profileAvatar').textContent = username.charAt(0);
+      document.getElementById('profileBio').textContent = user.bio;
+
+      const timeline = document.getElementById('profileTimeline');
+      timeline.innerHTML = user.entries.map(entry => `
+        <div class="timeline-item">
+          <div class="timeline-year">${entry.year}</div>
+          <div class="timeline-content">
+            <div class="timeline-age">${entry.age}岁</div>
+            <div class="timeline-message">${entry.message}</div>
+            <div class="timeline-date">${entry.date}</div>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('profileView').classList.add('active');
+    }
+
+    function hideProfile() {
+      document.getElementById('profileView').classList.remove('active');
+    }
+
+    // 年份探索
+    function showYears() {
+      document.getElementById('yearExplorer').classList.add('active');
+      document.getElementById('yearStories').classList.remove('active');
+      renderYears();
+    }
+
+    function hideYears() {
+      document.getElementById('yearExplorer').classList.remove('active');
+    }
+
+    function renderYears() {
+      const grid = document.getElementById('yearGrid');
+      const years = [2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015];
+      
+      grid.innerHTML = years.map(year => {
+        const count = stories.filter(s => s.year === year).length;
+        return `
+          <div class="year-card ${count > 0 ? 'has-content' : ''}" onclick="showYearStories(${year})">
+            ${year}
+            ${count > 0 ? `<span class="count">${count}条记录</span>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function showYearStories(year) {
+      const yearStories = stories.filter(s => s.year === year);
+      const container = document.getElementById('yearStories');
+      
+      if (yearStories.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 48px;">这一年还没有人留下痕迹</p>';
+      } else {
+        container.innerHTML = yearStories.map(story => `
+          <div class="year-story-card" onclick="showProfile('${story.user}')">
+            <div class="year-story-user">
+              <div class="year-story-avatar">${story.user.charAt(0)}</div>
+              <span>${story.user} · ${story.age}岁</span>
+            </div>
+            <div class="year-story-message">${story.message}</div>
+          </div>
+        `).join('');
+      }
+      
+      container.classList.add('active');
+      document.getElementById('yearGrid').style.display = 'none';
+    }
+
+    // 写作流程
+    function showWrite() {
+      document.getElementById('writeView').classList.add('active');
+    }
+
+    function hideWrite() {
+      document.getElementById('writeView').classList.remove('active');
+    }
+
+    function previewWrite() {
+      const age = document.getElementById('writeAge').value;
+      const year = document.getElementById('writeYear').value;
+      const message = document.getElementById('writeMessage').value;
+
+      if (!age || !year || !message.trim()) {
+        showToast('请填写完整信息');
+        return;
+      }
+
+      currentDraft = { age, year, message };
+      document.getElementById('previewAge').textContent = `${age}岁 · ${year}年`;
+      document.getElementById('previewMessage').textContent = message;
+      
+      document.getElementById('writeView').classList.remove('active');
+      document.getElementById('previewView').classList.add('active');
+    }
+
+    function hidePreview() {
+      document.getElementById('previewView').classList.remove('active');
+      document.getElementById('writeView').classList.add('active');
+    }
+
+    function confirmPublish() {
+      if (!currentDraft) return;
+
+      // 添加到演示数据
+      const username = '我';
+      if (!users[username]) {
+        users[username] = { bio: '新用户', entries: [] };
+      }
+      users[username].entries.push({
+        ...currentDraft,
+        date: '刚刚'
+      });
+
+      showToast('痕迹已留下，不可更改 ✓');
+      hidePreview();
+      
+      // 清空表单
+      document.getElementById('writeAge').value = '';
+      document.getElementById('writeYear').value = '';
+      document.getElementById('writeMessage').value = '';
+      currentDraft = null;
+    }
+
+    // 搜索
+    function showSearch() {
+      document.getElementById('searchView').classList.add('active');
+      document.getElementById('searchInput').focus();
+    }
+
+    function hideSearch() {
+      document.getElementById('searchView').classList.remove('active');
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchResults').innerHTML = '';
+    }
+
+    function handleSearch() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const results = document.getElementById('searchResults');
+      
+      if (!query) {
+        results.innerHTML = '';
+        return;
+      }
+
+      const matchedUsers = Object.keys(users).filter(name => 
+        name.toLowerCase().includes(query)
+      );
+
+      results.innerHTML = matchedUsers.map(username => `
+        <div class="search-result-item" onclick="showProfile('${username}'); hideSearch();">
+          <div class="story-avatar">${username.charAt(0)}</div>
+          <div>
+            <div style="font-weight: 600;">${username}</div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary);">${users[username].bio}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function showHome() {
+      hideProfile();
+      hideYears();
+      hideWrite();
+      hidePreview();
+      hideSearch();
+    }
+
+    function showToast(msg) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = msg;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    // 初始化
+    renderStory(0);
+
+    // 键盘导航
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' && !document.getElementById('writeView').classList.contains('active')) nextStory();
+      if (e.key === 'ArrowLeft' && !document.getElementById('writeView').classList.contains('active')) prevStory();
+      if (e.key === 'Escape') {
+        showHome();
+      }
+    });
+  </script>
+</body>
+</html>
