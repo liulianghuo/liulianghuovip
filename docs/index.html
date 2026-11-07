@@ -21,8 +21,29 @@
       --accent-glow: rgba(201, 149, 107, 0.15);
       --card-bg: rgba(255,255,255,0.04);
       --card-border: rgba(255,255,255,0.06);
+      --nav-bg-start: rgba(10,10,10,0.98);
+      --nav-bg-mid: rgba(10,10,10,0.8);
+      --ambient-1: rgba(201,149,107,0.12);
+      --ambient-2: rgba(201,149,107,0.08);
       --serif: 'Noto Serif SC', 'Songti SC', serif;
       --sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg: #FAFAF8;
+      --bg-elevated: #F0EDE8;
+      --text: #2C2825;
+      --text-secondary: #6B6560;
+      --text-dim: #9B9490;
+      --accent: #a07040;
+      --accent-light: #b8844e;
+      --accent-glow: rgba(160, 112, 64, 0.1);
+      --card-bg: rgba(0,0,0,0.03);
+      --card-border: rgba(0,0,0,0.08);
+      --nav-bg-start: rgba(250,250,248,0.98);
+      --nav-bg-mid: rgba(250,250,248,0.8);
+      --ambient-1: rgba(201,149,107,0.08);
+      --ambient-2: rgba(201,149,107,0.05);
     }
 
     body {
@@ -31,6 +52,7 @@
       color: var(--text);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.4s ease, color 0.3s ease;
     }
 
     .ambient {
@@ -54,7 +76,7 @@
     .ambient::before {
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(201,149,107,0.12), transparent 70%);
+      background: radial-gradient(circle, var(--ambient-1), transparent 70%);
       top: -200px;
       right: -200px;
     }
@@ -62,7 +84,7 @@
     .ambient::after {
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, rgba(201,149,107,0.08), transparent 70%);
+      background: radial-gradient(circle, var(--ambient-2), transparent 70%);
       bottom: -150px;
       left: -150px;
       animation-delay: -10s;
@@ -84,7 +106,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.98) 0%, rgba(10,10,10,0.8) 70%, transparent 100%);
+      background: linear-gradient(to bottom, var(--nav-bg-start) 0%, var(--nav-bg-mid) 70%, transparent 100%);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
     }
@@ -123,6 +145,11 @@
       border-color: rgba(255,255,255,0.12);
     }
 
+    [data-theme="light"] .nav-btn:hover {
+      background: rgba(0,0,0,0.05);
+      border-color: rgba(0,0,0,0.12);
+    }
+
     .nav-btn.primary {
       background: var(--accent);
       color: #0A0A0A;
@@ -133,6 +160,32 @@
     .nav-btn.primary:hover {
       background: var(--accent-light);
       border-color: var(--accent-light);
+    }
+
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-secondary);
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 4px;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+    }
+
+    [data-theme="light"] .theme-toggle:hover {
+      background: rgba(0,0,0,0.06);
     }
 
     .main {
@@ -258,7 +311,7 @@
       height: 48px;
       border-radius: 50%;
       border: 1px solid var(--card-border);
-      background: rgba(10,10,10,0.8);
+      background: var(--bg-elevated);
       color: var(--text-secondary);
       font-size: 1.2rem;
       cursor: pointer;
@@ -273,6 +326,11 @@
       background: rgba(255,255,255,0.08);
       color: var(--text);
       border-color: rgba(255,255,255,0.15);
+    }
+
+    [data-theme="light"] .story-nav-btn:hover {
+      background: rgba(0,0,0,0.06);
+      border-color: rgba(0,0,0,0.15);
     }
 
     .story-counter {
@@ -514,6 +572,10 @@
       transform: translateY(-2px);
     }
 
+    [data-theme="light"] .year-card:hover {
+      background: rgba(0,0,0,0.04);
+    }
+
     .year-card.has-content {
       background: var(--accent-glow);
       border-color: rgba(201,149,107,0.4);
@@ -552,6 +614,10 @@
       background: rgba(255,255,255,0.06);
       border-color: rgba(201,149,107,0.2);
       transform: translateY(-1px);
+    }
+
+    [data-theme="light"] .year-story-card:hover {
+      background: rgba(0,0,0,0.04);
     }
 
     .year-story-user {
@@ -650,7 +716,7 @@
     .write-input:focus {
       outline: none;
       border-color: rgba(201,149,107,0.4);
-      background: rgba(255,255,255,0.06);
+      background: var(--bg-elevated);
     }
 
     .write-input::placeholder { color: var(--text-dim); }
@@ -839,6 +905,10 @@
       border-color: rgba(201,149,107,0.2);
     }
 
+    [data-theme="light"] .search-result-item:hover {
+      background: rgba(0,0,0,0.04);
+    }
+
     .search-result-name { font-weight: 500; font-size: 0.95rem; }
     .search-result-bio { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
 
@@ -848,7 +918,7 @@
       bottom: 40px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(20,20,20,0.95);
+      background: var(--bg-elevated);
       border: 1px solid var(--card-border);
       backdrop-filter: blur(20px);
       padding: 14px 28px;
@@ -908,6 +978,7 @@
       <button class="nav-btn" onclick="showSearch()">搜索</button>
       <button class="nav-btn" onclick="showYears()">年份</button>
       <button class="nav-btn primary" onclick="showWrite()">写一笔</button>
+      <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换主题">☀</button>
     </div>
   </nav>
 
@@ -1027,6 +1098,35 @@
   </div>
 
   <script>
+    // Theme toggle
+    function initTheme() {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.getElementById('themeToggle').textContent = '☾';
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FAFAF8');
+      }
+    }
+
+    function toggleTheme() {
+      var html = document.documentElement;
+      var btn = document.getElementById('themeToggle');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (html.getAttribute('data-theme') === 'light') {
+        html.removeAttribute('data-theme');
+        btn.textContent = '☀';
+        meta.setAttribute('content', '#0A0A0A');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        html.setAttribute('data-theme', 'light');
+        btn.textContent = '☾';
+        meta.setAttribute('content', '#FAFAF8');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    initTheme();
+
     const users = {
       '小明': {
         bio: '普通上班族，喜欢记录生活',
