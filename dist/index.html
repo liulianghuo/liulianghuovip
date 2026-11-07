@@ -1616,7 +1616,7 @@
     <div class="nav-right">
       <button class="nav-btn" onclick="showSearch()">搜索</button>
       <button class="nav-btn" onclick="showYears()">年份</button>
-      <button class="nav-btn" onclick="showServices()">服务</button>
+      <button class="nav-btn" onclick="showServices()">话题</button>
       <button class="nav-btn primary" onclick="showWrite()">铸造</button>
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换主题">☀</button>
     </div>
@@ -1844,60 +1844,17 @@
   <div class="services-view" id="servicesView">
     <div class="services-container">
       <div class="write-header">
-        <h2 class="write-title">数字遗产服务</h2>
+        <h2 class="write-title">争议话题</h2>
         <button class="nav-btn" onclick="hideServices()">← 返回</button>
       </div>
 
-      <!-- 争议区 -->
       <div class="debate-card">
-        <h3>争议话题</h3>
+        <h3>关于数字遗产，你怎么看？</h3>
         <div class="debate-topic">人死后，你的微信聊天记录归谁？</div>
         <div class="debate-topic">你愿意把一辈子的一句话，交给一个网站永久保存吗？</div>
         <div class="debate-topic">数字遗产，该不该立法？</div>
         <div class="debate-cta">
-          <button class="debate-cta-btn" onclick="showWrite()">参与讨论 →</button>
-        </div>
-      </div>
-
-      <!-- 对赌区 -->
-      <div class="bet-card">
-        <h3>公开对赌</h3>
-        <p>我赌100万，10年内这个数字遗产平台<br>会有1000万用户</p>
-        <p class="bet-question">你敢不敢跟我赌？</p>
-        <div class="bet-buttons">
-          <button class="bet-btn dare" onclick="handleBet('dare')">我敢</button>
-          <button class="bet-btn nodare" onclick="handleBet('nodare')">我不敢</button>
-        </div>
-      </div>
-
-      <!-- 变现区 -->
-      <div class="monetize-header" style="margin-top: 40px;">
-        <h2>付费服务</h2>
-      </div>
-      <div class="monetize-grid">
-        <div class="monetize-card" onclick="showPayModal('nft')">
-          <div class="monetize-card-icon">◆</div>
-          <div class="monetize-card-title">NFT 铸造</div>
-          <div class="monetize-card-price">1000元<small>/个</small></div>
-          <div class="monetize-card-desc">永久保存，不可篡改</div>
-        </div>
-        <div class="monetize-card" onclick="showPayModal('storage')">
-          <div class="monetize-card-icon">☁</div>
-          <div class="monetize-card-title">存储升级</div>
-          <div class="monetize-card-price">99元<small>/月</small></div>
-          <div class="monetize-card-desc">从1条升级到100条</div>
-        </div>
-        <div class="monetize-card" onclick="showPayModal('export')">
-          <div class="monetize-card-icon">↓</div>
-          <div class="monetize-card-title">数据导出</div>
-          <div class="monetize-card-price">9.9元<small>/次</small></div>
-          <div class="monetize-card-desc">PDF / JSON 格式</div>
-        </div>
-        <div class="monetize-card" onclick="showPayModal('memorial')">
-          <div class="monetize-card-icon">✦</div>
-          <div class="monetize-card-title">纪念定制</div>
-          <div class="monetize-card-price">999元<small>/个</small></div>
-          <div class="monetize-card-desc">模板·照片·自定义文案</div>
+          <button class="debate-cta-btn" onclick="showWrite(); hideServices();">留下你的观点 →</button>
         </div>
       </div>
     </div>
