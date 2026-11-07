@@ -2244,6 +2244,10 @@
       renderFeed();
 
       showToast('数字遗产已铸造，不可更改');
+
+      var count = parseInt(localStorage.getItem('publishedCount') || '0') + 1;
+      localStorage.setItem('publishedCount', count);
+      document.getElementById('counterNum').textContent = (10000 + count).toLocaleString();
       document.getElementById('previewView').classList.remove('active');
 
       document.getElementById('writeAge').value = '';
@@ -2323,16 +2327,11 @@
 
     // Hero counter
     function initHeroCounter() {
-      var base = 2847;
-      var extra = Math.floor(Math.random() * 120);
-      var current = base + extra;
+      var base = 10000;
+      var published = parseInt(localStorage.getItem('publishedCount') || '0');
+      var total = base + published;
       var el = document.getElementById('heroCounter');
-      el.innerHTML = '已有 <span id="counterNum">' + current.toLocaleString() + '</span> 人铸造了数字遗产';
-
-      setInterval(function() {
-        current += 1;
-        document.getElementById('counterNum').textContent = current.toLocaleString();
-      }, 8000 + Math.random() * 12000);
+      el.innerHTML = '已有 <span id="counterNum">' + total.toLocaleString() + '</span> 人铸造了数字遗产';
     }
     initHeroCounter();
 
