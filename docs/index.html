@@ -633,8 +633,8 @@
 
     .profile-back {
       position: fixed;
-      top: 20px;
-      left: 24px;
+      top: 16px;
+      left: 40px;
       z-index: 210;
     }
 
@@ -1575,6 +1575,7 @@
       .profile-view, .year-explorer, .write-view, .preview-view, .search-view {
         padding: 70px 20px 32px;
       }
+      .profile-back { top: 14px; left: 20px; }
       .write-row { grid-template-columns: 1fr; }
       .preview-card { padding: 28px 20px; }
     }
@@ -2126,10 +2127,14 @@
 
       document.getElementById('profileView').classList.add('active');
       document.getElementById('profileView').scrollTop = 0;
+      history.pushState({ view: 'profile' }, '');
     }
 
     function hideProfile() {
       document.getElementById('profileView').classList.remove('active');
+      if (history.state && history.state.view === 'profile') {
+        history.back();
+      }
     }
 
     // Year explorer
@@ -2138,10 +2143,14 @@
       document.getElementById('yearStories').classList.remove('active');
       document.getElementById('yearGrid').style.display = '';
       renderYears();
+      history.pushState({ view: 'years' }, '');
     }
 
     function hideYears() {
       document.getElementById('yearExplorer').classList.remove('active');
+      if (history.state && history.state.view === 'years') {
+        history.back();
+      }
     }
 
     function renderYears() {
@@ -2186,10 +2195,14 @@
     function showWrite() {
       document.getElementById('writeView').classList.add('active');
       document.getElementById('writeView').scrollTop = 0;
+      history.pushState({ view: 'write' }, '');
     }
 
     function hideWrite() {
       document.getElementById('writeView').classList.remove('active');
+      if (history.state && history.state.view === 'write') {
+        history.back();
+      }
     }
 
     var currentDraft = null;
@@ -2211,11 +2224,15 @@
       document.getElementById('writeView').classList.remove('active');
       document.getElementById('previewView').classList.add('active');
       document.getElementById('previewView').scrollTop = 0;
+      history.pushState({ view: 'preview' }, '');
     }
 
     function hidePreview() {
       document.getElementById('previewView').classList.remove('active');
       document.getElementById('writeView').classList.add('active');
+      if (history.state && history.state.view === 'preview') {
+        history.back();
+      }
     }
 
     function confirmPublish() {
@@ -2265,12 +2282,16 @@
     function showSearch() {
       document.getElementById('searchView').classList.add('active');
       setTimeout(function() { document.getElementById('searchInput').focus(); }, 100);
+      history.pushState({ view: 'search' }, '');
     }
 
     function hideSearch() {
       document.getElementById('searchView').classList.remove('active');
       document.getElementById('searchInput').value = '';
       document.getElementById('searchResults').innerHTML = '';
+      if (history.state && history.state.view === 'search') {
+        history.back();
+      }
     }
 
     function handleSearch() {
@@ -2301,6 +2322,7 @@
       hidePreview();
       hideSearch();
       hidePayModal();
+      history.replaceState(null, '');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -2338,6 +2360,19 @@
     // Keyboard
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') showHome();
+    });
+
+    // Browser back button
+    window.addEventListener('popstate', function(e) {
+      if (e.state && e.state.view) {
+        // Close the overlay
+        document.getElementById('profileView').classList.remove('active');
+        document.getElementById('yearExplorer').classList.remove('active');
+        document.getElementById('writeView').classList.remove('active');
+        document.getElementById('previewView').classList.remove('active');
+        document.getElementById('searchView').classList.remove('active');
+        document.getElementById('payModal').classList.remove('active');
+      }
     });
   </script>
 </body>
