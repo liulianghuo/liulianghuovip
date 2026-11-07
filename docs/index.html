@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>这世界，我来过</title>
+  <title>数字遗产平台</title>
   <meta name="theme-color" content="#0A0A0A">
-  <meta name="description" content="每个人都能在数字世界里，留下属于自己的痕迹。按年记录，永不删除。">
+  <meta name="description" content="数字遗产：你的人生，该归谁？永久保存你的人生痕迹。">
   <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -1130,6 +1130,428 @@
       to { opacity: 1; transform: translate(-50%, 0); }
     }
 
+    /* ===== 争议区 ===== */
+    .debate-section {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .debate-card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 20px;
+    }
+
+    .debate-card h3 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    .debate-topic {
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .debate-topic:last-of-type { border-bottom: none; }
+
+    .debate-topic::before {
+      content: '•';
+      color: var(--accent);
+      margin-right: 10px;
+    }
+
+    .debate-cta {
+      text-align: center;
+      margin-top: 16px;
+    }
+
+    .debate-cta-btn {
+      padding: 10px 28px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-family: var(--sans);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(201,149,107,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    .debate-cta-btn:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+    }
+
+    /* ===== 对赌区 ===== */
+    .bet-section {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .bet-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(201,149,107,0.2);
+      border-radius: 16px;
+      padding: 36px 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .bet-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 40px;
+      right: 40px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--accent), transparent);
+    }
+
+    .bet-card h3 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 16px;
+      letter-spacing: 0.08em;
+    }
+
+    .bet-card p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      line-height: 2;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .bet-card .bet-question {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+
+    .bet-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .bet-btn {
+      padding: 12px 36px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-family: var(--sans);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: 1px solid var(--card-border);
+    }
+
+    .bet-btn.dare {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+
+    .bet-btn.dare:hover { background: var(--accent-light); border-color: var(--accent-light); }
+
+    .bet-btn.nodare {
+      background: transparent;
+      color: var(--text-secondary);
+    }
+
+    .bet-btn.nodare:hover { color: var(--text); border-color: var(--text-dim); }
+
+    /* ===== 变现区 ===== */
+    .monetize-section {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .monetize-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .monetize-header h2 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.08em;
+    }
+
+    .monetize-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .monetize-card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px 16px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .monetize-card:hover {
+      border-color: rgba(201,149,107,0.3);
+      transform: translateY(-2px);
+    }
+
+    .monetize-card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .monetize-card-title {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .monetize-card-price {
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .monetize-card-desc {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    .monetize-cta {
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .monetize-grid { grid-template-columns: 1fr 1fr; }
+      .debate-card, .bet-card { padding: 24px 20px; }
+    }
+
+    /* ===== NFT 标识 ===== */
+    .nft-badge {
+      font-size: 0.65rem;
+      color: var(--accent);
+      padding: 2px 8px;
+      border: 1px solid rgba(201,149,107,0.3);
+      border-radius: 100px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-left: 8px;
+    }
+
+    /* ===== 写作页新增选项 ===== */
+    .write-storage-options {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .write-storage-option {
+      flex: 1;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .write-storage-option:hover { border-color: rgba(201,149,107,0.3); }
+    .write-storage-option.active { border-color: var(--accent); background: var(--accent-glow); }
+
+    .write-storage-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .write-storage-desc {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+    }
+
+    .write-nft-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-bottom: 20px;
+    }
+
+    .write-nft-option:hover { border-color: rgba(201,149,107,0.3); }
+    .write-nft-option.active { border-color: var(--accent); background: var(--accent-glow); }
+
+    .write-nft-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .write-nft-option.active .write-nft-check {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    .write-nft-text {
+      font-size: 0.82rem;
+      color: var(--text);
+    }
+
+    .write-nft-price {
+      font-size: 0.72rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ===== 个人中心新增 ===== */
+    .profile-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      max-width: 640px;
+      margin: 24px auto 0;
+    }
+
+    .profile-action-btn {
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-family: var(--sans);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .profile-action-btn:hover { border-color: rgba(201,149,107,0.3); color: var(--text); }
+    .profile-action-btn.primary-action { border-color: rgba(201,149,107,0.3); color: var(--accent); }
+
+    /* ===== 支付弹窗 ===== */
+    .pay-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      z-index: 400;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pay-modal.active { display: flex; }
+
+    .pay-modal-content {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 36px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .pay-modal-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .pay-modal-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .pay-modal-price {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .pay-modal-price small {
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
+
+    .pay-modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .pay-modal-btn {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-family: var(--sans);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .pay-modal-btn.cancel {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-secondary);
+    }
+
+    .pay-modal-btn.confirm {
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      color: var(--bg);
+    }
+
+    .pay-modal-btn.confirm:hover { background: var(--accent-light); }
+
     /* Responsive */
     @media (max-width: 768px) {
       .nav { padding: 14px 20px; }
@@ -1166,11 +1588,11 @@
   <div class="ambient"></div>
 
   <nav class="nav">
-    <div class="nav-logo" onclick="showHome()">这世界，我来过</div>
+    <div class="nav-logo" onclick="showHome()">数字遗产平台</div>
     <div class="nav-right">
       <button class="nav-btn" onclick="showSearch()">搜索</button>
       <button class="nav-btn" onclick="showYears()">年份</button>
-      <button class="nav-btn primary" onclick="showWrite()">写一笔</button>
+      <button class="nav-btn primary" onclick="showWrite()">铸造</button>
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换主题">☀</button>
     </div>
   </nav>
@@ -1179,14 +1601,13 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero-ornament"></div>
-      <h1 class="hero-title">这世界，我来过</h1>
+      <h1 class="hero-title">数字遗产：你的人生，该归谁？</h1>
       <p class="hero-subtitle">
-        如果只能留下一句话，你会写什么<br>
-        写下的不可更改，留下的永远不会消失
+        你的人生，值得被永久保存
       </p>
       <div class="hero-cta">
-        <button class="hero-cta-btn primary" onclick="showWrite()">写下我的那句话</button>
-        <button class="hero-cta-btn secondary" onclick="document.querySelector('.feed-section').scrollIntoView({behavior:'smooth'})">看看别人留下了什么</button>
+        <button class="hero-cta-btn primary" onclick="showWrite()">铸造我的数字遗产</button>
+        <button class="hero-cta-btn secondary" onclick="document.querySelector('.feed-section').scrollIntoView({behavior:'smooth'})">看看别人的故事</button>
       </div>
       <div class="hero-counter" id="heroCounter"></div>
     </section>
@@ -1195,40 +1616,102 @@
     <section class="feed-section" id="feedSection">
       <div class="feed-header">
         <div class="feed-header-line"></div>
-        <span class="feed-header-text">这些人，留下了他们的故事</span>
+        <span class="feed-header-text">看看别人的数字遗产</span>
         <div class="feed-header-line"></div>
       </div>
       <div id="feedContainer"></div>
     </section>
 
+    <!-- 争议区 -->
+    <section class="debate-section">
+      <div class="debate-card">
+        <h3>争议话题</h3>
+        <div class="debate-topic">人死后，你的微信聊天记录归谁？</div>
+        <div class="debate-topic">你愿意把一辈子的一句话，交给一个网站永久保存吗？</div>
+        <div class="debate-topic">数字遗产，该不该立法？</div>
+        <div class="debate-cta">
+          <button class="debate-cta-btn" onclick="showWrite()">参与讨论 →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 对赌区 -->
+    <section class="bet-section">
+      <div class="bet-card">
+        <h3>公开对赌</h3>
+        <p>我赌100万，10年内这个数字遗产平台<br>会有1000万用户</p>
+        <p class="bet-question">你敢不敢跟我赌？</p>
+        <div class="bet-buttons">
+          <button class="bet-btn dare" onclick="handleBet('dare')">我敢</button>
+          <button class="bet-btn nodare" onclick="handleBet('nodare')">我不敢</button>
+        </div>
+      </div>
+    </section>
+
     <!-- 理念 -->
     <section class="manifesto">
       <div class="manifesto-ornament"></div>
-      <h2>为什么要留下痕迹</h2>
+      <h2>为什么要留下数字遗产</h2>
       <p>河南驻马店，一位叫袁淑芳的老中医，97岁走的。她16岁嫁人时一个字不识，借着月光跟丈夫学认字、学医术，行医八十年</p>
       <p>临终前她跟家人说了一句话：「我这一百个方子，是这辈子一个一个人试出来的，不能带进土里」</p>
       <p>家人把一百个药方刻在了她的墓碑上，连用量都写得清清楚楚——打破了「传方不传量」的老规矩。她孙子说：「人家祖传的东西都藏着，传男不传女，她这还公开呢」</p>
       <p>墓碑立了十九年，两三千人从全国各地赶来抄方。有人坐长途火车，有人在碑前蹲一整天。漯河一个八十岁的老中医，凌晨五点起床转三趟车来抄，激动得一晚上没睡着。还有一个德国医生，开了两小时车赶来，他说他看重的是老人八十年的经验大成</p>
       <p>一个人一辈子活过、爱过、撑过来的那些年头，总有些东西值得留下来。不一定是药方，不一定是惊天动地的事——可能只是某一年你说的一句话，做的一件事，或者一个再也回不去的瞬间</p>
       <p>我做这个网站，就是因为想起了这些人。想起那些不该被遗忘的年头，想起那些值得被记住的瞬间。每个人的一生都是一本书，不能只让别人看到封面</p>
-      <p style="color: var(--accent); font-weight: 500; margin-top: 24px;">这世界，你来过。别让它只是来过。</p>
+      <p style="color: var(--accent); font-weight: 500; margin-top: 24px;">你的人生，值得被永久保存。</p>
       <div class="manifesto-features">
         <div class="manifesto-feature">
-          <div class="manifesto-feature-title">刻下即永恒</div>
-          <div class="manifesto-feature-desc">不可修改，不可删除，像刻在石头上一样，每一笔都是当时真实的你</div>
+          <div class="manifesto-feature-title">铸造即永恒</div>
+          <div class="manifesto-feature-desc">不可修改，不可删除，像刻在区块链上一样，每一笔都是当时真实的你</div>
         </div>
         <div class="manifesto-feature">
           <div class="manifesto-feature-title">一年一个印记</div>
-          <div class="manifesto-feature-desc">串起来就是你一生的时间线，回头看的时候，每一段都有意义</div>
+          <div class="manifesto-feature-desc">串起来就是你一生的数字遗产，回头看的时候，每一段都有意义</div>
         </div>
         <div class="manifesto-feature">
           <div class="manifesto-feature-title">留给世界或留给自己</div>
-          <div class="manifesto-feature-desc">公开的，让所有人看到你的故事；私密的，只属于你自己</div>
+          <div class="manifesto-feature-desc">公开的，让所有人看到你的遗产；私密的，只属于你自己</div>
         </div>
         <div class="manifesto-feature">
-          <div class="manifesto-feature-title">不会消失</div>
-          <div class="manifesto-feature-desc">去中心化永久存储，就算这个网站不在了，你的痕迹依然还在</div>
+          <div class="manifesto-feature-title">永久保存</div>
+          <div class="manifesto-feature-desc">去中心化存储，就算这个平台不在了，你的数字遗产依然还在</div>
         </div>
+      </div>
+    </section>
+
+    <!-- 变现区 -->
+    <section class="monetize-section">
+      <div class="monetize-header">
+        <h2>数字遗产服务</h2>
+      </div>
+      <div class="monetize-grid">
+        <div class="monetize-card" onclick="showPayModal('nft')">
+          <div class="monetize-card-icon">◆</div>
+          <div class="monetize-card-title">NFT 铸造</div>
+          <div class="monetize-card-price">1000元<small>/个</small></div>
+          <div class="monetize-card-desc">永久保存，不可篡改</div>
+        </div>
+        <div class="monetize-card" onclick="showPayModal('storage')">
+          <div class="monetize-card-icon">☁</div>
+          <div class="monetize-card-title">存储升级</div>
+          <div class="monetize-card-price">99元<small>/月</small></div>
+          <div class="monetize-card-desc">从1条升级到100条</div>
+        </div>
+        <div class="monetize-card" onclick="showPayModal('export')">
+          <div class="monetize-card-icon">↓</div>
+          <div class="monetize-card-title">数据导出</div>
+          <div class="monetize-card-price">9.9元<small>/次</small></div>
+          <div class="monetize-card-desc">PDF / JSON 格式</div>
+        </div>
+        <div class="monetize-card" onclick="showPayModal('memorial')">
+          <div class="monetize-card-icon">✦</div>
+          <div class="monetize-card-title">纪念定制</div>
+          <div class="monetize-card-price">999元<small>/个</small></div>
+          <div class="monetize-card-desc">模板·照片·自定义文案</div>
+        </div>
+      </div>
+      <div class="monetize-cta">
+        <button class="hero-cta-btn primary" onclick="showWrite()">立即体验 →</button>
       </div>
     </section>
 
@@ -1236,17 +1719,17 @@
     <section class="trace-wall">
       <div class="trace-wall-header">
         <div class="trace-wall-ornament"></div>
-        <h2 class="trace-wall-title">痕迹墙</h2>
-        <p class="trace-wall-desc">每一条，都是某个人留给世界的话</p>
+        <h2 class="trace-wall-title">数字遗产墙</h2>
+        <p class="trace-wall-desc">每一条，都是某个人留给世界的数字遗产</p>
       </div>
       <div class="trace-wall-grid" id="traceWallGrid"></div>
       <div class="trace-wall-cta">
-        <button class="hero-cta-btn primary" onclick="showWrite()">留下我的痕迹</button>
+        <button class="hero-cta-btn primary" onclick="showWrite()">铸造我的数字遗产</button>
       </div>
     </section>
 
     <footer class="footer">
-      <p>这世界，我来过 &middot; 留下你的痕迹</p>
+      <p>数字遗产平台 &middot; 你的人生，值得被永久保存</p>
     </footer>
   </div>
 
@@ -1262,15 +1745,29 @@
       <div class="profile-stats">
         <div class="profile-stat">
           <div class="profile-stat-num" id="profileStatYears">0</div>
-          <div class="profile-stat-label">年份记录</div>
+          <div class="profile-stat-label">遗产记录</div>
         </div>
         <div class="profile-stat">
           <div class="profile-stat-num" id="profileStatSpan">0</div>
           <div class="profile-stat-label">时间跨度</div>
         </div>
+        <div class="profile-stat">
+          <div class="profile-stat-num" id="profileStatStorage">1/1</div>
+          <div class="profile-stat-label">存储容量</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-num" id="profileStatNFT">0</div>
+          <div class="profile-stat-label">NFT 数量</div>
+        </div>
       </div>
     </div>
     <div class="profile-timeline" id="profileTimeline"></div>
+    <div class="profile-actions">
+      <button class="profile-action-btn primary-action" onclick="showWrite()">写一笔</button>
+      <button class="profile-action-btn" onclick="showPayModal('storage')">升级存储</button>
+      <button class="profile-action-btn" onclick="showPayModal('export')">导出数据</button>
+      <button class="profile-action-btn" onclick="showPayModal('memorial')">定制纪念页</button>
+    </div>
   </div>
 
   <!-- 年份探索 -->
@@ -1287,7 +1784,7 @@
   <div class="write-view" id="writeView">
     <div class="write-container">
       <div class="write-header">
-        <h2 class="write-title">留下痕迹</h2>
+        <h2 class="write-title">铸造数字遗产</h2>
         <button class="nav-btn" onclick="hideWrite()">← 返回</button>
       </div>
       <div class="write-row">
@@ -1302,7 +1799,30 @@
       </div>
       <div class="write-step">
         <label class="write-label">写点什么 — 可以很长，可以很短</label>
-        <textarea class="write-input write-textarea" id="writeMessage" placeholder="那年发生了什么？你在想什么？&#10;&#10;想写多少就写多少..."></textarea>
+        <textarea class="write-input write-textarea" id="writeMessage" placeholder="那年发生了什么？你在想什么？&#10;&#10;写下你的数字遗产..."></textarea>
+      </div>
+      <div class="write-step">
+        <label class="write-label">存储方式</label>
+        <div class="write-storage-options">
+          <div class="write-storage-option active" onclick="selectStorage(this, 'free')">
+            <div class="write-storage-label">免费存储</div>
+            <div class="write-storage-desc">1条额度</div>
+          </div>
+          <div class="write-storage-option" onclick="selectStorage(this, 'paid')">
+            <div class="write-storage-label">付费存储</div>
+            <div class="write-storage-desc">100条 · 99元/月</div>
+          </div>
+        </div>
+      </div>
+      <div class="write-step">
+        <label class="write-label">铸造选项</label>
+        <div class="write-nft-option" id="nftOption" onclick="toggleNFT()">
+          <div class="write-nft-check" id="nftCheck"></div>
+          <div>
+            <div class="write-nft-text">铸造 NFT — 永久保存，不可篡改</div>
+            <div class="write-nft-price">1000元/个</div>
+          </div>
+        </div>
       </div>
       <div class="write-step">
         <label class="write-label">谁可以看</label>
@@ -1328,7 +1848,7 @@
   <div class="preview-view" id="previewView">
     <div class="preview-container">
       <div class="write-header">
-        <h2 class="write-title">确认发布</h2>
+        <h2 class="write-title">确认铸造</h2>
         <button class="nav-btn" onclick="hidePreview()">← 返回编辑</button>
       </div>
       <div class="preview-card">
@@ -1336,11 +1856,11 @@
         <p class="preview-message" id="previewMessage"></p>
       </div>
       <div class="preview-warning">
-        发布后不可修改、不可删除，这是你留给世界的痕迹，请确认内容
+        铸造后不可修改、不可删除，这是你的数字遗产，请确认内容
       </div>
       <div class="write-actions">
         <button class="write-btn secondary" onclick="hidePreview()">返回编辑</button>
-        <button class="write-btn primary" onclick="confirmPublish()">确认发布</button>
+        <button class="write-btn primary" onclick="confirmPublish()">确认铸造</button>
       </div>
     </div>
   </div>
@@ -1354,6 +1874,19 @@
       </div>
       <input type="text" class="search-input" id="searchInput" placeholder="搜索用户名..." oninput="handleSearch()">
       <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- 支付弹窗 -->
+  <div class="pay-modal" id="payModal">
+    <div class="pay-modal-content">
+      <div class="pay-modal-title" id="payModalTitle"></div>
+      <div class="pay-modal-desc" id="payModalDesc"></div>
+      <div class="pay-modal-price" id="payModalPrice"></div>
+      <div class="pay-modal-actions">
+        <button class="pay-modal-btn cancel" onclick="hidePayModal()">取消</button>
+        <button class="pay-modal-btn confirm" onclick="confirmPay()">确认支付</button>
+      </div>
     </div>
   </div>
 
@@ -1395,6 +1928,66 @@
       });
       el.classList.add('active');
       currentPrivacy = privacy;
+    }
+
+    // Storage selection
+    var currentStorage = 'free';
+    function selectStorage(el, storage) {
+      document.querySelectorAll('.write-storage-option').forEach(function(opt) {
+        opt.classList.remove('active');
+      });
+      el.classList.add('active');
+      currentStorage = storage;
+    }
+
+    // NFT toggle
+    var currentNFT = false;
+    function toggleNFT() {
+      currentNFT = !currentNFT;
+      var opt = document.getElementById('nftOption');
+      var check = document.getElementById('nftCheck');
+      if (currentNFT) {
+        opt.classList.add('active');
+        check.textContent = '✓';
+      } else {
+        opt.classList.remove('active');
+        check.textContent = '';
+      }
+    }
+
+    // Pay modal
+    var payModalData = {
+      nft: { title: '铸造 NFT', desc: '你的每一句话，都是数字资产\n永久保存，不可篡改', price: '¥1,000' },
+      storage: { title: '升级存储', desc: '免费用户可存1条\n付费用户可存100条', price: '¥99<small>/月</small>' },
+      export: { title: '导出数据', desc: '支持 PDF、JSON 格式\n在线查看免费，下载导出付费', price: '¥9.9' },
+      memorial: { title: '定制纪念页', desc: '支持模板、照片、自定义文案\n为你打造专属纪念页面', price: '¥999' }
+    };
+
+    function showPayModal(type) {
+      var data = payModalData[type];
+      if (!data) return;
+      document.getElementById('payModalTitle').textContent = data.title;
+      document.getElementById('payModalDesc').innerHTML = data.desc.replace(/\n/g, '<br>');
+      document.getElementById('payModalPrice').innerHTML = data.price;
+      document.getElementById('payModal').classList.add('active');
+    }
+
+    function hidePayModal() {
+      document.getElementById('payModal').classList.remove('active');
+    }
+
+    function confirmPay() {
+      hidePayModal();
+      showToast('支付功能开发中，敬请期待');
+    }
+
+    // Bet handler
+    function handleBet(choice) {
+      if (choice === 'dare') {
+        showToast('你选择了「我敢」，已记录');
+      } else {
+        showToast('没关系，留下你的痕迹也是一种勇气');
+      }
     }
 
     // Data
@@ -1490,13 +2083,14 @@
               '<span class="story-card-name">' + story.user + '</span>' +
             '</div>' +
             '<span class="story-card-badge">' + story.age + '岁 · ' + story.year + '</span>' +
+            '<span class="nft-badge">NFT</span>' +
           '</div>' +
           '<div class="story-card-text">' + story.message + '</div>' +
           '<div class="story-card-footer">' +
             '<span class="story-card-date">' + story.date + '</span>' +
             '<div style="display:flex;gap:12px;align-items:center">' +
-              '<button class="story-card-action invite" onclick="event.stopPropagation();showWrite()">我也想说</button>' +
-              '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的一生 →</button>' +
+              '<button class="story-card-action invite" onclick="event.stopPropagation();showWrite()">我也要铸造</button>' +
+              '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的遗产 →</button>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -1518,6 +2112,8 @@
       var span = years > 1 ? (user.entries[years - 1].year - user.entries[0].year) : 0;
       document.getElementById('profileStatYears').textContent = years;
       document.getElementById('profileStatSpan').textContent = span + '年';
+      document.getElementById('profileStatStorage').textContent = '1/1';
+      document.getElementById('profileStatNFT').textContent = Math.floor(Math.random() * 3);
 
       var timeline = document.getElementById('profileTimeline');
       timeline.innerHTML = user.entries.map(function(entry) {
@@ -1566,7 +2162,7 @@
       var container = document.getElementById('yearStories');
 
       if (filtered.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:48px; font-family:var(--serif);">这一年还没有人留下痕迹</p>';
+        container.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:48px; font-family:var(--serif);">这一年还没有人铸造数字遗产</p>';
       } else {
         container.innerHTML = filtered.map(function(story) {
           return '<div class="story-card" style="cursor:pointer" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\'); hideYears();">' +
@@ -1647,7 +2243,7 @@
       feedStories.unshift(allStories[allStories.length - 1]);
       renderFeed();
 
-      showToast('痕迹已留下，不可更改');
+      showToast('数字遗产已铸造，不可更改');
       document.getElementById('previewView').classList.remove('active');
 
       document.getElementById('writeAge').value = '';
@@ -1700,6 +2296,7 @@
       hideWrite();
       hidePreview();
       hideSearch();
+      hidePayModal();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -1730,7 +2327,7 @@
       var extra = Math.floor(Math.random() * 120);
       var current = base + extra;
       var el = document.getElementById('heroCounter');
-      el.innerHTML = '已有 <span id="counterNum">' + current.toLocaleString() + '</span> 人留下了痕迹';
+      el.innerHTML = '已有 <span id="counterNum">' + current.toLocaleString() + '</span> 人铸造了数字遗产';
 
       setInterval(function() {
         current += 1;
