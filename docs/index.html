@@ -1377,18 +1377,6 @@
       .debate-card, .bet-card { padding: 24px 20px; }
     }
 
-    /* ===== NFT 标识 ===== */
-    .nft-badge {
-      font-size: 0.65rem;
-      color: var(--accent);
-      padding: 2px 8px;
-      border: 1px solid rgba(201,149,107,0.3);
-      border-radius: 100px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      margin-left: 8px;
-    }
-
     /* ===== 写作页新增选项 ===== */
     .write-storage-options {
       display: flex;
@@ -1420,52 +1408,6 @@
     .write-storage-desc {
       font-size: 0.68rem;
       color: var(--text-dim);
-    }
-
-    .write-nft-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s;
-      margin-bottom: 20px;
-    }
-
-    .write-nft-option:hover { border-color: rgba(201,149,107,0.3); }
-    .write-nft-option.active { border-color: var(--accent); background: var(--accent-glow); }
-
-    .write-nft-check {
-      width: 18px;
-      height: 18px;
-      border-radius: 4px;
-      border: 1px solid var(--card-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .write-nft-option.active .write-nft-check {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: var(--bg);
-    }
-
-    .write-nft-text {
-      font-size: 0.82rem;
-      color: var(--text);
-    }
-
-    .write-nft-price {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 500;
     }
 
     /* ===== 个人中心新增 ===== */
@@ -1718,10 +1660,6 @@
           <div class="profile-stat-num" id="profileStatStorage">1/1</div>
           <div class="profile-stat-label">存储容量</div>
         </div>
-        <div class="profile-stat">
-          <div class="profile-stat-num" id="profileStatNFT">0</div>
-          <div class="profile-stat-label">NFT 数量</div>
-        </div>
       </div>
     </div>
     <div class="profile-timeline" id="profileTimeline"></div>
@@ -1774,16 +1712,6 @@
           <div class="write-storage-option" onclick="selectStorage(this, 'paid')">
             <div class="write-storage-label">付费存储</div>
             <div class="write-storage-desc">100条 · 99元/月</div>
-          </div>
-        </div>
-      </div>
-      <div class="write-step">
-        <label class="write-label">铸造选项</label>
-        <div class="write-nft-option" id="nftOption" onclick="toggleNFT()">
-          <div class="write-nft-check" id="nftCheck"></div>
-          <div>
-            <div class="write-nft-text">铸造 NFT — 永久保存，不可篡改</div>
-            <div class="write-nft-price">1000元/个</div>
           </div>
         </div>
       </div>
@@ -1923,24 +1851,8 @@
       currentStorage = storage;
     }
 
-    // NFT toggle
-    var currentNFT = false;
-    function toggleNFT() {
-      currentNFT = !currentNFT;
-      var opt = document.getElementById('nftOption');
-      var check = document.getElementById('nftCheck');
-      if (currentNFT) {
-        opt.classList.add('active');
-        check.textContent = '✓';
-      } else {
-        opt.classList.remove('active');
-        check.textContent = '';
-      }
-    }
-
     // Pay modal
     var payModalData = {
-      nft: { title: '铸造 NFT', desc: '你的每一句话，都是数字资产\n永久保存，不可篡改', price: '¥1,000' },
       storage: { title: '升级存储', desc: '免费用户可存1条\n付费用户可存100条', price: '¥99<small>/月</small>' },
       export: { title: '导出数据', desc: '支持 PDF、JSON 格式\n在线查看免费，下载导出付费', price: '¥9.9' },
       memorial: { title: '定制纪念页', desc: '支持模板、照片、自定义文案\n为你打造专属纪念页面', price: '¥999' }
@@ -2066,7 +1978,6 @@
               '<span class="story-card-name">' + story.user + '</span>' +
             '</div>' +
             '<span class="story-card-badge">' + story.age + '岁 · ' + story.year + '</span>' +
-            '<span class="nft-badge">NFT</span>' +
           '</div>' +
           '<div class="story-card-text">' + story.message + '</div>' +
           '<div class="story-card-footer">' +
@@ -2096,7 +2007,6 @@
       document.getElementById('profileStatYears').textContent = years;
       document.getElementById('profileStatSpan').textContent = span + '年';
       document.getElementById('profileStatStorage').textContent = '1/1';
-      document.getElementById('profileStatNFT').textContent = Math.floor(Math.random() * 3);
 
       var timeline = document.getElementById('profileTimeline');
       timeline.innerHTML = user.entries.map(function(entry) {
