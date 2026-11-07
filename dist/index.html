@@ -286,6 +286,18 @@
       background: linear-gradient(to bottom, var(--text-dim), transparent);
     }
 
+    .hero-counter {
+      margin-top: 32px;
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .hero-counter span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
     @keyframes float {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(6px); }
@@ -414,6 +426,20 @@
 
     .story-card-action:hover { color: var(--accent); }
 
+    .story-card-action.invite {
+      color: var(--accent);
+      padding: 4px 12px;
+      border: 1px solid rgba(201,149,107,0.25);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      transition: all 0.3s;
+    }
+
+    .story-card-action.invite:hover {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+    }
+
     /* ===== 理念说明 ===== */
     .manifesto {
       max-width: 560px;
@@ -476,6 +502,95 @@
       font-size: 0.78rem;
       color: var(--text-dim);
       line-height: 1.7;
+    }
+
+    /* ===== 痕迹墙 ===== */
+    .trace-wall {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 80px 32px 100px;
+    }
+
+    .trace-wall-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .trace-wall-ornament {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto 24px;
+      opacity: 0.4;
+    }
+
+    .trace-wall-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+    }
+
+    .trace-wall-desc {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.03em;
+    }
+
+    .trace-wall-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .trace-wall-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 16px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .trace-wall-item:hover {
+      border-color: rgba(201,149,107,0.25);
+      transform: translateY(-2px);
+    }
+
+    .trace-wall-text {
+      font-family: var(--serif);
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .trace-wall-meta {
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .trace-wall-meta span {
+      color: var(--accent);
+    }
+
+    .trace-wall-cta {
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .trace-wall { padding: 60px 20px 80px; }
+      .trace-wall-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .trace-wall-item { padding: 16px 12px; }
+      .trace-wall-text { font-size: 0.78rem; -webkit-line-clamp: 2; }
     }
 
     /* ===== Footer ===== */
@@ -1056,14 +1171,14 @@
       <div class="hero-ornament"></div>
       <h1 class="hero-title">这世界，我来过</h1>
       <p class="hero-subtitle">
-        每一年，写一句话，留一张照片<br>
-        写下的不可更改，留下的永远不会消失<br>
-        这是你留给世界的痕迹
+        如果只能留下一句话，你会写什么<br>
+        写下的不可更改，留下的永远不会消失
       </p>
       <div class="hero-cta">
-        <button class="hero-cta-btn primary" onclick="showWrite()">留下我的痕迹</button>
-        <button class="hero-cta-btn secondary" onclick="document.querySelector('.feed-section').scrollIntoView({behavior:'smooth'})">看看别人的故事</button>
+        <button class="hero-cta-btn primary" onclick="showWrite()">写下我的那句话</button>
+        <button class="hero-cta-btn secondary" onclick="document.querySelector('.feed-section').scrollIntoView({behavior:'smooth'})">看看别人留下了什么</button>
       </div>
+      <div class="hero-counter" id="heroCounter"></div>
       <div class="hero-scroll-hint">
         <span>向下</span>
         <div class="arrow"></div>
@@ -1074,7 +1189,7 @@
     <section class="feed-section" id="feedSection">
       <div class="feed-header">
         <div class="feed-header-line"></div>
-        <span class="feed-header-text">他们的痕迹</span>
+        <span class="feed-header-text">这些人，留下了他们的故事</span>
         <div class="feed-header-line"></div>
       </div>
       <div id="feedContainer"></div>
@@ -1089,6 +1204,7 @@
       <p>家人把一百个药方刻在了她的墓碑上，连用量都写得清清楚楚——打破了「传方不传量」的老规矩。她孙子说：「人家祖传的东西都藏着，传男不传女，她这还公开呢」</p>
       <p>墓碑立了十九年，两三千人从全国各地赶来抄方。有人坐长途火车，有人在碑前蹲一整天。漯河一个八十岁的老中医，凌晨五点起床转三趟车来抄，激动得一晚上没睡着。还有一个德国医生，开了两小时车赶来，他说他看重的是老人八十年的经验大成</p>
       <p>一个人一辈子活过、爱过、撑过来的那些年头，总有些东西值得留下来。不一定是药方，不一定是惊天动地的事——可能只是某一年你说的一句话，做的一件事，或者一个再也回不去的瞬间</p>
+      <p>我做这个网站，就是因为想起了这些人。想起那些不该被遗忘的年头，想起那些值得被记住的瞬间。每个人的一生都是一本书，不能只让别人看到封面</p>
       <p style="color: var(--accent); font-weight: 500; margin-top: 24px;">这世界，你来过。别让它只是来过。</p>
       <div class="manifesto-features">
         <div class="manifesto-feature">
@@ -1107,6 +1223,19 @@
           <div class="manifesto-feature-title">不会消失</div>
           <div class="manifesto-feature-desc">去中心化永久存储，就算这个网站不在了，你的痕迹依然还在</div>
         </div>
+      </div>
+    </section>
+
+    <!-- 痕迹墙 -->
+    <section class="trace-wall">
+      <div class="trace-wall-header">
+        <div class="trace-wall-ornament"></div>
+        <h2 class="trace-wall-title">痕迹墙</h2>
+        <p class="trace-wall-desc">每一条，都是某个人留给世界的话</p>
+      </div>
+      <div class="trace-wall-grid" id="traceWallGrid"></div>
+      <div class="trace-wall-cta">
+        <button class="hero-cta-btn primary" onclick="showWrite()">留下我的痕迹</button>
       </div>
     </section>
 
@@ -1359,7 +1488,10 @@
           '<div class="story-card-text">' + story.message + '</div>' +
           '<div class="story-card-footer">' +
             '<span class="story-card-date">' + story.date + '</span>' +
-            '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的一生 →</button>' +
+            '<div style="display:flex;gap:12px;align-items:center">' +
+              '<button class="story-card-action invite" onclick="event.stopPropagation();showWrite()">我也想说</button>' +
+              '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的一生 →</button>' +
+            '</div>' +
           '</div>' +
         '</div>';
       }).join('');
@@ -1572,6 +1704,29 @@
       document.body.appendChild(toast);
       setTimeout(function() { toast.remove(); }, 3000);
     }
+
+    // Trace wall
+    function renderTraceWall() {
+      var grid = document.getElementById('traceWallGrid');
+      var samples = shuffle(allStories).slice(0, 9);
+      grid.innerHTML = samples.map(function(story) {
+        return '<div class="trace-wall-item" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">' +
+          '<div class="trace-wall-text">' + story.message + '</div>' +
+          '<div class="trace-wall-meta"><span>' + story.user + '</span> · ' + story.age + '岁 · ' + story.year + '</div>' +
+        '</div>';
+      }).join('');
+    }
+    renderTraceWall();
+
+    // Hero counter
+    function initHeroCounter() {
+      var base = 2847;
+      var extra = Math.floor(Math.random() * 120);
+      var total = base + extra;
+      document.getElementById('heroCounter').innerHTML =
+        '已有 <span>' + total.toLocaleString() + '</span> 人留下了痕迹';
+    }
+    initHeroCounter();
 
     // Keyboard
     document.addEventListener('keydown', function(e) {
