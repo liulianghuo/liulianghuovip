@@ -287,15 +287,24 @@
     }
 
     .hero-counter {
-      margin-top: 32px;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
       font-size: 0.78rem;
       color: var(--text-dim);
       letter-spacing: 0.05em;
+      animation: breathe 4s ease-in-out infinite;
     }
 
     .hero-counter span {
       color: var(--accent);
       font-weight: 500;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.03); }
     }
 
     @keyframes float {
@@ -313,6 +322,7 @@
     .feed-header {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 16px;
       margin-bottom: 40px;
       padding-bottom: 16px;
@@ -1179,10 +1189,6 @@
         <button class="hero-cta-btn secondary" onclick="document.querySelector('.feed-section').scrollIntoView({behavior:'smooth'})">看看别人留下了什么</button>
       </div>
       <div class="hero-counter" id="heroCounter"></div>
-      <div class="hero-scroll-hint">
-        <span>向下</span>
-        <div class="arrow"></div>
-      </div>
     </section>
 
     <!-- 故事流 -->
@@ -1722,9 +1728,14 @@
     function initHeroCounter() {
       var base = 2847;
       var extra = Math.floor(Math.random() * 120);
-      var total = base + extra;
-      document.getElementById('heroCounter').innerHTML =
-        '已有 <span>' + total.toLocaleString() + '</span> 人留下了痕迹';
+      var current = base + extra;
+      var el = document.getElementById('heroCounter');
+      el.innerHTML = '已有 <span id="counterNum">' + current.toLocaleString() + '</span> 人留下了痕迹';
+
+      setInterval(function() {
+        current += 1;
+        document.getElementById('counterNum').textContent = current.toLocaleString();
+      }, 8000 + Math.random() * 12000);
     }
     initHeroCounter();
 
