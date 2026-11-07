@@ -1039,6 +1039,29 @@
       line-height: 1.6;
     }
 
+    /* ===== 服务页 ===== */
+    .services-view {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      padding: 80px 24px 40px;
+      overflow-y: auto;
+    }
+
+    .services-view.active { display: block; }
+
+    .services-container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .services-container .debate-card,
+    .services-container .bet-card {
+      margin-bottom: 20px;
+    }
+
     /* ===== 搜索 ===== */
     .search-view {
       display: none;
@@ -1572,7 +1595,7 @@
       .manifesto { padding: 60px 24px 80px; }
       .manifesto-features { grid-template-columns: 1fr; }
 
-      .profile-view, .year-explorer, .write-view, .preview-view, .search-view {
+      .profile-view, .year-explorer, .write-view, .preview-view, .search-view, .services-view {
         padding: 70px 20px 32px;
       }
       .profile-back { top: 14px; left: 20px; }
@@ -1593,6 +1616,7 @@
     <div class="nav-right">
       <button class="nav-btn" onclick="showSearch()">搜索</button>
       <button class="nav-btn" onclick="showYears()">年份</button>
+      <button class="nav-btn" onclick="showServices()">服务</button>
       <button class="nav-btn primary" onclick="showWrite()">铸造</button>
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="切换主题">☀</button>
     </div>
@@ -1623,32 +1647,6 @@
       <div id="feedContainer"></div>
     </section>
 
-    <!-- 争议区 -->
-    <section class="debate-section">
-      <div class="debate-card">
-        <h3>争议话题</h3>
-        <div class="debate-topic">人死后，你的微信聊天记录归谁？</div>
-        <div class="debate-topic">你愿意把一辈子的一句话，交给一个网站永久保存吗？</div>
-        <div class="debate-topic">数字遗产，该不该立法？</div>
-        <div class="debate-cta">
-          <button class="debate-cta-btn" onclick="showWrite()">参与讨论 →</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 对赌区 -->
-    <section class="bet-section">
-      <div class="bet-card">
-        <h3>公开对赌</h3>
-        <p>我赌100万，10年内这个数字遗产平台<br>会有1000万用户</p>
-        <p class="bet-question">你敢不敢跟我赌？</p>
-        <div class="bet-buttons">
-          <button class="bet-btn dare" onclick="handleBet('dare')">我敢</button>
-          <button class="bet-btn nodare" onclick="handleBet('nodare')">我不敢</button>
-        </div>
-      </div>
-    </section>
-
     <!-- 理念 -->
     <section class="manifesto">
       <div class="manifesto-ornament"></div>
@@ -1677,42 +1675,6 @@
           <div class="manifesto-feature-title">永久保存</div>
           <div class="manifesto-feature-desc">去中心化存储，就算这个平台不在了，你的数字遗产依然还在</div>
         </div>
-      </div>
-    </section>
-
-    <!-- 变现区 -->
-    <section class="monetize-section">
-      <div class="monetize-header">
-        <h2>数字遗产服务</h2>
-      </div>
-      <div class="monetize-grid">
-        <div class="monetize-card" onclick="showPayModal('nft')">
-          <div class="monetize-card-icon">◆</div>
-          <div class="monetize-card-title">NFT 铸造</div>
-          <div class="monetize-card-price">1000元<small>/个</small></div>
-          <div class="monetize-card-desc">永久保存，不可篡改</div>
-        </div>
-        <div class="monetize-card" onclick="showPayModal('storage')">
-          <div class="monetize-card-icon">☁</div>
-          <div class="monetize-card-title">存储升级</div>
-          <div class="monetize-card-price">99元<small>/月</small></div>
-          <div class="monetize-card-desc">从1条升级到100条</div>
-        </div>
-        <div class="monetize-card" onclick="showPayModal('export')">
-          <div class="monetize-card-icon">↓</div>
-          <div class="monetize-card-title">数据导出</div>
-          <div class="monetize-card-price">9.9元<small>/次</small></div>
-          <div class="monetize-card-desc">PDF / JSON 格式</div>
-        </div>
-        <div class="monetize-card" onclick="showPayModal('memorial')">
-          <div class="monetize-card-icon">✦</div>
-          <div class="monetize-card-title">纪念定制</div>
-          <div class="monetize-card-price">999元<small>/个</small></div>
-          <div class="monetize-card-desc">模板·照片·自定义文案</div>
-        </div>
-      </div>
-      <div class="monetize-cta">
-        <button class="hero-cta-btn primary" onclick="showWrite()">立即体验 →</button>
       </div>
     </section>
 
@@ -1875,6 +1837,69 @@
       </div>
       <input type="text" class="search-input" id="searchInput" placeholder="搜索用户名..." oninput="handleSearch()">
       <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <!-- 服务页 -->
+  <div class="services-view" id="servicesView">
+    <div class="services-container">
+      <div class="write-header">
+        <h2 class="write-title">数字遗产服务</h2>
+        <button class="nav-btn" onclick="hideServices()">← 返回</button>
+      </div>
+
+      <!-- 争议区 -->
+      <div class="debate-card">
+        <h3>争议话题</h3>
+        <div class="debate-topic">人死后，你的微信聊天记录归谁？</div>
+        <div class="debate-topic">你愿意把一辈子的一句话，交给一个网站永久保存吗？</div>
+        <div class="debate-topic">数字遗产，该不该立法？</div>
+        <div class="debate-cta">
+          <button class="debate-cta-btn" onclick="showWrite()">参与讨论 →</button>
+        </div>
+      </div>
+
+      <!-- 对赌区 -->
+      <div class="bet-card">
+        <h3>公开对赌</h3>
+        <p>我赌100万，10年内这个数字遗产平台<br>会有1000万用户</p>
+        <p class="bet-question">你敢不敢跟我赌？</p>
+        <div class="bet-buttons">
+          <button class="bet-btn dare" onclick="handleBet('dare')">我敢</button>
+          <button class="bet-btn nodare" onclick="handleBet('nodare')">我不敢</button>
+        </div>
+      </div>
+
+      <!-- 变现区 -->
+      <div class="monetize-header" style="margin-top: 40px;">
+        <h2>付费服务</h2>
+      </div>
+      <div class="monetize-grid">
+        <div class="monetize-card" onclick="showPayModal('nft')">
+          <div class="monetize-card-icon">◆</div>
+          <div class="monetize-card-title">NFT 铸造</div>
+          <div class="monetize-card-price">1000元<small>/个</small></div>
+          <div class="monetize-card-desc">永久保存，不可篡改</div>
+        </div>
+        <div class="monetize-card" onclick="showPayModal('storage')">
+          <div class="monetize-card-icon">☁</div>
+          <div class="monetize-card-title">存储升级</div>
+          <div class="monetize-card-price">99元<small>/月</small></div>
+          <div class="monetize-card-desc">从1条升级到100条</div>
+        </div>
+        <div class="monetize-card" onclick="showPayModal('export')">
+          <div class="monetize-card-icon">↓</div>
+          <div class="monetize-card-title">数据导出</div>
+          <div class="monetize-card-price">9.9元<small>/次</small></div>
+          <div class="monetize-card-desc">PDF / JSON 格式</div>
+        </div>
+        <div class="monetize-card" onclick="showPayModal('memorial')">
+          <div class="monetize-card-icon">✦</div>
+          <div class="monetize-card-title">纪念定制</div>
+          <div class="monetize-card-price">999元<small>/个</small></div>
+          <div class="monetize-card-desc">模板·照片·自定义文案</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -2294,6 +2319,20 @@
       }
     }
 
+    // Services
+    function showServices() {
+      document.getElementById('servicesView').classList.add('active');
+      document.getElementById('servicesView').scrollTop = 0;
+      history.pushState({ view: 'services' }, '');
+    }
+
+    function hideServices() {
+      document.getElementById('servicesView').classList.remove('active');
+      if (history.state && history.state.view === 'services') {
+        history.back();
+      }
+    }
+
     function handleSearch() {
       var query = document.getElementById('searchInput').value.toLowerCase();
       var results = document.getElementById('searchResults');
@@ -2321,6 +2360,7 @@
       hideWrite();
       hidePreview();
       hideSearch();
+      hideServices();
       hidePayModal();
       history.replaceState(null, '');
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2371,6 +2411,7 @@
         document.getElementById('writeView').classList.remove('active');
         document.getElementById('previewView').classList.remove('active');
         document.getElementById('searchView').classList.remove('active');
+        document.getElementById('servicesView').classList.remove('active');
         document.getElementById('payModal').classList.remove('active');
       }
     });
