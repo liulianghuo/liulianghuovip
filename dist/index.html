@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>这世界，我来过</title>
   <meta name="theme-color" content="#0A0A0A">
+  <meta name="description" content="每个人都能在数字世界里，留下属于自己的痕迹。按年记录，永不删除。">
   <link rel="manifest" href="/manifest.json">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -13,6 +14,7 @@
     :root {
       --bg: #0A0A0A;
       --bg-elevated: #141414;
+      --bg-card: #1A1A1A;
       --text: #F5F0EB;
       --text-secondary: #9B9490;
       --text-dim: #6B6560;
@@ -21,10 +23,10 @@
       --accent-glow: rgba(201, 149, 107, 0.15);
       --card-bg: rgba(255,255,255,0.04);
       --card-border: rgba(255,255,255,0.06);
-      --nav-bg-start: rgba(10,10,10,0.98);
-      --nav-bg-mid: rgba(10,10,10,0.8);
-      --ambient-1: rgba(201,149,107,0.12);
-      --ambient-2: rgba(201,149,107,0.08);
+      --divider: rgba(255,255,255,0.06);
+      --nav-bg: rgba(10,10,10,0.92);
+      --ambient-1: rgba(201,149,107,0.1);
+      --ambient-2: rgba(201,149,107,0.06);
       --serif: 'Noto Serif SC', 'Songti SC', serif;
       --sans: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
     }
@@ -32,18 +34,19 @@
     [data-theme="light"] {
       --bg: #FAFAF8;
       --bg-elevated: #F0EDE8;
+      --bg-card: #FFFFFF;
       --text: #2C2825;
       --text-secondary: #6B6560;
       --text-dim: #9B9490;
       --accent: #a07040;
       --accent-light: #b8844e;
-      --accent-glow: rgba(160, 112, 64, 0.1);
-      --card-bg: rgba(0,0,0,0.03);
-      --card-border: rgba(0,0,0,0.08);
-      --nav-bg-start: rgba(250,250,248,0.98);
-      --nav-bg-mid: rgba(250,250,248,0.8);
-      --ambient-1: rgba(201,149,107,0.08);
-      --ambient-2: rgba(201,149,107,0.05);
+      --accent-glow: rgba(160, 112, 64, 0.08);
+      --card-bg: rgba(0,0,0,0.02);
+      --card-border: rgba(0,0,0,0.07);
+      --divider: rgba(0,0,0,0.06);
+      --nav-bg: rgba(250,250,248,0.92);
+      --ambient-1: rgba(201,149,107,0.06);
+      --ambient-2: rgba(201,149,107,0.03);
     }
 
     body {
@@ -55,6 +58,7 @@
       transition: background 0.4s ease, color 0.3s ease;
     }
 
+    /* 环境光 */
     .ambient {
       position: fixed;
       inset: 0;
@@ -69,8 +73,7 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(120px);
-      opacity: 0.4;
-      animation: drift 20s ease-in-out infinite;
+      animation: drift 25s ease-in-out infinite;
     }
 
     .ambient::before {
@@ -87,7 +90,7 @@
       background: radial-gradient(circle, var(--ambient-2), transparent 70%);
       bottom: -150px;
       left: -150px;
-      animation-delay: -10s;
+      animation-delay: -12s;
     }
 
     @keyframes drift {
@@ -96,6 +99,7 @@
       66% { transform: translate(-20px, 15px) scale(0.95); }
     }
 
+    /* 导航 */
     .nav {
       position: fixed;
       top: 0;
@@ -105,33 +109,35 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      background: linear-gradient(to bottom, var(--nav-bg-start) 0%, var(--nav-bg-mid) 70%, transparent 100%);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      padding: 16px 40px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--divider);
     }
 
     .nav-logo {
       font-family: var(--serif);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 0.05em;
-      color: var(--accent-light);
+      color: var(--accent);
       cursor: pointer;
-      transition: opacity 0.3s;
     }
 
-    .nav-logo:hover { opacity: 0.8; }
-
-    .nav-actions { display: flex; gap: 8px; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
     .nav-btn {
-      padding: 10px 20px;
+      padding: 8px 16px;
       border: 1px solid var(--card-border);
-      background: rgba(255,255,255,0.03);
+      background: transparent;
       color: var(--text-secondary);
       border-radius: 100px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-family: var(--sans);
       font-weight: 400;
       cursor: pointer;
@@ -140,19 +146,13 @@
     }
 
     .nav-btn:hover {
-      background: rgba(255,255,255,0.08);
       color: var(--text);
-      border-color: rgba(255,255,255,0.12);
-    }
-
-    [data-theme="light"] .nav-btn:hover {
-      background: rgba(0,0,0,0.05);
-      border-color: rgba(0,0,0,0.12);
+      border-color: var(--text-dim);
     }
 
     .nav-btn.primary {
       background: var(--accent);
-      color: #0A0A0A;
+      color: var(--bg);
       border-color: var(--accent);
       font-weight: 500;
     }
@@ -163,471 +163,193 @@
     }
 
     .theme-toggle {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       border: 1px solid var(--card-border);
-      background: var(--card-bg);
-      color: var(--text-secondary);
-      font-size: 1rem;
+      background: transparent;
+      color: var(--text-dim);
+      font-size: 0.95rem;
       cursor: pointer;
       transition: all 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-left: 4px;
-      flex-shrink: 0;
     }
 
-    .theme-toggle:hover {
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
-    }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
 
-    [data-theme="light"] .theme-toggle:hover {
-      background: rgba(0,0,0,0.06);
-    }
+    /* 内容层 */
+    .content { position: relative; z-index: 1; }
 
-    .main {
+    /* ===== Hero 开篇 ===== */
+    .hero {
       min-height: 100vh;
-      position: relative;
-      z-index: 1;
-    }
-
-    .story-view {
-      position: relative;
-      height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 120px 40px 140px;
-    }
-
-    .story-card {
-      max-width: 680px;
-      width: 100%;
-      position: relative;
-    }
-
-    .story-card::before {
-      content: '';
-      position: absolute;
-      top: -40px;
-      left: 0;
-      width: 60px;
-      height: 2px;
-      background: var(--accent);
-      opacity: 0.6;
-    }
-
-    .story-age {
-      display: inline-block;
-      font-family: var(--sans);
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      margin-bottom: 32px;
-      padding: 6px 16px;
-      border: 1px solid rgba(201,149,107,0.3);
-      border-radius: 100px;
-    }
-
-    .story-message {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      font-weight: 400;
-      line-height: 2;
-      color: var(--text);
-      margin-bottom: 48px;
-      letter-spacing: 0.02em;
-      white-space: pre-wrap;
-    }
-
-    .story-message::first-letter {
-      font-size: 2.2rem;
-      color: var(--accent-light);
-      font-weight: 600;
-    }
-
-    .story-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding-top: 24px;
-      border-top: 1px solid var(--card-border);
-    }
-
-    .story-user {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      transition: opacity 0.3s;
-    }
-
-    .story-user:hover { opacity: 0.7; }
-
-    .story-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 0.85rem;
-      color: #0A0A0A;
-    }
-
-    .story-username {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .story-date {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      margin-left: auto;
-    }
-
-    .story-nav {
-      position: fixed;
-      bottom: 48px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      z-index: 50;
-    }
-
-    .story-nav-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 1px solid var(--card-border);
-      background: var(--bg-elevated);
-      color: var(--text-secondary);
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      backdrop-filter: blur(12px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .story-nav-btn:hover {
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
-      border-color: rgba(255,255,255,0.15);
-    }
-
-    [data-theme="light"] .story-nav-btn:hover {
-      background: rgba(0,0,0,0.06);
-      border-color: rgba(0,0,0,0.15);
-    }
-
-    .story-counter {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      letter-spacing: 0.2em;
-      font-weight: 300;
-    }
-
-    .page-indicator {
-      position: fixed;
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      z-index: 50;
-    }
-
-    .page-dot {
-      width: 3px;
-      height: 20px;
-      border-radius: 2px;
-      background: rgba(255,255,255,0.1);
-      transition: all 0.3s;
-      cursor: pointer;
-    }
-
-    .page-dot.active {
-      height: 40px;
-      background: var(--accent);
-    }
-
-    .home-hint {
-      position: fixed;
-      bottom: 110px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      letter-spacing: 0.15em;
-      font-weight: 300;
-      z-index: 10;
-      opacity: 0.6;
-    }
-
-    /* Profile */
-    .profile-view {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      z-index: 200;
-      padding: 100px 40px 60px;
-      overflow-y: auto;
-    }
-
-    .profile-view.active { display: block; }
-
-    .profile-header {
-      max-width: 720px;
-      margin: 0 auto 64px;
       text-align: center;
-    }
-
-    .profile-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-size: 2rem;
-      font-weight: 600;
-      color: #0A0A0A;
-      margin: 0 auto 20px;
-    }
-
-    .profile-name {
-      font-family: var(--serif);
-      font-size: 1.8rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: 0.05em;
-    }
-
-    .profile-bio {
-      color: var(--text-dim);
-      font-size: 0.95rem;
-      font-weight: 300;
-      margin-bottom: 32px;
-    }
-
-    .profile-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 20px 0;
-      border-top: 1px solid var(--card-border);
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    .profile-stat { text-align: center; }
-
-    .profile-stat-num {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .profile-stat-label {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      letter-spacing: 0.1em;
-      margin-top: 4px;
-    }
-
-    .profile-timeline {
-      max-width: 720px;
-      margin: 0 auto;
+      padding: 120px 32px 80px;
       position: relative;
     }
 
-    .profile-timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
+    .hero-ornament {
       width: 1px;
-      background: linear-gradient(to bottom, transparent, var(--card-border) 10%, var(--card-border) 90%, transparent);
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+      margin-bottom: 40px;
+      opacity: 0.5;
     }
 
-    .timeline-item {
-      padding-left: 40px;
-      margin-bottom: 48px;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -4px;
-      top: 8px;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-    }
-
-    .timeline-year {
-      font-family: var(--sans);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      color: var(--text-dim);
-      margin-bottom: 8px;
-    }
-
-    .timeline-age {
+    .hero-title {
       font-family: var(--serif);
-      font-size: 0.9rem;
-      color: var(--accent);
-      margin-bottom: 12px;
-      font-weight: 400;
-    }
-
-    .timeline-message {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      line-height: 1.9;
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       color: var(--text);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .hero-subtitle {
+      font-family: var(--serif);
+      font-size: 1.15rem;
       font-weight: 400;
-    }
-
-    /* Year Explorer */
-    .year-explorer {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      z-index: 200;
-      padding: 100px 40px 60px;
-      overflow-y: auto;
-    }
-
-    .year-explorer.active { display: block; }
-
-    .year-header {
-      max-width: 1000px;
-      margin: 0 auto 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .year-title {
-      font-family: var(--serif);
-      font-size: 1.6rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
-
-    .year-grid {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 12px;
-    }
-
-    .year-card {
-      aspect-ratio: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      font-family: var(--serif);
-      font-size: 1.3rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-      gap: 6px;
       color: var(--text-secondary);
+      max-width: 480px;
+      line-height: 2;
+      margin-bottom: 48px;
+      letter-spacing: 0.03em;
     }
 
-    .year-card:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(201,149,107,0.3);
-      color: var(--text);
-      transform: translateY(-2px);
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
     }
 
-    [data-theme="light"] .year-card:hover {
-      background: rgba(0,0,0,0.04);
-    }
-
-    .year-card.has-content {
-      background: var(--accent-glow);
-      border-color: rgba(201,149,107,0.4);
-      color: var(--accent-light);
-    }
-
-    .year-card .count {
+    .hero-cta-btn {
+      padding: 14px 36px;
+      border-radius: 100px;
+      font-size: 0.9rem;
       font-family: var(--sans);
-      font-size: 0.7rem;
-      color: var(--text-dim);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-
-    .year-card.has-content .count { color: var(--accent); }
-
-    .year-stories {
-      display: none;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .year-stories.active { display: block; }
-
-    .year-story-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 28px 32px;
-      border-radius: 16px;
-      margin-bottom: 16px;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.3s;
+      letter-spacing: 0.05em;
+      text-decoration: none;
     }
 
-    .year-story-card:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(201,149,107,0.2);
+    .hero-cta-btn.primary {
+      background: var(--accent);
+      color: var(--bg);
+      border: 1px solid var(--accent);
+    }
+
+    .hero-cta-btn.primary:hover {
+      background: var(--accent-light);
+      border-color: var(--accent-light);
       transform: translateY(-1px);
     }
 
-    [data-theme="light"] .year-story-card:hover {
-      background: rgba(0,0,0,0.04);
+    .hero-cta-btn.secondary {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--card-border);
     }
 
-    .year-story-user {
+    .hero-cta-btn.secondary:hover {
+      color: var(--text);
+      border-color: var(--text-dim);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero-scroll-hint .arrow {
+      width: 1px;
+      height: 24px;
+      background: linear-gradient(to bottom, var(--text-dim), transparent);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== 故事流 ===== */
+    .feed-section {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 24px 120px;
+    }
+
+    .feed-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 16px;
+      margin-bottom: 40px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--divider);
     }
 
-    .year-story-avatar {
+    .feed-header-line {
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .feed-header-text {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      font-weight: 400;
+    }
+
+    .story-card {
+      background: var(--bg-card);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 20px;
+      transition: all 0.3s;
+      cursor: default;
+    }
+
+    .story-card:hover {
+      border-color: rgba(201,149,107,0.2);
+    }
+
+    .story-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .story-card-user {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .story-card-avatar {
       width: 32px;
       height: 32px;
       border-radius: 50%;
@@ -638,76 +360,398 @@
       font-family: var(--serif);
       font-weight: 600;
       font-size: 0.75rem;
-      color: #0A0A0A;
+      color: var(--bg);
     }
 
-    .year-story-name {
+    .story-card-name {
       font-size: 0.85rem;
       font-weight: 500;
       color: var(--text);
     }
 
-    .year-story-age {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      margin-left: auto;
+    .story-card-badge {
+      font-size: 0.7rem;
+      color: var(--accent);
+      padding: 3px 10px;
+      border: 1px solid rgba(201,149,107,0.25);
+      border-radius: 100px;
+      letter-spacing: 0.08em;
+      font-weight: 400;
     }
 
-    .year-story-message {
+    .story-card-text {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--text);
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
+    }
+
+    .story-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--divider);
+    }
+
+    .story-card-date {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .story-card-action {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: color 0.3s;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+    }
+
+    .story-card-action:hover { color: var(--accent); }
+
+    /* ===== 理念说明 ===== */
+    .manifesto {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 80px 32px 120px;
+      text-align: center;
+    }
+
+    .manifesto-ornament {
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      margin: 0 auto 40px;
+      opacity: 0.4;
+    }
+
+    .manifesto h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 24px;
+      letter-spacing: 0.08em;
+    }
+
+    .manifesto p {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      line-height: 2.2;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .manifesto-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 48px;
+      text-align: left;
+    }
+
+    .manifesto-feature {
+      padding: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+    }
+
+    .manifesto-feature-title {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .manifesto-feature-desc {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--divider);
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ===== 用户主页 ===== */
+    .profile-view {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      padding: 80px 24px 40px;
+      overflow-y: auto;
+    }
+
+    .profile-view.active { display: block; }
+
+    .profile-back {
+      position: fixed;
+      top: 20px;
+      left: 24px;
+      z-index: 210;
+    }
+
+    .profile-header {
+      max-width: 640px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .profile-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--bg);
+      margin: 0 auto 16px;
+    }
+
+    .profile-name {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .profile-bio {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+
+    .profile-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      padding: 16px 0;
+      border-top: 1px solid var(--divider);
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .profile-stat-num {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .profile-stat-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
+
+    .profile-timeline {
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .profile-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--divider) 10%, var(--divider) 90%, transparent);
+    }
+
+    .timeline-item {
+      padding-left: 24px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 6px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .timeline-year {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .timeline-age {
+      font-family: var(--serif);
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .timeline-message {
       font-family: var(--serif);
       font-size: 1rem;
-      line-height: 1.8;
+      line-height: 1.9;
+      color: var(--text);
+    }
+
+    /* ===== 年份探索 ===== */
+    .year-explorer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      padding: 80px 24px 40px;
+      overflow-y: auto;
+    }
+
+    .year-explorer.active { display: block; }
+
+    .year-header {
+      max-width: 800px;
+      margin: 0 auto 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .year-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .year-grid {
+      max-width: 800px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+    }
+
+    .year-card {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      gap: 4px;
       color: var(--text-secondary);
     }
 
-    /* Write */
+    .year-card:hover {
+      border-color: rgba(201,149,107,0.3);
+      color: var(--text);
+      transform: translateY(-2px);
+    }
+
+    .year-card.has-content {
+      background: var(--accent-glow);
+      border-color: rgba(201,149,107,0.3);
+      color: var(--accent);
+    }
+
+    .year-card .count {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+
+    .year-stories {
+      display: none;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .year-stories.active { display: block; }
+
+    /* ===== 写作界面 ===== */
     .write-view {
       display: none;
       position: fixed;
       inset: 0;
       background: var(--bg);
       z-index: 200;
-      padding: 100px 40px 60px;
+      padding: 80px 24px 40px;
       overflow-y: auto;
     }
 
     .write-view.active { display: block; }
 
-    .write-container { max-width: 640px; margin: 0 auto; }
+    .write-container { max-width: 580px; margin: 0 auto; }
 
     .write-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 56px;
+      margin-bottom: 48px;
     }
 
     .write-title {
       font-family: var(--serif);
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
     }
 
-    .write-step { margin-bottom: 36px; }
+    .write-step { margin-bottom: 28px; }
 
     .write-label {
       display: block;
-      font-size: 0.8rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
+      font-size: 0.78rem;
       color: var(--text-dim);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      letter-spacing: 0.08em;
     }
 
     .write-input {
       width: 100%;
-      padding: 16px 20px;
+      padding: 14px 18px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
+      border-radius: 10px;
       color: var(--text);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-family: var(--sans);
       font-weight: 300;
       transition: all 0.3s;
@@ -722,12 +766,11 @@
     .write-input::placeholder { color: var(--text-dim); }
 
     .write-textarea {
-      min-height: 280px;
+      min-height: 240px;
       resize: vertical;
       line-height: 2;
       font-family: var(--serif);
-      font-size: 1.1rem;
-      letter-spacing: 0.02em;
+      font-size: 1.05rem;
     }
 
     .write-row {
@@ -736,19 +779,60 @@
       gap: 16px;
     }
 
-    .write-actions { display: flex; gap: 12px; margin-top: 40px; }
+    .write-privacy {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .write-privacy-option {
+      flex: 1;
+      padding: 14px 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-align: center;
+    }
+
+    .write-privacy-option:hover {
+      border-color: rgba(201,149,107,0.3);
+    }
+
+    .write-privacy-option.active {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    .write-privacy-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .write-privacy-desc {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+
+    .write-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
 
     .write-btn {
       flex: 1;
-      padding: 16px 24px;
+      padding: 14px 24px;
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      font-size: 0.9rem;
+      border-radius: 10px;
+      font-size: 0.85rem;
       font-family: var(--sans);
       font-weight: 500;
       cursor: pointer;
       transition: all 0.3s;
-      letter-spacing: 0.05em;
     }
 
     .write-btn.secondary {
@@ -756,43 +840,37 @@
       color: var(--text-secondary);
     }
 
-    .write-btn.secondary:hover {
-      background: rgba(255,255,255,0.05);
-      color: var(--text);
-    }
+    .write-btn.secondary:hover { color: var(--text); }
 
     .write-btn.primary {
       background: var(--accent);
-      color: #0A0A0A;
+      color: var(--bg);
       border-color: var(--accent);
     }
 
-    .write-btn.primary:hover {
-      background: var(--accent-light);
-      border-color: var(--accent-light);
-    }
+    .write-btn.primary:hover { background: var(--accent-light); border-color: var(--accent-light); }
 
-    /* Preview */
+    /* ===== 预览 ===== */
     .preview-view {
       display: none;
       position: fixed;
       inset: 0;
       background: var(--bg);
       z-index: 250;
-      padding: 100px 40px 60px;
+      padding: 80px 24px 40px;
       overflow-y: auto;
     }
 
     .preview-view.active { display: block; }
 
-    .preview-container { max-width: 640px; margin: 0 auto; }
+    .preview-container { max-width: 580px; margin: 0 auto; }
 
     .preview-card {
-      background: var(--card-bg);
+      background: var(--bg-card);
       border: 1px solid var(--card-border);
-      border-radius: 20px;
-      padding: 48px;
-      margin-bottom: 24px;
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 20px;
       position: relative;
     }
 
@@ -804,78 +882,76 @@
       right: 40px;
       height: 2px;
       background: linear-gradient(to right, transparent, var(--accent), transparent);
-      border-radius: 2px;
     }
 
     .preview-age {
       display: inline-block;
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
       color: var(--accent);
-      margin-bottom: 24px;
-      padding: 4px 14px;
-      border: 1px solid rgba(201,149,107,0.3);
+      margin-bottom: 20px;
+      padding: 4px 12px;
+      border: 1px solid rgba(201,149,107,0.25);
       border-radius: 100px;
     }
 
     .preview-message {
       font-family: var(--serif);
-      font-size: 1.3rem;
+      font-size: 1.15rem;
       line-height: 2;
       color: var(--text);
       white-space: pre-wrap;
     }
 
     .preview-warning {
-      background: rgba(201,149,107,0.08);
+      background: var(--accent-glow);
       border: 1px solid rgba(201,149,107,0.2);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin-bottom: 24px;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
       color: var(--accent);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       line-height: 1.6;
     }
 
-    /* Search */
+    /* ===== 搜索 ===== */
     .search-view {
       display: none;
       position: fixed;
       inset: 0;
       background: var(--bg);
       z-index: 200;
-      padding: 100px 40px 60px;
+      padding: 80px 24px 40px;
       overflow-y: auto;
     }
 
     .search-view.active { display: block; }
 
-    .search-container { max-width: 560px; margin: 0 auto; }
+    .search-container { max-width: 480px; margin: 0 auto; }
 
     .search-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     .search-title {
       font-family: var(--serif);
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       font-weight: 600;
     }
 
     .search-input {
       width: 100%;
-      padding: 16px 24px;
+      padding: 14px 20px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 100px;
       color: var(--text);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-family: var(--sans);
-      font-weight: 300;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       transition: all 0.3s;
     }
 
@@ -886,87 +962,79 @@
 
     .search-input::placeholder { color: var(--text-dim); }
 
-    .search-results { display: flex; flex-direction: column; gap: 12px; }
+    .search-results { display: flex; flex-direction: column; gap: 10px; }
 
     .search-result-item {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 20px 24px;
+      gap: 14px;
+      padding: 16px 20px;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s;
     }
 
     .search-result-item:hover {
-      background: rgba(255,255,255,0.06);
       border-color: rgba(201,149,107,0.2);
     }
 
-    [data-theme="light"] .search-result-item:hover {
-      background: rgba(0,0,0,0.04);
-    }
-
-    .search-result-name { font-weight: 500; font-size: 0.95rem; }
-    .search-result-bio { font-size: 0.8rem; color: var(--text-dim); margin-top: 2px; }
+    .search-result-name { font-weight: 500; font-size: 0.9rem; }
+    .search-result-bio { font-size: 0.75rem; color: var(--text-dim); margin-top: 2px; }
 
     /* Toast */
     .toast {
       position: fixed;
-      bottom: 40px;
+      bottom: 32px;
       left: 50%;
       transform: translateX(-50%);
-      background: var(--bg-elevated);
+      background: var(--bg-card);
       border: 1px solid var(--card-border);
       backdrop-filter: blur(20px);
-      padding: 14px 28px;
+      padding: 12px 24px;
       border-radius: 100px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text);
       z-index: 300;
       animation: toastIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      letter-spacing: 0.03em;
     }
 
     @keyframes toastIn {
-      from { opacity: 0; transform: translate(-50%, 16px); }
+      from { opacity: 0; transform: translate(-50%, 12px); }
       to { opacity: 1; transform: translate(-50%, 0); }
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .nav { padding: 16px 20px; }
-      .nav-logo { font-size: 1rem; }
-      .nav-btn { padding: 8px 14px; font-size: 0.8rem; }
-      .story-view { padding: 100px 24px 140px; }
-      .story-message { font-size: 1.3rem; line-height: 1.9; }
-      .story-card::before { width: 40px; }
-      .story-nav { bottom: 32px; }
-      .page-indicator { right: 16px; }
-      .home-hint { bottom: 90px; }
+      .nav { padding: 14px 20px; }
+      .nav-logo { font-size: 0.95rem; }
+      .nav-btn { padding: 7px 12px; font-size: 0.78rem; }
+      .theme-toggle { width: 30px; height: 30px; font-size: 0.85rem; }
+
+      .hero { padding: 100px 24px 60px; min-height: 90vh; }
+      .hero-title { font-size: 2rem; letter-spacing: 0.08em; }
+      .hero-subtitle { font-size: 1rem; line-height: 1.9; }
+      .hero-cta { flex-direction: column; gap: 12px; }
+      .hero-cta-btn { width: 100%; max-width: 260px; text-align: center; }
+
+      .feed-section { padding: 0 16px 80px; }
+      .story-card { padding: 24px 20px; border-radius: 14px; }
+      .story-card-text { font-size: 1rem; }
+
+      .manifesto { padding: 60px 24px 80px; }
+      .manifesto-features { grid-template-columns: 1fr; }
+
       .profile-view, .year-explorer, .write-view, .preview-view, .search-view {
-        padding: 80px 20px 40px;
+        padding: 70px 20px 32px;
       }
-      .profile-name { font-size: 1.4rem; }
-      .profile-stats { gap: 24px; }
-      .year-title, .write-title, .search-title { font-size: 1.3rem; }
-      .year-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .preview-card { padding: 32px 24px; }
-      .preview-message { font-size: 1.1rem; }
       .write-row { grid-template-columns: 1fr; }
-      .write-textarea { min-height: 220px; }
+      .preview-card { padding: 28px 20px; }
     }
 
-    @media (max-width: 480px) {
-      .story-message { font-size: 1.15rem; }
-      .year-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb { background: rgba(128,128,128,0.2); border-radius: 2px; }
   </style>
 </head>
 <body>
@@ -974,7 +1042,7 @@
 
   <nav class="nav">
     <div class="nav-logo" onclick="showHome()">这世界，我来过</div>
-    <div class="nav-actions">
+    <div class="nav-right">
       <button class="nav-btn" onclick="showSearch()">搜索</button>
       <button class="nav-btn" onclick="showYears()">年份</button>
       <button class="nav-btn primary" onclick="showWrite()">写一笔</button>
@@ -982,33 +1050,72 @@
     </div>
   </nav>
 
-  <main class="main" id="homeView">
-    <div class="story-view" id="storyView">
-      <div class="story-card">
-        <span class="story-age" id="storyAge">25岁 · 2018</span>
-        <p class="story-message" id="storyMessage"></p>
-        <div class="story-meta">
-          <div class="story-user" onclick="showProfile(currentStoryUser)">
-            <div class="story-avatar" id="storyAvatar"></div>
-            <span class="story-username" id="storyUser"></span>
-          </div>
-          <span class="story-date" id="storyDate"></span>
+  <div class="content" id="mainContent">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-ornament"></div>
+      <h1 class="hero-title">这世界，我来过</h1>
+      <p class="hero-subtitle">
+        每一年，写一句话，留一张照片。<br>
+        写下的不可更改，留下的永远不会消失。<br>
+        这是你留给世界的痕迹。
+      </p>
+      <div class="hero-cta">
+        <button class="hero-cta-btn primary" onclick="showWrite()">留下我的痕迹</button>
+        <button class="hero-cta-btn secondary" onclick="document.querySelector('.feed-section').scrollIntoView({behavior:'smooth'})">看看别人的故事</button>
+      </div>
+      <div class="hero-scroll-hint">
+        <span>向下</span>
+        <div class="arrow"></div>
+      </div>
+    </section>
+
+    <!-- 故事流 -->
+    <section class="feed-section" id="feedSection">
+      <div class="feed-header">
+        <div class="feed-header-line"></div>
+        <span class="feed-header-text">他们的痕迹</span>
+        <div class="feed-header-line"></div>
+      </div>
+      <div id="feedContainer"></div>
+    </section>
+
+    <!-- 理念 -->
+    <section class="manifesto">
+      <div class="manifesto-ornament"></div>
+      <h2>为什么要留下痕迹</h2>
+      <p>有一位老中医，行医一生，临终前将一百个药方刻在墓碑上。他说：「这些方子救过人，别让它跟着我一起走了。」</p>
+      <p>我们每个人的一生里，都有那么一些瞬间——值得被记住，值得被留下。不是给谁看，只是证明：这世界，我来过。</p>
+      <div class="manifesto-features">
+        <div class="manifesto-feature">
+          <div class="manifesto-feature-title">写下即永恒</div>
+          <div class="manifesto-feature-desc">发布后不可修改、不可删除。每一笔都是当时真实的你。</div>
+        </div>
+        <div class="manifesto-feature">
+          <div class="manifesto-feature-title">按年记录</div>
+          <div class="manifesto-feature-desc">一年一个节点，串起你一生的时间线。</div>
+        </div>
+        <div class="manifesto-feature">
+          <div class="manifesto-feature-title">公开或私密</div>
+          <div class="manifesto-feature-desc">你想让全世界看到的，或者只留给自己。</div>
+        </div>
+        <div class="manifesto-feature">
+          <div class="manifesto-feature-title">永久存储</div>
+          <div class="manifesto-feature-desc">去中心化技术，确保你的痕迹不会随时间消失。</div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="home-hint">← 翻阅故事 →</div>
+    <footer class="footer">
+      <p>这世界，我来过 &middot; 留下你的痕迹</p>
+    </footer>
+  </div>
 
-    <div class="story-nav">
-      <button class="story-nav-btn" onclick="prevStory()">←</button>
-      <span class="story-counter" id="storyCounter"></span>
-      <button class="story-nav-btn" onclick="nextStory()">→</button>
-    </div>
-
-    <div class="page-indicator" id="pageIndicator"></div>
-  </main>
-
+  <!-- 用户主页 -->
   <div class="profile-view" id="profileView">
+    <div class="profile-back">
+      <button class="nav-btn" onclick="hideProfile()">← 返回</button>
+    </div>
     <div class="profile-header">
       <div class="profile-avatar" id="profileAvatar"></div>
       <h1 class="profile-name" id="profileName"></h1>
@@ -1025,25 +1132,24 @@
       </div>
     </div>
     <div class="profile-timeline" id="profileTimeline"></div>
-    <div style="text-align:center; margin-top:20px;">
-      <button class="nav-btn" onclick="hideProfile()">返回首页</button>
-    </div>
   </div>
 
+  <!-- 年份探索 -->
   <div class="year-explorer" id="yearExplorer">
     <div class="year-header">
       <h2 class="year-title">按年份浏览</h2>
-      <button class="nav-btn" onclick="hideYears()">返回</button>
+      <button class="nav-btn" onclick="hideYears()">← 返回</button>
     </div>
     <div class="year-grid" id="yearGrid"></div>
     <div class="year-stories" id="yearStories"></div>
   </div>
 
+  <!-- 写作 -->
   <div class="write-view" id="writeView">
     <div class="write-container">
       <div class="write-header">
         <h2 class="write-title">留下痕迹</h2>
-        <button class="nav-btn" onclick="hideWrite()">返回</button>
+        <button class="nav-btn" onclick="hideWrite()">← 返回</button>
       </div>
       <div class="write-row">
         <div class="write-step">
@@ -1059,6 +1165,19 @@
         <label class="write-label">写点什么 — 可以很长，可以很短</label>
         <textarea class="write-input write-textarea" id="writeMessage" placeholder="那年发生了什么？你在想什么？&#10;&#10;想写多少就写多少..."></textarea>
       </div>
+      <div class="write-step">
+        <label class="write-label">谁可以看</label>
+        <div class="write-privacy">
+          <div class="write-privacy-option active" onclick="selectPrivacy(this, 'public')">
+            <div class="write-privacy-label">公开</div>
+            <div class="write-privacy-desc">全世界都能看到</div>
+          </div>
+          <div class="write-privacy-option" onclick="selectPrivacy(this, 'private')">
+            <div class="write-privacy-label">仅自己</div>
+            <div class="write-privacy-desc">只有你能看到</div>
+          </div>
+        </div>
+      </div>
       <div class="write-actions">
         <button class="write-btn secondary" onclick="hideWrite()">取消</button>
         <button class="write-btn primary" onclick="previewWrite()">预览</button>
@@ -1066,11 +1185,12 @@
     </div>
   </div>
 
+  <!-- 预览 -->
   <div class="preview-view" id="previewView">
     <div class="preview-container">
       <div class="write-header">
         <h2 class="write-title">确认发布</h2>
-        <button class="nav-btn" onclick="hidePreview()">返回编辑</button>
+        <button class="nav-btn" onclick="hidePreview()">← 返回编辑</button>
       </div>
       <div class="preview-card">
         <span class="preview-age" id="previewAge"></span>
@@ -1086,11 +1206,12 @@
     </div>
   </div>
 
+  <!-- 搜索 -->
   <div class="search-view" id="searchView">
     <div class="search-container">
       <div class="search-header">
         <h2 class="search-title">搜索</h2>
-        <button class="nav-btn" onclick="hideSearch()">返回</button>
+        <button class="nav-btn" onclick="hideSearch()">← 返回</button>
       </div>
       <input type="text" class="search-input" id="searchInput" placeholder="搜索用户名..." oninput="handleSearch()">
       <div class="search-results" id="searchResults"></div>
@@ -1098,12 +1219,12 @@
   </div>
 
   <script>
-    // Theme toggle
+    // Theme
     function initTheme() {
       var saved = localStorage.getItem('theme');
       if (saved === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
-        document.getElementById('themeToggle').textContent = '☾';
+        document.getElementById('themeToggle').textContent = '\u263E';
         document.querySelector('meta[name="theme-color"]').setAttribute('content', '#FAFAF8');
       }
     }
@@ -1114,12 +1235,12 @@
       var meta = document.querySelector('meta[name="theme-color"]');
       if (html.getAttribute('data-theme') === 'light') {
         html.removeAttribute('data-theme');
-        btn.textContent = '☀';
+        btn.textContent = '\u2600';
         meta.setAttribute('content', '#0A0A0A');
         localStorage.setItem('theme', 'dark');
       } else {
         html.setAttribute('data-theme', 'light');
-        btn.textContent = '☾';
+        btn.textContent = '\u263E';
         meta.setAttribute('content', '#FAFAF8');
         localStorage.setItem('theme', 'light');
       }
@@ -1127,7 +1248,18 @@
 
     initTheme();
 
-    const users = {
+    // Privacy selection
+    var currentPrivacy = 'public';
+    function selectPrivacy(el, privacy) {
+      document.querySelectorAll('.write-privacy-option').forEach(function(opt) {
+        opt.classList.remove('active');
+      });
+      el.classList.add('active');
+      currentPrivacy = privacy;
+    }
+
+    // Data
+    var users = {
       '小明': {
         bio: '普通上班族，喜欢记录生活',
         entries: [
@@ -1152,7 +1284,7 @@
           { age: 28, year: 2015, message: '结婚了。她说愿意的时候，我觉得自己是世界上最幸运的人。', date: '2024年1月' },
           { age: 30, year: 2017, message: '女儿出生了。抱着她的时候，手都在抖。那么小的一团，眼睛闭着，嘴巴微微张着。我想，这辈子有了要守护的东西。', date: '2024年2月' },
           { age: 33, year: 2020, message: '三十而立。虽然还没有完全立起来，但至少知道自己要什么了。', date: '2024年3月' },
-          { age: 35, year: 2022, message: '儿子出生了。现在是儿女双全了。累并快乐着。', date: '2024年3月' }
+          { age: 35, year: 2022, message: '儿子出生了。儿女双全。累并快乐着。', date: '2024年3月' }
         ]
       },
       '李阿姨': {
@@ -1182,56 +1314,58 @@
       }
     };
 
-    const stories = [];
-    Object.entries(users).forEach(([username, userData]) => {
-      userData.entries.forEach(entry => {
-        stories.push({ ...entry, user: username });
+    // Flatten stories for feed
+    var allStories = [];
+    Object.keys(users).forEach(function(username) {
+      users[username].entries.forEach(function(entry) {
+        allStories.push({
+          age: entry.age,
+          year: entry.year,
+          message: entry.message,
+          date: entry.date,
+          user: username
+        });
       });
     });
 
-    let currentStory = 0;
-    let currentStoryUser = '';
-    let currentDraft = null;
-
-    function renderStory(index) {
-      const story = stories[index];
-      currentStoryUser = story.user;
-      document.getElementById('storyAge').textContent = story.age + '岁 · ' + story.year;
-      document.getElementById('storyMessage').textContent = story.message;
-      document.getElementById('storyUser').textContent = story.user;
-      document.getElementById('storyAvatar').textContent = story.user.charAt(0);
-      document.getElementById('storyDate').textContent = story.date;
-      document.getElementById('storyCounter').textContent = (index + 1) + ' / ' + stories.length;
-      renderPageIndicator(index);
-    }
-
-    function renderPageIndicator(activeIndex) {
-      const container = document.getElementById('pageIndicator');
-      const maxDots = Math.min(stories.length, 17);
-      let html = '';
-      for (let i = 0; i < maxDots; i++) {
-        html += '<div class="page-dot' + (i === activeIndex ? ' active' : '') + '" onclick="goToStory(' + i + ')"></div>';
+    // Shuffle for feed
+    function shuffle(arr) {
+      var a = arr.slice();
+      for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = a[i]; a[i] = a[j]; a[j] = t;
       }
-      container.innerHTML = html;
+      return a;
     }
 
-    function goToStory(index) {
-      currentStory = index;
-      renderStory(currentStory);
+    var feedStories = shuffle(allStories);
+
+    // Render feed
+    function renderFeed() {
+      var container = document.getElementById('feedContainer');
+      container.innerHTML = feedStories.map(function(story, i) {
+        return '<div class="story-card">' +
+          '<div class="story-card-top">' +
+            '<div class="story-card-user" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">' +
+              '<div class="story-card-avatar">' + story.user.charAt(0) + '</div>' +
+              '<span class="story-card-name">' + story.user + '</span>' +
+            '</div>' +
+            '<span class="story-card-badge">' + story.age + '岁 · ' + story.year + '</span>' +
+          '</div>' +
+          '<div class="story-card-text">' + story.message + '</div>' +
+          '<div class="story-card-footer">' +
+            '<span class="story-card-date">' + story.date + '</span>' +
+            '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的一生 →</button>' +
+          '</div>' +
+        '</div>';
+      }).join('');
     }
 
-    function nextStory() {
-      currentStory = (currentStory + 1) % stories.length;
-      renderStory(currentStory);
-    }
+    renderFeed();
 
-    function prevStory() {
-      currentStory = (currentStory - 1 + stories.length) % stories.length;
-      renderStory(currentStory);
-    }
-
+    // Profile
     function showProfile(username) {
-      const user = users[username];
+      var user = users[username];
       if (!user) return;
 
       document.getElementById('profileName').textContent = username;
@@ -1239,7 +1373,7 @@
       document.getElementById('profileBio').textContent = user.bio;
 
       var years = user.entries.length;
-      var span = years > 0 ? (user.entries[years - 1].year - user.entries[0].year) : 0;
+      var span = years > 1 ? (user.entries[years - 1].year - user.entries[0].year) : 0;
       document.getElementById('profileStatYears').textContent = years;
       document.getElementById('profileStatSpan').textContent = span + '年';
 
@@ -1253,12 +1387,14 @@
       }).join('');
 
       document.getElementById('profileView').classList.add('active');
+      document.getElementById('profileView').scrollTop = 0;
     }
 
     function hideProfile() {
       document.getElementById('profileView').classList.remove('active');
     }
 
+    // Year explorer
     function showYears() {
       document.getElementById('yearExplorer').classList.add('active');
       document.getElementById('yearStories').classList.remove('active');
@@ -1276,28 +1412,30 @@
       for (var y = 2024; y >= 2008; y--) years.push(y);
 
       grid.innerHTML = years.map(function(year) {
-        var count = stories.filter(function(s) { return s.year === year; }).length;
+        var count = allStories.filter(function(s) { return s.year === year; }).length;
         var cls = count > 0 ? 'year-card has-content' : 'year-card';
-        var countHtml = count > 0 ? '<span class="count">' + count + ' 条记录</span>' : '';
+        var countHtml = count > 0 ? '<span class="count">' + count + ' 条</span>' : '';
         return '<div class="' + cls + '" onclick="showYearStories(' + year + ')">' + year + countHtml + '</div>';
       }).join('');
     }
 
     function showYearStories(year) {
-      var filtered = stories.filter(function(s) { return s.year === year; });
+      var filtered = allStories.filter(function(s) { return s.year === year; });
       var container = document.getElementById('yearStories');
 
       if (filtered.length === 0) {
         container.innerHTML = '<p style="text-align:center; color:var(--text-dim); padding:48px; font-family:var(--serif);">这一年还没有人留下痕迹</p>';
       } else {
         container.innerHTML = filtered.map(function(story) {
-          return '<div class="year-story-card" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\'); hideYears();">' +
-            '<div class="year-story-user">' +
-              '<div class="year-story-avatar">' + story.user.charAt(0) + '</div>' +
-              '<span class="year-story-name">' + story.user + '</span>' +
-              '<span class="year-story-age">' + story.age + '岁</span>' +
+          return '<div class="story-card" style="cursor:pointer" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\'); hideYears();">' +
+            '<div class="story-card-top">' +
+              '<div class="story-card-user">' +
+                '<div class="story-card-avatar">' + story.user.charAt(0) + '</div>' +
+                '<span class="story-card-name">' + story.user + '</span>' +
+              '</div>' +
+              '<span class="story-card-badge">' + story.age + '岁</span>' +
             '</div>' +
-            '<div class="year-story-message">' + story.message + '</div>' +
+            '<div class="story-card-text">' + story.message + '</div>' +
           '</div>';
         }).join('');
       }
@@ -1306,13 +1444,17 @@
       document.getElementById('yearGrid').style.display = 'none';
     }
 
+    // Write
     function showWrite() {
       document.getElementById('writeView').classList.add('active');
+      document.getElementById('writeView').scrollTop = 0;
     }
 
     function hideWrite() {
       document.getElementById('writeView').classList.remove('active');
     }
+
+    var currentDraft = null;
 
     function previewWrite() {
       var age = document.getElementById('writeAge').value;
@@ -1324,12 +1466,13 @@
         return;
       }
 
-      currentDraft = { age: parseInt(age), year: parseInt(year), message: message.trim() };
+      currentDraft = { age: parseInt(age), year: parseInt(year), message: message.trim(), privacy: currentPrivacy };
       document.getElementById('previewAge').textContent = age + '岁 · ' + year;
       document.getElementById('previewMessage').textContent = message;
 
       document.getElementById('writeView').classList.remove('active');
       document.getElementById('previewView').classList.add('active');
+      document.getElementById('previewView').scrollTop = 0;
     }
 
     function hidePreview() {
@@ -1351,7 +1494,7 @@
         date: '刚刚'
       });
 
-      stories.push({
+      allStories.push({
         age: currentDraft.age,
         year: currentDraft.year,
         message: currentDraft.message,
@@ -1359,15 +1502,24 @@
         date: '刚刚'
       });
 
+      feedStories.unshift(allStories[allStories.length - 1]);
+      renderFeed();
+
       showToast('痕迹已留下，不可更改');
-      hidePreview();
+      document.getElementById('previewView').classList.remove('active');
 
       document.getElementById('writeAge').value = '';
       document.getElementById('writeYear').value = '';
       document.getElementById('writeMessage').value = '';
       currentDraft = null;
+
+      // Scroll to feed
+      setTimeout(function() {
+        document.querySelector('.feed-section').scrollIntoView({ behavior: 'smooth' });
+      }, 300);
     }
 
+    // Search
     function showSearch() {
       document.getElementById('searchView').classList.add('active');
       setTimeout(function() { document.getElementById('searchInput').focus(); }, 100);
@@ -1383,10 +1535,7 @@
       var query = document.getElementById('searchInput').value.toLowerCase();
       var results = document.getElementById('searchResults');
 
-      if (!query) {
-        results.innerHTML = '';
-        return;
-      }
+      if (!query) { results.innerHTML = ''; return; }
 
       var matched = Object.keys(users).filter(function(name) {
         return name.toLowerCase().indexOf(query) !== -1;
@@ -1394,7 +1543,7 @@
 
       results.innerHTML = matched.map(function(username) {
         return '<div class="search-result-item" onclick="showProfile(\'' + username.replace(/'/g, "\\'") + '\'); hideSearch();">' +
-          '<div class="story-avatar">' + username.charAt(0) + '</div>' +
+          '<div class="story-card-avatar">' + username.charAt(0) + '</div>' +
           '<div>' +
             '<div class="search-result-name">' + username + '</div>' +
             '<div class="search-result-bio">' + users[username].bio + '</div>' +
@@ -1409,6 +1558,7 @@
       hideWrite();
       hidePreview();
       hideSearch();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function showToast(msg) {
@@ -1419,31 +1569,9 @@
       setTimeout(function() { toast.remove(); }, 3000);
     }
 
-    renderStory(0);
-
+    // Keyboard
     document.addEventListener('keydown', function(e) {
-      if (document.getElementById('writeView').classList.contains('active') ||
-          document.getElementById('previewView').classList.contains('active') ||
-          document.getElementById('searchView').classList.contains('active')) return;
-      if (e.key === 'ArrowRight') nextStory();
-      if (e.key === 'ArrowLeft') prevStory();
       if (e.key === 'Escape') showHome();
-    });
-
-    var touchStartX = 0;
-    document.addEventListener('touchstart', function(e) {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-    document.addEventListener('touchend', function(e) {
-      var diff = e.changedTouches[0].screenX - touchStartX;
-      if (Math.abs(diff) < 60) return;
-      if (document.getElementById('writeView').classList.contains('active') ||
-          document.getElementById('previewView').classList.contains('active') ||
-          document.getElementById('searchView').classList.contains('active') ||
-          document.getElementById('profileView').classList.contains('active') ||
-          document.getElementById('yearExplorer').classList.contains('active')) return;
-      if (diff < 0) nextStory();
-      else prevStory();
     });
   </script>
 </body>
