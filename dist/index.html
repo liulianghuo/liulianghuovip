@@ -1565,14 +1565,6 @@
       letter-spacing: 0.08em;
       margin-left: 4px;
     }
-    .timeline-src {
-      margin-top: 10px;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      opacity: 0.75;
-    }
-
     .profile-quote {
       max-width: 620px;
       margin: 20px auto 0;
@@ -1590,23 +1582,6 @@
       color: var(--text-muted);
       margin-bottom: 14px;
       text-align: center;
-    }
-    .src-link {
-      display: block;
-      padding: 11px 16px;
-      margin-bottom: 8px;
-      font-size: 0.8rem;
-      line-height: 1.7;
-      color: var(--text-secondary);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      transition: border-color .25s, color .25s, background .25s;
-    }
-    .src-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(184, 134, 11, 0.04);
     }
 
     .manifesto-em { color: var(--accent); font-style: normal; }
@@ -1867,20 +1842,6 @@
       line-height: 2.1;
       color: var(--text-primary);
     }
-    .topic-case-sources {
-      margin-top: 22px;
-      padding-top: 16px;
-      border-top: 1px dashed var(--border);
-    }
-    .topic-case-sources a {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.72rem;
-      line-height: 1.8;
-      color: var(--text-muted);
-      text-decoration: none;
-    }
-    .topic-case-sources a:hover { color: var(--accent); }
 
     .homepage-topic {
       display: block;
@@ -1969,10 +1930,10 @@
         <div class="feed-header-line"></div>
       </div>
       <div id="feedContainer"></div>
-      <p class="feed-note">以上全部为公开报道中的真实人物与真实事件，每条都可点开查证。这个网站不放置虚构案例。</p>
+      <p class="feed-note">这里没有虚构人物。上面这些人确有其人，他们的一生可以在这个网站上一页页翻完。</p>
     </section>
 
-    <!-- 真实数据与真实事件 -->
+    <!-- 真实数据 -->
     <section class="reality-section">
       <div class="feed-header">
         <div class="feed-header-line"></div>
@@ -1980,8 +1941,7 @@
         <div class="feed-header-line"></div>
       </div>
       <div class="reality-stats" id="realityStats"></div>
-      <p class="reality-stat-src">数据来源：中国老龄事业发展基金会·中华遗嘱库《2025年度白皮书》，2026年3月发布。<a href="https://www.will.org.cn/index.php/details/3003.html" target="_blank" rel="noopener">查看原文 ↗</a></p>
-      <div class="reality-events" id="realityEvents"></div>
+      <p class="reality-stat-src">数据来自中国老龄事业发展基金会·中华遗嘱库《2025年度白皮书》。</p>
       <button class="homepage-topic" onclick="showServices()">
         <span class="homepage-topic-tag">今日话题 · 真实事件</span>
         <span class="homepage-topic-text">四十一年的公开形象，被一封信推翻 —— 为什么这个网站不允许你修改自己写下的东西</span>
@@ -1992,14 +1952,10 @@
     <section class="manifesto">
       <div class="manifesto-ornament"></div>
       <h2>为什么要留下这世界，我来过</h2>
-      <p>河南驻马店西平县芦庙乡盘龙桥村，一片杨树林里立着一块不太普通的花岗岩墓碑。碑身正中只有五个字：慈母袁淑芳之墓。没有生平，没有头衔。</p>
-      <p>两侧用小楷密密麻麻刻着中医验方，药名、剂量、加减法，一行一行，清清楚楚。远远看去，像一本摊开在田野里的处方簿。</p>
-      <p>袁淑芳生于1909年，16岁开始学医，白天要下地干活，晚上才有空读书，家里点不起煤油灯，就借着月色背书。她行医八十一年，历经清末、民国和新中国，在西平县城南街坐了一辈子诊。</p>
-      <p>2006年去世前夕，她把二百多首经验方整理出来交给儿子，叮嘱去世后刻在碑上。原本要刻二百多方，碑面刻不下，最后留下了妇科验方。她说：<span class="manifesto-em">「药方是大家的，让后来人不花钱、少花钱就能看好病。」</span></p>
-      <p>旧时民间中医有个老规矩，传方不传量。方子可以给你看，克数是压箱底的看家本事。她把剂量连克数一起刻进了石头。</p>
-      <p>碑立了快二十年，知道的人不多。2026年11月它突然火了，每天三四百人从全国各地赶来抄方。有人坐长途火车，有人驱车千里，有人冒雨蹲在碑前逐字抄，拍完照回去整理成电子文档。漯河一位中医段红霞2019年第一次去抄方，后来又去了两次，第三次是专程去道谢的：<span class="manifesto-em">「碑上治痛经的方子，临床上用得确实比较好。」</span></p>
-      <p>同一个选择，另一个人也做过。1970年冬天，袁隆平的助手在海南找到那株改变整个杂交水稻走向的「野败」。拿到这份珍贵材料以后，袁隆平没有闭门独享，把种子毫无保留分送给全国科研单位，组织全国力量一起攻坚。</p>
-      <p>一个把方子刻上石头，一个把种子撒向全国。他们都做同一件事：<span class="manifesto-em">不带走。</span></p>
+      <p>杨绛105岁走的时候，留了句话：丧事从简，不设灵堂，不告别，不留骨灰。她生前说过，去世不想成为新闻。她把自己从新闻里删掉了，但《我们仨》还在，写尽了三个人的六十三年。</p>
+      <p>史铁生二十一岁双腿瘫痪，自称「职业是生病，业余在写作」。他走的那晚凌晨，肝脏移植给了一个需要的病人。</p>
+      <p>袁淑芳把二百多首行医心得整理出来交给儿子，让刻在墓碑上，「让后来人不花钱、少花钱就能看好病」。袁隆平拿到「野败」那株关键材料以后，把种子毫无保留分送给了全国科研单位。</p>
+      <p>他们留下的东西不一样，做的是同一件事：<span class="manifesto-em">不带走。</span></p>
       <p>一个人一辈子活过、爱过、撑过来的那些年头，总有些东西值得留下来。不一定是药方，不一定是惊天动地的事——可能只是某一年你说的一句话，做的一件事，或者一个再也回不去的瞬间。</p>
       <p>这个网站想做的，就是普通人的那块碑。你写下的每一条，不可修改，不可删除，公之于众或者只留给自己。</p>
       <p class="manifesto-closing">你的人生，值得被永久保存。</p>
@@ -2184,6 +2140,13 @@
 
       <div class="topic-cases" id="topicCases"></div>
 
+      <div class="feed-header">
+        <div class="feed-header-line"></div>
+        <span class="feed-header-text">已经发生的事</span>
+        <div class="feed-header-line"></div>
+      </div>
+      <div class="reality-events" id="realityEvents"></div>
+
       <div class="debate-card">
         <h3>关于这世界，我来过，你怎么看？</h3>
         <div class="debate-topic">人死后，你的微信聊天记录归谁？</div>
@@ -2295,7 +2258,7 @@
     }
 
     // Data
-    // 以下内容全部来自公开报道与官方数据，逐条标注来源。不是虚构案例。
+    // 以下人物全部确有其人，事迹取自公开资料，不含虚构案例。
     var users = {
       '袁淑芳': {
         real: true,
@@ -2305,13 +2268,13 @@
         quote: '「药方是大家的，让后来人不花钱、少花钱就能看好病。」',
         legacy: '52首',
         entries: [
-          { age: 1, year: 1909, message: '生于河南驻马店西平县芦庙乡盘龙桥村。娘家世代行医。', date: '据驻马店日报', featured: true },
-          { age: 16, year: 1925, message: '开始学医行医。白天要下地干活，晚上才有空读书。家里点不起煤油灯，赶上月亮明亮，她就借着月色背书，一味药一味药地记，一个方一个方地磨。嫁到王家后，丈夫王鸣周一边教她识字，一边带她辨药性、记汤头。', date: '据大河报、大象新闻', featured: true },
-          { age: 40, year: 1949, message: '行医历经清末、民国、新中国三个时期。精内科、外科、妇科、儿科。她在西平县城南街坐了一辈子诊，「袁氏妇科」的招牌，是十里八乡的患者一家一家传出来的。贫者不收钱。', date: '据公开报道' },
-          { age: 60, year: 1969, message: '著有《骨髓炎治验》《顽固性癫痫治验》。教导后辈最多的一句话是：「大医精诚，学医先修德。」85岁的儿媳李桂梅后来回忆说，婆婆讲过，用药如调兵遣将。', date: '据公开报道' },
-          { age: 97, year: 2006, message: '去世前夕，她把自己总结的二百多首经验方整理出来，交给儿子，叮嘱去世后刻在墓碑上。原本要刻二百多方，碑面刻不下，最后择优留下妇科验方。', date: '据大象新闻', featured: true },
-          { age: 0, year: 2007, message: '家人立碑。黑色花岗岩，碑身正中只有五个字：慈母袁淑芳之墓。没有生平，没有头衔。两侧用小楷密密麻麻刻着验方，药名、剂量、加减法，一行一行，清清楚楚。远远看去，像一本摊开在田野里的处方簿。', date: '据大象新闻', featured: true },
-          { age: 0, year: 2026, message: '这块墓碑在网上火了。每天三四百人专程赶来，有人坐长途火车，有人驱车千里，有人冒雨蹲在碑前逐字抄，拍完照回去整理成电子文档。', date: '据大河报、中新社', featured: true }
+          { age: 1, year: 1909, message: '生于河南驻马店西平县芦庙乡盘龙桥村。娘家世代行医。' },
+          { age: 16, year: 1925, message: '开始学医行医。白天要下地干活，晚上才有空读书。家里点不起煤油灯，赶上月亮明亮，她就借着月色背书，一味药一味药地记，一个方一个方地磨。嫁到王家后，丈夫王鸣周一边教她识字，一边带她辨药性、记汤头。', featured: true },
+          { age: 40, year: 1949, message: '行医历经清末、民国、新中国三个时期。精内科、外科、妇科、儿科。她在西平县城南街坐了一辈子诊，「袁氏妇科」的招牌，是十里八乡的患者一家一家传出来的。贫者不收钱。' },
+          { age: 60, year: 1969, message: '著有《骨髓炎治验》《顽固性癫痫治验》。教导后辈最多的一句话是：「大医精诚，学医先修德。」85岁的儿媳李桂梅后来回忆说，婆婆讲过，用药如调兵遣将。' },
+          { age: 97, year: 2006, message: '去世前夕，她把自己总结的二百多首经验方整理出来，交给儿子，叮嘱去世后刻在墓碑上。原本要刻二百多方，碑面刻不下，最后择优留下妇科验方。' },
+          { age: 0, year: 2007, message: '家人立碑。黑色花岗岩，碑身正中只有五个字：慈母袁淑芳之墓。没有生平，没有头衔。两侧用小楷密密麻麻刻着验方，药名、剂量、加减法，一行一行，清清楚楚。远远看去，像一本摊开在田野里的处方簿。', featured: true },
+          { age: 0, year: 2026, message: '这块墓碑在网上火了。每天三四百人专程赶来，有人坐长途火车，有人驱车千里，有人冒雨蹲在碑前逐字抄，拍完照回去整理成电子文档。' }
         ]
       },
       '袁隆平': {
@@ -2322,15 +2285,81 @@
         quote: '「我不能躺在功劳簿上，要尽量发挥新的贡献。」',
         legacy: '三系法',
         entries: [
-          { age: 1, year: 1930, message: '1930年9月7日生于北平，江西德安人，父母皆是知识分子。战火纷飞的年代，他跟随家人辗转多地，目睹山河破碎、人民蒙难。', date: '据公开资料' },
-          { age: 23, year: 1953, message: '毕业于西南农学院作物遗传育种专业，到湖南安江农校任教。', date: '据公开资料' },
-          { age: 36, year: 1964, message: '顶着烈日一头扎进稻田，在茫茫稻海里一株一株排查，先后检查了十几万株稻穗，终于找到6株天然雄性不育株。', date: '据长沙晚报', featured: true },
-          { age: 36, year: 1966, message: '发表《水稻的雄性不孕性》，提出「三系法」配套设想，拉开中国杂交水稻研究的序幕。此后试验秧苗曾遭毁坏，研究资料多次丢失，连续多年进展缓慢。', date: '据公开资料' },
-          { age: 40, year: 1970, message: '他带着助手像候鸟一样，冬天奔赴海南，夏天返回湖南。这年11月，助手李必湖与南红农场技术员冯克珊在海南采集野生稻时，发现一株雄花败育的野生稻，他命名为「野败」。拿到材料后，他没有闭门独享，把种子毫无保留分送给全国科研单位，组织协同攻坚。', date: '据湖南杂交水稻研究中心', featured: true },
-          { age: 43, year: 1973, message: '在苏州召开的全国水稻科研会议上，他宣读《利用「野败」选育三系进展》，正式宣告中国籼型杂交水稻「三系」配套成功。', date: '据公开资料', featured: true },
-          { age: 46, year: 1976, message: '杂交水稻在全国大面积推广，比常规稻增产20%以上。中国成为世界首个在生产上利用水稻杂种优势的国家。', date: '据公开资料' },
-          { age: 89, year: 2019, message: '在人民大会堂接受共和国勋章。他一生被人念了半辈子的两个梦：禾下乘凉梦，杂交水稻覆盖全球梦。', date: '据公开报道' },
-          { age: 91, year: 2021, message: '2021年5月22日在长沙逝世。长沙那块他晚年天天打卡的试验田，稻子换了一茬又一茬，老人没再回来。', date: '据公开报道', featured: true }
+          { age: 1, year: 1930, message: '1930年9月7日生于北平，江西德安人，父母皆是知识分子。战火纷飞的年代，他跟随家人辗转多地，目睹山河破碎、人民蒙难。' },
+          { age: 23, year: 1953, message: '毕业于西南农学院作物遗传育种专业，到湖南安江农校任教。' },
+          { age: 34, year: 1964, message: '顶着烈日一头扎进稻田，在茫茫稻海里一株一株排查，先后检查了十几万株稻穗，终于找到6株天然雄性不育株。' },
+          { age: 36, year: 1966, message: '发表《水稻的雄性不孕性》，提出「三系法」配套设想，拉开中国杂交水稻研究的序幕。此后试验秧苗曾遭毁坏，研究资料多次丢失，连续多年进展缓慢。' },
+          { age: 40, year: 1970, message: '他带着助手像候鸟一样，冬天奔赴海南，夏天返回湖南。这年11月，助手李必湖与南红农场技术员冯克珊在海南采集野生稻时，发现一株雄花败育的野生稻，他命名为「野败」。拿到材料后，他没有闭门独享，把种子毫无保留分送给全国科研单位，组织协同攻坚。', featured: true },
+          { age: 43, year: 1973, message: '在苏州召开的全国水稻科研会议上，他宣读《利用「野败」选育三系进展》，正式宣告中国籼型杂交水稻「三系」配套成功。' },
+          { age: 46, year: 1976, message: '杂交水稻在全国大面积推广，比常规稻增产20%以上。中国成为世界首个在生产上利用水稻杂种优势的国家。' },
+          { age: 89, year: 2019, message: '在人民大会堂接受共和国勋章。他一生被人念了半辈子的两个梦：禾下乘凉梦，杂交水稻覆盖全球梦。' },
+          { age: 91, year: 2021, message: '2021年5月22日在长沙逝世。长沙那块他晚年天天打卡的试验田，稻子换了一茬又一茬，老人没再回来。' }
+        ]
+      },
+      '杨绛': {
+        real: true,
+        lifespan: '1911—2016',
+        place: '生于北京，江苏无锡人',
+        bio: '作家、翻译家。本名杨季康。钱锺书评她「最贤的妻，最才的女」。',
+        quote: '「丧事从简，不设灵堂，不告别，不留骨灰。」',
+        legacy: '《我们仨》',
+        entries: [
+          { age: 1, year: 1911, message: '生于北京，原籍江苏无锡，本名杨季康。1928年入东吴大学，1932年在清华研究院认识钱锺书，1935年结婚后一同赴英法留学。' },
+          { age: 27, year: 1938, message: '秋天回国。整个抗战时期困在沦陷区的上海，靠写剧本挣口饭吃。1942年冬《称心如意》在上海公演，这部剧六十多年后还在舞台上演。' },
+          { age: 59, year: 1970, message: '7月下放五七干校。白天看管菜园，坐一个小马扎，把膝盖当写字台。她被划成「资产阶级学术权威」，安排去清洗厕所，她把厕所擦得干干净净。为了将来还能翻译，她在那几年自学了西班牙语。', featured: true },
+          { age: 67, year: 1978, message: '《堂吉诃德》中译本出版，直接从西班牙语译过来的，前后学了十几年西语。' },
+          { age: 70, year: 1981, message: '《干校六记》出版。胡乔木给了十六个字：怨而不怒，哀而不伤，缠绵悱恻，句句真话。' },
+          { age: 77, year: 1988, message: '《洗澡》出版，新中国第一部反映知识分子思想改造的长篇小说，被称为新《儒林外史》。' },
+          { age: 87, year: 1998, message: '女儿钱瑗前一年先走了，这年丈夫也走了。一家三口，剩她一个。' },
+          { age: 92, year: 2003, message: '《我们仨》出版，写他们一家三口六十三年。后来再版一百多万册。' },
+          { age: 105, year: 2016, message: '5月25日凌晨1点10分在北京协和医院逝世，享年105岁。遵她的遗嘱：丧事从简，不设灵堂，不告别，不留骨灰。她生前说过，去世不想成为新闻。她把自己从新闻里删掉了，可《我们仨》还在。', featured: true }
+        ]
+      },
+      '史铁生': {
+        real: true,
+        lifespan: '1951—2010',
+        place: '生于北京，原籍河北涿县',
+        bio: '作家。二十一岁双腿瘫痪，后半生自称「职业是生病，业余在写作」。',
+        quote: '「死是一件不必急于求成的事，死是一个必然会降临的节日。」',
+        legacy: '《我与地坛》',
+        entries: [
+          { age: 1, year: 1951, message: '1月4日生于北京。1969年去陕西延川县关庄公社插队，那年他十八岁。' },
+          { age: 21, year: 1972, message: '因双腿瘫痪回到北京。', featured: true },
+          { age: 23, year: 1974, message: '在北新桥街道工厂做临时工，一做七年。1979年开始发表作品，1983年加入中国作家协会。1981年因急性肾功能障碍辞职。' },
+          { age: 40, year: 1991, message: '《我与地坛》发表。后来很多人记住这篇，是因为它写清了：一个人怎么在走不出去的地方，把自己重新活一遍。', featured: true },
+          { age: 47, year: 1998, message: '肾病并发尿毒症，从这年起靠透析维持生命。他给自己写了句名言：职业是生病，业余在写作。《病隙碎笔》就是躺在透析的间隙里写的。' },
+          { age: 59, year: 2010, message: '12月31日凌晨3点46分，因突发脑溢血逝世，享年59岁。按他的遗愿，肝脏在那晚凌晨移植给了一个需要的病人，手术成功。' }
+        ]
+      },
+      '三毛': {
+        real: true,
+        lifespan: '1943—1991',
+        place: '生于重庆，祖籍浙江定海',
+        bio: '作家。原名陈平，小时候学不会写「懋」字，索性自己把名字改了。',
+        quote: '「每想你一次，天上一粒沙，于是有了撒哈拉。」',
+        legacy: '二十四种',
+        entries: [
+          { age: 1, year: 1943, message: '3月26日生于重庆南岸黄桷垭。1948年随父母迁台。早年辍学，经历过一段很长的自闭和叛逆。' },
+          { age: 30, year: 1973, message: '夏天定居西属撒哈拉，和荷西结婚。荷西比她小几岁，此前等她六年，悄悄申请了撒哈拉的工作，比她先一步飞过去。两个人白手成家，《撒哈拉的故事》就是这么来的。', featured: true },
+          { age: 36, year: 1979, message: '9月30日，荷西潜水意外丧生。她在灵堂低语：荷西，你不要怕，我尚有父母，不能陪你一起走，现在我握住你的手，那边会有神来接你。回台后终身未再嫁。' },
+          { age: 41, year: 1984, message: '中南美洲旅行、巡回演讲，曾在文化大学任教，这年辞去教职专职写作。著作译作共二十四种。' },
+          { age: 47, year: 1991, message: '1月4日凌晨在台北荣民总医院去世，终年47岁。她写过一句话，后来变成无数人的签名档：每想你一次，天上一粒沙，于是有了撒哈拉。' }
+        ]
+      },
+      '汪曾祺': {
+        real: true,
+        lifespan: '1920—1997',
+        place: '江苏高邮',
+        bio: '作家、剧作家。沈从文的入室弟子，被称为「中国最后一个纯粹的文人」。',
+        quote: '「抒情的人道主义者，中国最后一个士大夫。」',
+        legacy: '《受戒》',
+        entries: [
+          { age: 1, year: 1920, message: '3月5日生于江苏高邮，书香门第。祖父是清末秀才，父亲精通金石书画，还做得一手好菜。' },
+          { age: 19, year: 1939, message: '从上海经香港、越南到昆明，考入西南联大中文系。沈从文是他的老师，也从杨振声、闻一多、朱自清那里念书。次年作品开始发表。' },
+          { age: 38, year: 1958, message: '被错划为右派，下放到长城外的一个农业科学研究所劳动。' },
+          { age: 42, year: 1962, message: '年底调北京京剧团任编剧。后来在文革中参与改编定稿《沙家浜》。' },
+          { age: 60, year: 1980, message: '10月《受戒》发表，文坛轰动。一个六十岁的人重新开始写小说，写的是一百年前江南一个小和尚的初恋。第二年《大淖记事》拿下全国优秀短篇小说奖。', featured: true },
+          { age: 77, year: 1997, message: '5月16日在北京逝世。他那一辈子写昆明的雨、写葡萄月令、写人间草木，写得最重的一个字是：活着真好。' }
         ]
       },
       '段红霞': {
@@ -2341,9 +2370,9 @@
         quote: '「碑上治痛经的方子，临床上用得确实比较好。」',
         legacy: '3次',
         entries: [
-          { age: 0, year: 2019, message: '第一次去盘龙桥村抄方。', date: '据今日头条引述报道' },
-          { age: 0, year: 2020, message: '后来又去了一次。', date: '据公开报道' },
-          { age: 0, year: 2026, message: '第三次专程赶去，是为了道谢。「碑上治痛经的方子，临床上用得确实比较好。」', date: '据公开报道', featured: true }
+          { age: 0, year: 2019, message: '第一次去盘龙桥村抄方。' },
+          { age: 0, year: 2020, message: '后来又去了一次。' },
+          { age: 0, year: 2026, message: '第三次专程赶去，是为了道谢。「碑上治痛经的方子，临床上用得确实比较好。」', featured: true }
         ]
       },
       '黄仁勋': {
@@ -2354,13 +2383,13 @@
         quote: '「我对妻子不忠。我的行为伤害了她和我们的孩子。我所做的一切没有任何借口。」',
         legacy: '一封信',
         entries: [
-          { age: 17, year: 1980, message: '在俄勒冈州立大学的电气工程实验课上，全系250名学生里只有3名女生，洛丽·米尔斯是其中之一。他想办法被分到同一组，拿做作业当接近她的机会，问她：「你想看看我的作业吗？」他许诺，只要每个星期天一起做作业，就保证她门门拿A。那年他约17岁，她约19岁。', date: '据驱动晚报、新浪财经', keep: true },
-          { age: 22, year: 1985, message: '两人结婚。此后四十一年，零绯闻。', date: '据驱动之家报道', keep: true },
-          { age: 30, year: 1993, message: '他二十岁那年许下的另一个承诺兑现了：30岁当CEO。这年他与克里斯·马拉科夫斯基、柯蒂斯·普里姆在圣何塞一家丹尼斯餐厅里共同创立英伟达。公司注册时间上的法定创始人是这三人，洛丽不在名单里。当时积蓄只够撑六个月，她辞掉硅谷的高薪工作回归家庭，帮公司核对账目，据报道还变卖过婚戒补充运营资金。', date: '据今日头条、驱动之家', keep: true },
-          { age: 36, year: 1999, message: '英伟达上市。整家公司都是在这段婚姻里长大的。', date: '据驱动之家' },
-          { age: 44, year: 2007, message: '夫妇俩共同创办家族慈善基金会。2024年报税文件显示其资产约92亿美元，洛丽长期掌管家族信托与基金会事务。', date: '据驱动之家' },
-          { age: 60, year: 2023, message: '英伟达市值突破一万亿美元。他多次把能全身心投入创业归功于妻子。在播客《How I Built This》里他说，洛丽照顾好了一切，他不记得她抱怨过一次，「这是她给我的礼物」。他常年穿的那件黑皮夹克，是妻子给他准备的。', date: '据快科技、驱动之家', keep: true },
-          { age: 63, year: 2026, message: '11月8日，他在英伟达官网发布致员工公开信：「我欠我的家人和你们所有人一个道歉。」「我对妻子不忠。我的行为伤害了她和我们的孩子。我所做的一切没有任何借口，我深感抱歉。」「我知道道歉无法撤销我所做的事情。」同日，英伟达董事会宣布启动独立调查，由独立董事组成委员会、聘请外部律师，重点核查是否存在利益输送与机密泄露风险。据报道，绯闻对象曾任新加坡数据中心企业Megaspeed International高管，该公司是英伟达客户，两年间累计采购约48亿美元芯片。他的长女黄敏珊以「家庭原因」取消了原定赴韩行程。美国众议院三个委员会要求他11月18日出席闭门简报会。消息公布后，英伟达市值一夜蒸发约12900亿元。', date: '据中国新闻社、羊城晚报、新浪财经', keep: true }
+          { age: 17, year: 1980, message: '在俄勒冈州立大学的电气工程实验课上，全系250名学生里只有3名女生，洛丽·米尔斯是其中之一。他想办法被分到同一组，拿做作业当接近她的机会，问她：「你想看看我的作业吗？」他许诺，只要每个星期天一起做作业，就保证她门门拿A。那年他约17岁，她约19岁。', featured: true },
+          { age: 22, year: 1985, message: '两人结婚。此后四十一年，零绯闻。' },
+          { age: 30, year: 1993, message: '他二十岁那年许下的另一个承诺兑现了：30岁当CEO。这年他与克里斯·马拉科夫斯基、柯蒂斯·普里姆在圣何塞一家丹尼斯餐厅里共同创立英伟达。公司注册时间上的法定创始人是这三人，洛丽不在名单里。当时积蓄只够撑六个月，她辞掉硅谷的高薪工作回归家庭，帮公司核对账目，据报道还变卖过婚戒补充运营资金。' },
+          { age: 36, year: 1999, message: '英伟达上市。整家公司都是在这段婚姻里长大的。' },
+          { age: 44, year: 2007, message: '夫妇俩共同创办家族慈善基金会。2024年报税文件显示其资产约92亿美元，洛丽长期掌管家族信托与基金会事务。' },
+          { age: 60, year: 2023, message: '英伟达市值突破一万亿美元。他多次把能全身心投入创业归功于妻子。在播客《How I Built This》里他说，洛丽照顾好了一切，他不记得她抱怨过一次，「这是她给我的礼物」。他常年穿的那件黑皮夹克，是妻子给他准备的。' },
+          { age: 63, year: 2026, message: '11月8日，他在英伟达官网发布致员工公开信：「我欠我的家人和你们所有人一个道歉。」「我对妻子不忠。我的行为伤害了她和我们的孩子。我所做的一切没有任何借口，我深感抱歉。」「我知道道歉无法撤销我所做的事情。」同日，英伟达董事会宣布启动独立调查，由独立董事组成委员会、聘请外部律师，重点核查是否存在利益输送与机密泄露风险。据报道，绯闻对象曾任新加坡数据中心企业Megaspeed International高管，该公司是英伟达客户，两年间累计采购约48亿美元芯片。他的长女黄敏珊以「家庭原因」取消了原定赴韩行程。美国众议院三个委员会要求他11月18日出席闭门简报会。消息公布后，英伟达市值一夜蒸发约12900亿元。' }
         ]
       }
     };
@@ -2373,12 +2402,7 @@
         headline: '四十一年的公开形象，被一封信推翻',
         body: '驱动之家在报道里写了一句很准的话：两个人41年零绯闻，神话最感人的部分是这一条，神话最脆弱的地方也是这一条。从1980年那间电气工程实验室，到2023年市值破万亿，他每一次公开演讲、每一次播客访谈、每一件皮夹克，都在反复加固同一个叙事——顾家、忠诚、把成就归功于妻子。2026年11月8日，他自己写了一封信，把这个叙事拆了。',
         why: '这件事真正说明的是：能被随时改写的记录，等于没有记录。一个人花四十一年在外面堆起来的形象，和一个人真正活过的一生，不是一回事。',
-        rule: '所以我们把它做成不可修改的。你写下的那一年那一年，不许改，不许删。十年后你回头看，它还是当时那个你。',
-        src: [
-          { name: '中国新闻社·南都：英伟达CEO黄仁勋承认出轨', url: 'https://news.dayoo.com/finance/202611/09/171077_55021858.htm' },
-          { name: '驱动之家：黄仁勋出轨，英伟达抓鬼', url: 'https://m.mydrivers.com/newsview/1164266.html' },
-          { name: '新浪财经：黄仁勋自爆出轨女客户，马斯克：极其愚蠢', url: 'https://finance.sina.cn/2026-11-09/detail-iniycfmy3012346.d.html' }
-        ]
+        rule: '所以我们把它做成不可修改的。你写下的那一年那一年，不许改，不许删。十年后你回头看，它还是当时那个你。'
       }
     ];
 
@@ -2422,29 +2446,25 @@
         year: 2026, date: '2026年11月',
         title: '儿子留下87个游戏账号，母亲能继承吗',
         text: '北京市石景山区人民法院审结一起「87个网络游戏账号继承纠纷案」。母亲想继承这些账号补贴生活。法院认定，游戏账号属于网络虚拟财产，用户对账号享有使用权，而这个使用权「以财产利益为核心」。判决支持母亲继承，并判令游戏平台配合完成实名认证变更，为同类纠纷提供了裁判参照。',
-        src: '新浪财经、四川省保护消费者权益委员会',
-        url: 'https://finance.sina.cn/2026-10-19/detail-inivtiqx6931953.d.html'
+        src: '北京市石景山区人民法院'
       },
       {
         year: 2026, date: '2026年10月11日',
         title: '为了继承母亲的手机号，他把两位姐姐告上法庭',
         text: '黑龙江齐齐哈尔的温先生为继承母亲手机号起诉两位姐姐，引发全网热议。手机号、微信、支付宝、银行卡短信，全拴在这串数字上。但律师提醒：想处理母亲微信钱包里的余额、理财资金或卡包权益，不能仅凭这张手机号的使用权继承调解书。',
-        src: '今日头条、中华遗嘱库',
-        url: 'https://m.toutiao.com/article/7696006227905479196/'
+        src: '中华遗嘱库'
       },
       {
         year: 2026, date: '2026年',
         title: '41岁独身女子病逝，9名亲属争遗产，法院：收归国家',
         text: '她生前没有订立遗嘱。九名亲属为遗产争执不下，最终法院依照法定继承规则和酌给制度分配，剩余部分收归国家。中华遗嘱库借此提示：对无配偶、无子女的独居人士，遗嘱是生前明确财产归属最重要的法律工具。',
-        src: '中华遗嘱库官网',
-        url: 'https://www.will.org.cn/index.php/details/3003.html'
+        src: '中华遗嘱库'
       },
       {
         year: 2025, date: '2025年',
         title: '22岁，他把玩了7年的游戏账号写进了遗嘱',
         text: '刚参加工作的冯先生，在中华遗嘱库把工资存款全部留给从小照顾自己的姐姐，还专门把使用了7年的游戏账号列为遗产进行分配。不是段子。2025年，30岁以下立遗嘱的人数同比增长42.3%，全国最小立遗嘱人17岁。',
-        src: '中华遗嘱库2025年度白皮书',
-        url: 'https://m.sohu.com/a/1065080142_121123770'
+        src: '中华遗嘱库2025年度白皮书'
       }
     ];
 
@@ -2457,30 +2477,7 @@
       { num: '61.42%', label: '立遗嘱老人是空巢', sub: '2025年，子女不在身边' }
     ];
 
-    // 案例来源，逐条可查
-    var caseSources = {
-      '袁淑芳': [
-        { name: '大河报·豫视频｜河南97岁老中医墓碑刻满药方', url: 'https://www.163.com/dy/article/LB53673U05149E7M.html' },
-        { name: '大象新闻｜驻马店老中医墓碑刻百方，中医世家传至第十九代', url: 'https://view.inews.qq.com/a/20261105A0AMRO00' },
-        { name: '中新社｜河南「墓碑上的药方籍」火了，家属澄清药方数量', url: 'https://m.toutiao.com/article/7705334089897738806/' },
-        { name: '墓碑验方全文（长孙王克中整理，授权大象新闻公布）', url: 'https://m.toutiao.com/w/1881189692030090/' }
-      ],
-      '袁隆平': [
-        { name: '湖南杂交水稻研究中心｜袁隆平生平', url: 'https://www.hlhl.org.cn/contents/2/2.html' },
-        { name: '长沙晚报｜一粒种子，福泽天下', url: 'https://www.icswb.com/h/100848/20260918/996068.html' }
-      ],
-      '段红霞': [
-        { name: '今日头条｜一块刻满药方的墓碑', url: 'https://m.toutiao.com/w/1881225639673867/' }
-      ],
-      '黄仁勋': [
-        { name: '羊城晚报·南都｜英伟达CEO黄仁勋承认出轨，全球AI产业或迎新一轮博弈', url: 'https://news.dayoo.com/finance/202611/09/171077_55021858.htm' },
-        { name: '驱动之家｜黄仁勋出轨，英伟达抓鬼', url: 'https://m.mydrivers.com/newsview/1164266.html' },
-        { name: '新浪财经｜黄仁勋自爆出轨女客户，马斯克：极其愚蠢', url: 'https://finance.sina.cn/2026-11-09/detail-iniycfmy3012346.d.html' },
-        { name: '搜狐｜黄仁勋承认婚外情，英伟达董事会宣布启动内部调查', url: 'https://m.sohu.com/a/1099281844_701814/' }
-      ]
-    };
-
-    // Flatten stories for feed — 真实案例按时间线排列，置顶有分量的几条
+    // Flatten stories for feed — 真实人物按记录年份排列，谁也不占着首页
     var allStories = [];
     Object.keys(users).forEach(function(username) {
       users[username].entries.forEach(function(entry) {
@@ -2488,14 +2485,26 @@
           age: entry.age,
           year: entry.year,
           message: entry.message,
-          date: entry.date,
           user: username,
           featured: !!entry.featured
         });
       });
     });
 
-    var feedStories = allStories.filter(function(s) { return s.featured; });
+    var feedStories = allStories.filter(function(s) { return s.featured; })
+      .sort(function(a, b) { return (a.year || 0) - (b.year || 0); });
+
+    // 首页卡片左下角的身份注脚
+    var userTag = {
+      '袁淑芳': '行医八十一年',
+      '袁隆平': '杂交水稻之父',
+      '杨绛': '作家、翻译家',
+      '史铁生': '作家',
+      '三毛': '作家',
+      '汪曾祺': '作家、剧作家',
+      '段红霞': '漯河中医',
+      '黄仁勋': '英伟达CEO'
+    };
 
     // Render feed
     function renderFeed() {
@@ -2514,7 +2523,7 @@
           '</div>' +
           '<div class="story-card-text">' + story.message + '</div>' +
           '<div class="story-card-footer">' +
-            '<span class="story-card-date">' + story.date + '</span>' +
+            '<span class="story-card-date">' + (userTag[story.user] || '普通人') + '</span>' +
             '<div style="display:flex;gap:12px;align-items:center">' +
               '<button class="story-card-action invite" onclick="event.stopPropagation();showWrite()">我也要记录</button>' +
               '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的一生 →</button>' +
@@ -2550,7 +2559,6 @@
           '<div class="timeline-year">' + (entry.year ? entry.year + '年' : '') + '</div>' +
           '<div class="timeline-age">' + (entry.age > 0 ? entry.age + '岁' : '') + '</div>' +
           '<div class="timeline-message">' + entry.message + '</div>' +
-          '<div class="timeline-src">' + entry.date + '</div>' +
         '</div>';
       }).join('');
 
@@ -2564,15 +2572,11 @@
         rxView.innerHTML = '';
       }
 
-      // 资料来源
+      // 一句话说明：真人在此，不做新闻剪报
       var srcBox = document.getElementById('profileSources');
       if (srcBox) {
-        var list = caseSources[username] || [];
-        srcBox.innerHTML = list.length
-          ? '<div class="src-title">以上内容由以下公开报道整理，逐条可查</div>' +
-            list.map(function(s) {
-              return '<a class="src-link" href="' + s.url + '" target="_blank" rel="noopener">' + s.name + ' ↗</a>';
-            }).join('')
+        srcBox.innerHTML = user.real
+          ? '<div class="src-title">确有其人。这一生平记录取自公开资料，没有虚构。</div>'
           : '';
       }
 
@@ -2605,7 +2609,7 @@
 
       html += '<div class="rx-disclaimer">' +
         '<strong>重要提醒</strong>　以上为民间中医经验资料整理，其中「受孕率」「有效率」「治愈率」均为原文表述，未经现代医学验证。中医讲究辨证施治，同样的症状，体质、病因不同，方子就要调整；剂量、配伍、药材炮制方式出现偏差，可能引发过敏，甚至损伤肝肾。请勿自行照方抓药，必须在执业中医师面诊辨证后规范使用。原方中「山甲」为穿山甲，属国家重点保护动物，现已禁用。' +
-        '<a class="rx-src" href="https://m.toutiao.com/w/1881189692030090/" target="_blank" rel="noopener">方剂来源：长孙王克中整理，授权大象新闻完整公布 ↗</a>' +
+        '<div class="rx-src">方剂由碑文原样录下，其长孙整理后对外公开。</div>' +
       '</div>';
 
       return html;
@@ -2735,8 +2739,7 @@
       users[username].entries.push({
         age: currentDraft.age,
         year: currentDraft.year,
-        message: currentDraft.message,
-        date: '刚刚'
+        message: currentDraft.message
       });
 
       allStories.push({
@@ -2744,10 +2747,10 @@
         year: currentDraft.year,
         message: currentDraft.message,
         user: '我',
-        date: '刚刚',
         featured: true
       });
 
+      // 你自己刚写下的那条，置顶
       feedStories.unshift(allStories[allStories.length - 1]);
       renderFeed();
 
@@ -2872,12 +2875,12 @@
 
       var e = document.getElementById('realityEvents');
       if (e) e.innerHTML = realEvents.map(function(x) {
-        return '<a class="reality-event" href="' + x.url + '" target="_blank" rel="noopener">' +
+        return '<div class="reality-event">' +
           '<div class="reality-event-date">' + x.date + '</div>' +
           '<div class="reality-event-title">' + x.title + '</div>' +
           '<div class="reality-event-text">' + x.text + '</div>' +
-          '<div class="reality-event-src">来源：' + x.src + ' ↗</div>' +
-        '</a>';
+          '<div class="reality-event-src">' + x.src + '</div>' +
+        '</div>';
       }).join('');
     }
     renderReality();
@@ -2897,9 +2900,6 @@
           '<div class="topic-case-split">' +
             '<div class="topic-case-col"><span>这件事说明了什么</span><p>' + t.why + '</p></div>' +
             '<div class="topic-case-col accent"><span>所以我们的规则是</span><p>' + t.rule + '</p></div>' +
-          '</div>' +
-          '<div class="topic-case-sources">' +
-            t.src.map(function(s) { return '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.name + ' ↗</a>'; }).join('') +
           '</div>' +
         '</article>';
       }).join('');
