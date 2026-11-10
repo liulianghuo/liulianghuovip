@@ -350,11 +350,12 @@
       padding: 32px;
       margin-bottom: 20px;
       transition: all 0.3s;
-      cursor: default;
+      cursor: pointer;
     }
 
     .story-card:hover {
-      border-color: rgba(201,149,107,0.2);
+      border-color: rgba(201,149,107,0.35);
+      transform: translateY(-2px);
     }
 
     .story-card-top {
@@ -416,6 +417,12 @@
       justify-content: space-between;
       padding-top: 14px;
       border-top: 1px solid var(--divider);
+    }
+
+    .story-card-btns {
+      display: flex;
+      gap: 12px;
+      align-items: center;
     }
 
     .story-card-date {
@@ -624,19 +631,12 @@
       position: fixed;
       inset: 0;
       background: var(--bg);
-      z-index: 200;
-      padding: 80px 24px 40px;
+      z-index: 90;
+      padding: 88px 24px 40px;
       overflow-y: auto;
     }
 
     .profile-view.active { display: block; }
-
-    .profile-back {
-      position: fixed;
-      top: 16px;
-      left: 40px;
-      z-index: 210;
-    }
 
     .profile-header {
       max-width: 640px;
@@ -1540,7 +1540,7 @@
       .profile-view, .year-explorer, .write-view, .preview-view, .search-view, .services-view {
         padding: 70px 20px 32px;
       }
-      .profile-back { top: 14px; left: 20px; }
+      .profile-view { padding-top: 78px; }
       .write-row { grid-template-columns: 1fr; }
       .preview-card { padding: 28px 20px; }
     }
@@ -1596,52 +1596,8 @@
     .reality-section {
       max-width: 940px;
       margin: 0 auto;
-      padding: 76px 32px 20px;
+      padding: 56px 32px 20px;
     }
-    .reality-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1px;
-      margin-top: 40px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-    .reality-stat {
-      background: var(--bg-primary);
-      padding: 26px 18px;
-      text-align: center;
-    }
-    .reality-stat-num {
-      font-family: 'Noto Serif SC', serif;
-      font-size: 1.9rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      color: var(--accent);
-      line-height: 1.2;
-    }
-    .reality-stat-label {
-      margin-top: 10px;
-      font-size: 0.82rem;
-      color: var(--text-primary);
-      letter-spacing: 0.04em;
-    }
-    .reality-stat-sub {
-      margin-top: 6px;
-      font-size: 0.7rem;
-      line-height: 1.7;
-      color: var(--text-muted);
-    }
-    .reality-stat-src {
-      margin-top: 16px;
-      text-align: center;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      letter-spacing: 0.03em;
-    }
-    .reality-stat-src a { color: var(--text-muted); text-decoration: underline; }
-    .reality-stat-src a:hover { color: var(--accent); }
 
     .reality-events { margin-top: 52px; }
     .reality-event {
@@ -1879,9 +1835,7 @@
     }
 
     @media (max-width: 640px) {
-      .reality-section { padding: 56px 16px 12px; }
-      .reality-stat { padding: 20px 12px; }
-      .reality-stat-num { font-size: 1.5rem; }
+      .reality-section { padding: 48px 16px 12px; }
       .reality-event { padding: 20px 18px; }
       .rx-card, .rx-disclaimer { padding: 18px 16px; }
       .profile-quote { font-size: 0.96rem; }
@@ -1933,15 +1887,8 @@
       <p class="feed-note">这里没有虚构人物。上面这些人确有其人，他们的一生可以在这个网站上一页页翻完。</p>
     </section>
 
-    <!-- 真实数据 -->
+    <!-- 今日话题 -->
     <section class="reality-section">
-      <div class="feed-header">
-        <div class="feed-header-line"></div>
-        <span class="feed-header-text">这不是设想，是已经发生的事</span>
-        <div class="feed-header-line"></div>
-      </div>
-      <div class="reality-stats" id="realityStats"></div>
-      <p class="reality-stat-src">数据来自中国老龄事业发展基金会·中华遗嘱库《2025年度白皮书》。</p>
       <button class="homepage-topic" onclick="showServices()">
         <span class="homepage-topic-tag">今日话题 · 真实事件</span>
         <span class="homepage-topic-text">四十一年的公开形象，被一封信推翻 —— 为什么这个网站不允许你修改自己写下的东西</span>
@@ -1997,11 +1944,8 @@
     </footer>
   </div>
 
-  <!-- 用户主页 -->
+  <!-- 用户主页：无返回按钮，浏览器后退一步即回到原处，顶部导航始终可用 -->
   <div class="profile-view" id="profileView">
-    <div class="profile-back">
-      <button class="nav-btn" onclick="hideProfile()">← 返回</button>
-    </div>
     <div class="profile-header">
       <div class="profile-avatar" id="profileAvatar"></div>
       <h1 class="profile-name" id="profileName"></h1>
@@ -2468,15 +2412,6 @@
       }
     ];
 
-    // 真实数据：中华遗嘱库官方口径
-    var realStats = [
-      { num: '404,981', label: '份遗嘱已被登记保管', sub: '截至2025年12月31日' },
-      { num: '675,537', label: '人次接受遗嘱咨询', sub: '中华遗嘱库，2013年启动' },
-      { num: '67.64', label: '岁，立遗嘱人平均年龄', sub: '连续13年下降，2013年为77.43岁' },
-      { num: '196', label: '名30岁以下立遗嘱者', sub: '2016年这一数字是35人，十年涨近5倍' },
-      { num: '61.42%', label: '立遗嘱老人是空巢', sub: '2025年，子女不在身边' }
-    ];
-
     // Flatten stories for feed — 真实人物按记录年份排列，谁也不占着首页
     var allStories = [];
     Object.keys(users).forEach(function(username) {
@@ -2512,9 +2447,9 @@
       container.innerHTML = feedStories.map(function(story, i) {
         var u = users[story.user];
         var badge = (story.age > 0 ? story.age + '岁 · ' : '') + (story.year ? story.year + '年' : '');
-        return '<div class="story-card' + (i === 0 ? ' story-card-lead' : '') + '">' +
+        return '<div class="story-card' + (i === 0 ? ' story-card-lead' : '') + '" data-user="' + story.user + '">' +
           '<div class="story-card-top">' +
-            '<div class="story-card-user" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">' +
+            '<div class="story-card-user">' +
               '<div class="story-card-avatar">' + story.user.charAt(0) + '</div>' +
               '<span class="story-card-name">' + story.user + '</span>' +
               (u && u.lifespan ? '<span class="story-card-life">' + u.lifespan + '</span>' : '') +
@@ -2524,13 +2459,17 @@
           '<div class="story-card-text">' + story.message + '</div>' +
           '<div class="story-card-footer">' +
             '<span class="story-card-date">' + (userTag[story.user] || '普通人') + '</span>' +
-            '<div style="display:flex;gap:12px;align-items:center">' +
+            '<div class="story-card-btns">' +
               '<button class="story-card-action invite" onclick="event.stopPropagation();showWrite()">我也要记录</button>' +
-              '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的一生 →</button>' +
+              '<span class="story-card-action">查看他的一生 →</span>' +
             '</div>' +
           '</div>' +
         '</div>';
       }).join('');
+      // 整张卡片都可点开他的一生
+      Array.prototype.forEach.call(container.querySelectorAll('.story-card'), function(card) {
+        card.addEventListener('click', function() { showProfile(card.getAttribute('data-user')); });
+      });
     }
 
     renderFeed();
@@ -2862,17 +2801,8 @@
     }
     renderTraceWall();
 
-    // 真实数据 + 真实事件
+    // 真实事件（话题页）
     function renderReality() {
-      var s = document.getElementById('realityStats');
-      if (s) s.innerHTML = realStats.map(function(x) {
-        return '<div class="reality-stat">' +
-          '<div class="reality-stat-num">' + x.num + '</div>' +
-          '<div class="reality-stat-label">' + x.label + '</div>' +
-          '<div class="reality-stat-sub">' + x.sub + '</div>' +
-        '</div>';
-      }).join('');
-
       var e = document.getElementById('realityEvents');
       if (e) e.innerHTML = realEvents.map(function(x) {
         return '<div class="reality-event">' +
