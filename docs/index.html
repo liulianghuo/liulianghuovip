@@ -1545,6 +1545,387 @@
       .preview-card { padding: 28px 20px; }
     }
 
+    /* ── 真实案例增强 ─────────────────────────── */
+    .feed-note {
+      max-width: 620px;
+      margin: 28px auto 0;
+      text-align: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      line-height: 1.9;
+      color: var(--text-muted);
+    }
+
+    .story-card-lead {
+      border-left: 2px solid var(--accent);
+    }
+    .story-card-life {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      margin-left: 4px;
+    }
+    .timeline-src {
+      margin-top: 10px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      opacity: 0.75;
+    }
+
+    .profile-quote {
+      max-width: 620px;
+      margin: 20px auto 0;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--accent);
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+    .profile-sources { margin: 44px auto 0; max-width: 640px; }
+    .src-title {
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .src-link {
+      display: block;
+      padding: 11px 16px;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      transition: border-color .25s, color .25s, background .25s;
+    }
+    .src-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(184, 134, 11, 0.04);
+    }
+
+    .manifesto-em { color: var(--accent); font-style: normal; }
+    .manifesto-closing {
+      color: var(--accent);
+      font-weight: 500;
+      margin-top: 28px !important;
+      font-size: 1.1rem;
+    }
+
+    /* ── 真实数据与事件 ───────────────────────── */
+    .reality-section {
+      max-width: 940px;
+      margin: 0 auto;
+      padding: 76px 32px 20px;
+    }
+    .reality-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1px;
+      margin-top: 40px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .reality-stat {
+      background: var(--bg-primary);
+      padding: 26px 18px;
+      text-align: center;
+    }
+    .reality-stat-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      line-height: 1.2;
+    }
+    .reality-stat-label {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      letter-spacing: 0.04em;
+    }
+    .reality-stat-sub {
+      margin-top: 6px;
+      font-size: 0.7rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+    .reality-stat-src {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+    .reality-stat-src a { color: var(--text-muted); text-decoration: underline; }
+    .reality-stat-src a:hover { color: var(--accent); }
+
+    .reality-events { margin-top: 52px; }
+    .reality-event {
+      display: block;
+      padding: 26px 28px;
+      margin-bottom: 14px;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--border);
+      border-left: 2px solid transparent;
+      border-radius: 10px;
+      transition: border-color .3s, transform .3s, background .3s;
+    }
+    .reality-event:hover {
+      border-left-color: var(--accent);
+      background: rgba(184, 134, 11, 0.03);
+      transform: translateX(3px);
+    }
+    .reality-event-date {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+    .reality-event-title {
+      margin-top: 10px;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.12rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      line-height: 1.7;
+    }
+    .reality-event-text {
+      margin-top: 10px;
+      font-size: 0.86rem;
+      line-height: 2;
+      color: var(--text-secondary);
+    }
+    .reality-event-src {
+      margin-top: 12px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── 碑上验方 ─────────────────────────────── */
+    .rx-block { max-width: 680px; margin: 52px auto 0; }
+    .rx-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.14em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .rx-lead {
+      font-size: 0.92rem;
+      line-height: 2.2;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .rx-index { margin-bottom: 18px; text-align: center; }
+    .rx-index-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .rx-tag {
+      display: inline-block;
+      margin: 3px 4px;
+      padding: 4px 11px;
+      font-size: 0.76rem;
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .rx-card {
+      max-width: 680px;
+      margin: 0 auto 12px;
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-secondary);
+    }
+    .rx-card-warn { border-color: rgba(184, 134, 11, 0.4); }
+    .rx-card-cat {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.98rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+    }
+    .rx-card-text {
+      margin-top: 12px;
+      font-size: 0.88rem;
+      line-height: 2.1;
+      color: var(--text-primary);
+    }
+    .rx-card-note {
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .rx-disclaimer {
+      max-width: 680px;
+      margin: 26px auto 0;
+      padding: 22px 24px;
+      font-size: 0.78rem;
+      line-height: 2.1;
+      color: var(--text-secondary);
+      background: rgba(184, 134, 11, 0.06);
+      border: 1px solid rgba(184, 134, 11, 0.22);
+      border-radius: 10px;
+    }
+    .rx-disclaimer strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+    .rx-src {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* ── 话题页真实案例 ───────────────────────── */
+    .topic-cases { margin-bottom: 34px; }
+    .topic-case {
+      padding: 30px 32px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg-secondary);
+    }
+    .topic-case-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .topic-case-who {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+    }
+    .topic-case-who:hover { text-decoration: underline; }
+    .topic-case-year {
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+    }
+    .topic-case-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      line-height: 1.8;
+      letter-spacing: 0.04em;
+    }
+    .topic-case-body {
+      margin-top: 16px;
+      font-size: 0.88rem;
+      line-height: 2.2;
+      color: var(--text-secondary);
+    }
+    .topic-case-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .topic-case-col {
+      padding: 18px 20px;
+      border-left: 2px solid var(--border);
+    }
+    .topic-case-col.accent { border-left-color: var(--accent); background: rgba(184,134,11,0.05); }
+    .topic-case-col span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .topic-case-col p {
+      font-size: 0.85rem;
+      line-height: 2.1;
+      color: var(--text-primary);
+    }
+    .topic-case-sources {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px dashed var(--border);
+    }
+    .topic-case-sources a {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.72rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .topic-case-sources a:hover { color: var(--accent); }
+
+    .homepage-topic {
+      display: block;
+      width: 100%;
+      max-width: 620px;
+      margin: 30px auto 0;
+      padding: 16px 20px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      background: none;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      transition: border-color .3s, background .3s;
+    }
+    .homepage-topic:hover { border-color: var(--accent); background: rgba(184,134,11,0.03); }
+    .homepage-topic-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+    .homepage-topic-text {
+      display: block;
+      margin-top: 8px;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 0.9rem;
+      line-height: 2;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 640px) {
+      .topic-case { padding: 22px 18px; }
+      .topic-case-split { grid-template-columns: 1fr; }
+      .topic-case-title { font-size: 1.12rem; }
+    }
+
+    @media (max-width: 640px) {
+      .reality-section { padding: 56px 16px 12px; }
+      .reality-stat { padding: 20px 12px; }
+      .reality-stat-num { font-size: 1.5rem; }
+      .reality-event { padding: 20px 18px; }
+      .rx-card, .rx-disclaimer { padding: 18px 16px; }
+      .profile-quote { font-size: 0.96rem; }
+    }
+
     ::-webkit-scrollbar { width: 3px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: rgba(128,128,128,0.2); border-radius: 2px; }
@@ -1588,19 +1969,40 @@
         <div class="feed-header-line"></div>
       </div>
       <div id="feedContainer"></div>
+      <p class="feed-note">以上全部为公开报道中的真实人物与真实事件，每条都可点开查证。这个网站不放置虚构案例。</p>
+    </section>
+
+    <!-- 真实数据与真实事件 -->
+    <section class="reality-section">
+      <div class="feed-header">
+        <div class="feed-header-line"></div>
+        <span class="feed-header-text">这不是设想，是已经发生的事</span>
+        <div class="feed-header-line"></div>
+      </div>
+      <div class="reality-stats" id="realityStats"></div>
+      <p class="reality-stat-src">数据来源：中国老龄事业发展基金会·中华遗嘱库《2025年度白皮书》，2026年3月发布。<a href="https://www.will.org.cn/index.php/details/3003.html" target="_blank" rel="noopener">查看原文 ↗</a></p>
+      <div class="reality-events" id="realityEvents"></div>
+      <button class="homepage-topic" onclick="showServices()">
+        <span class="homepage-topic-tag">今日话题 · 真实事件</span>
+        <span class="homepage-topic-text">四十一年的公开形象，被一封信推翻 —— 为什么这个网站不允许你修改自己写下的东西</span>
+      </button>
     </section>
 
     <!-- 理念 -->
     <section class="manifesto">
       <div class="manifesto-ornament"></div>
       <h2>为什么要留下这世界，我来过</h2>
-      <p>河南驻马店，一位叫袁淑芳的老中医，97岁走的。她16岁嫁人时一个字不识，借着月光跟丈夫学认字、学医术，行医八十年</p>
-      <p>临终前她跟家人说了一句话：「我这一百个方子，是这辈子一个一个人试出来的，不能带进土里」</p>
-      <p>家人把一百个药方刻在了她的墓碑上，连用量都写得清清楚楚——打破了「传方不传量」的老规矩。她孙子说：「人家祖传的东西都藏着，传男不传女，她这还公开呢」</p>
-      <p>墓碑立了十九年，两三千人从全国各地赶来抄方。有人坐长途火车，有人在碑前蹲一整天。漯河一个八十岁的老中医，凌晨五点起床转三趟车来抄，激动得一晚上没睡着。还有一个德国医生，开了两小时车赶来，他说他看重的是老人八十年的经验大成</p>
-      <p>一个人一辈子活过、爱过、撑过来的那些年头，总有些东西值得留下来。不一定是药方，不一定是惊天动地的事——可能只是某一年你说的一句话，做的一件事，或者一个再也回不去的瞬间</p>
-      <p>我做这个网站，就是因为想起了这些人。想起那些不该被遗忘的年头，想起那些值得被记住的瞬间。每个人的一生都是一本书，不能只让别人看到封面</p>
-      <p style="color: var(--accent); font-weight: 500; margin-top: 24px;">你的人生，值得被永久保存。</p>
+      <p>河南驻马店西平县芦庙乡盘龙桥村，一片杨树林里立着一块不太普通的花岗岩墓碑。碑身正中只有五个字：慈母袁淑芳之墓。没有生平，没有头衔。</p>
+      <p>两侧用小楷密密麻麻刻着中医验方，药名、剂量、加减法，一行一行，清清楚楚。远远看去，像一本摊开在田野里的处方簿。</p>
+      <p>袁淑芳生于1909年，16岁开始学医，白天要下地干活，晚上才有空读书，家里点不起煤油灯，就借着月色背书。她行医八十一年，历经清末、民国和新中国，在西平县城南街坐了一辈子诊。</p>
+      <p>2006年去世前夕，她把二百多首经验方整理出来交给儿子，叮嘱去世后刻在碑上。原本要刻二百多方，碑面刻不下，最后留下了妇科验方。她说：<span class="manifesto-em">「药方是大家的，让后来人不花钱、少花钱就能看好病。」</span></p>
+      <p>旧时民间中医有个老规矩，传方不传量。方子可以给你看，克数是压箱底的看家本事。她把剂量连克数一起刻进了石头。</p>
+      <p>碑立了快二十年，知道的人不多。2026年11月它突然火了，每天三四百人从全国各地赶来抄方。有人坐长途火车，有人驱车千里，有人冒雨蹲在碑前逐字抄，拍完照回去整理成电子文档。漯河一位中医段红霞2019年第一次去抄方，后来又去了两次，第三次是专程去道谢的：<span class="manifesto-em">「碑上治痛经的方子，临床上用得确实比较好。」</span></p>
+      <p>同一个选择，另一个人也做过。1970年冬天，袁隆平的助手在海南找到那株改变整个杂交水稻走向的「野败」。拿到这份珍贵材料以后，袁隆平没有闭门独享，把种子毫无保留分送给全国科研单位，组织全国力量一起攻坚。</p>
+      <p>一个把方子刻上石头，一个把种子撒向全国。他们都做同一件事：<span class="manifesto-em">不带走。</span></p>
+      <p>一个人一辈子活过、爱过、撑过来的那些年头，总有些东西值得留下来。不一定是药方，不一定是惊天动地的事——可能只是某一年你说的一句话，做的一件事，或者一个再也回不去的瞬间。</p>
+      <p>这个网站想做的，就是普通人的那块碑。你写下的每一条，不可修改，不可删除，公之于众或者只留给自己。</p>
+      <p class="manifesto-closing">你的人生，值得被永久保存。</p>
       <div class="manifesto-features">
         <div class="manifesto-feature">
           <div class="manifesto-feature-title">记录即永恒</div>
@@ -1648,22 +2050,25 @@
       <div class="profile-avatar" id="profileAvatar"></div>
       <h1 class="profile-name" id="profileName"></h1>
       <p class="profile-bio" id="profileBio"></p>
+      <p class="profile-quote" id="profileQuote"></p>
       <div class="profile-stats">
         <div class="profile-stat">
           <div class="profile-stat-num" id="profileStatYears">0</div>
-          <div class="profile-stat-label">遗产记录</div>
+          <div class="profile-stat-label">人生记录</div>
         </div>
         <div class="profile-stat">
           <div class="profile-stat-num" id="profileStatSpan">0</div>
           <div class="profile-stat-label">时间跨度</div>
         </div>
         <div class="profile-stat">
-          <div class="profile-stat-num" id="profileStatStorage">1/1</div>
-          <div class="profile-stat-label">存储容量</div>
+          <div class="profile-stat-num" id="profileStatStorage">—</div>
+          <div class="profile-stat-label" id="profileStatStorageLabel">留下了什么</div>
         </div>
       </div>
     </div>
     <div class="profile-timeline" id="profileTimeline"></div>
+    <div id="prescriptionView" style="display:none"></div>
+    <div class="profile-sources" id="profileSources"></div>
     <div class="profile-actions">
       <button class="profile-action-btn primary-action" onclick="showWrite()">写一笔</button>
       <button class="profile-action-btn" onclick="showPayModal('storage')">升级存储</button>
@@ -1777,11 +2182,14 @@
         <button class="nav-btn" onclick="hideServices()">← 返回</button>
       </div>
 
+      <div class="topic-cases" id="topicCases"></div>
+
       <div class="debate-card">
         <h3>关于这世界，我来过，你怎么看？</h3>
         <div class="debate-topic">人死后，你的微信聊天记录归谁？</div>
         <div class="debate-topic">你愿意把一辈子的一句话，交给一个网站永久保存吗？</div>
         <div class="debate-topic">这世界，我来过，该不该立法？</div>
+        <div class="debate-topic">如果记录不可修改，你还敢写下哪一年？</div>
         <div class="debate-cta">
           <button class="debate-cta-btn" onclick="showWrite(); hideServices();">留下你的观点 →</button>
         </div>
@@ -1887,85 +2295,192 @@
     }
 
     // Data
+    // 以下内容全部来自公开报道与官方数据，逐条标注来源。不是虚构案例。
     var users = {
-      '林晓峰': {
-        bio: '90后创业者，三次失败后终于找到方向',
+      '袁淑芳': {
+        real: true,
+        lifespan: '1909—2006',
+        place: '河南驻马店西平县芦庙乡盘龙桥村',
+        bio: '老中医，行医八十一年。临终前把毕生验方交给儿子，让刻在墓碑上。',
+        quote: '「药方是大家的，让后来人不花钱、少花钱就能看好病。」',
+        legacy: '52首',
         entries: [
-          { age: 22, year: 2015, message: '大学毕业，拿着家里给的二十万开了第一家奶茶店。三个月后倒闭，亏光了。那天晚上在店里坐了一整夜，看着空荡荡的柜台，问自己是不是真的不适合做生意。', date: '2024年1月' },
-          { age: 24, year: 2017, message: '第二次创业，做外卖平台本地代理。撑了八个月，又被大平台挤死了。女朋友跟我分手，说我不切实际。我妈打电话来，我没敢接。', date: '2024年2月' },
-          { age: 26, year: 2019, message: '第三次，做社区团购。这次学乖了，先调研了半年，找了三个合伙人。起步很难，每天凌晨四点去批发市场进货，晚上十一点还在送最后一单。', date: '2024年3月' },
-          { age: 28, year: 2021, message: '疫情来了，社区团购反而爆了。团队从3人扩到30人，日订单破万。那天看着后台数据，突然哭了。六年，终于成了。', date: '2024年3月' },
-          { age: 30, year: 2023, message: '公司上了A轮。回头看那三次失败，每一次都想放弃，但每一次都没放弃。也许成功不是因为你聪明，只是因为你比别人多撑了一会儿。', date: '2024年4月' }
+          { age: 1, year: 1909, message: '生于河南驻马店西平县芦庙乡盘龙桥村。娘家世代行医。', date: '据驻马店日报', featured: true },
+          { age: 16, year: 1925, message: '开始学医行医。白天要下地干活，晚上才有空读书。家里点不起煤油灯，赶上月亮明亮，她就借着月色背书，一味药一味药地记，一个方一个方地磨。嫁到王家后，丈夫王鸣周一边教她识字，一边带她辨药性、记汤头。', date: '据大河报、大象新闻', featured: true },
+          { age: 40, year: 1949, message: '行医历经清末、民国、新中国三个时期。精内科、外科、妇科、儿科。她在西平县城南街坐了一辈子诊，「袁氏妇科」的招牌，是十里八乡的患者一家一家传出来的。贫者不收钱。', date: '据公开报道' },
+          { age: 60, year: 1969, message: '著有《骨髓炎治验》《顽固性癫痫治验》。教导后辈最多的一句话是：「大医精诚，学医先修德。」85岁的儿媳李桂梅后来回忆说，婆婆讲过，用药如调兵遣将。', date: '据公开报道' },
+          { age: 97, year: 2006, message: '去世前夕，她把自己总结的二百多首经验方整理出来，交给儿子，叮嘱去世后刻在墓碑上。原本要刻二百多方，碑面刻不下，最后择优留下妇科验方。', date: '据大象新闻', featured: true },
+          { age: 0, year: 2007, message: '家人立碑。黑色花岗岩，碑身正中只有五个字：慈母袁淑芳之墓。没有生平，没有头衔。两侧用小楷密密麻麻刻着验方，药名、剂量、加减法，一行一行，清清楚楚。远远看去，像一本摊开在田野里的处方簿。', date: '据大象新闻', featured: true },
+          { age: 0, year: 2026, message: '这块墓碑在网上火了。每天三四百人专程赶来，有人坐长途火车，有人驱车千里，有人冒雨蹲在碑前逐字抄，拍完照回去整理成电子文档。', date: '据大河报、中新社', featured: true }
         ]
       },
-      '陈雨桐': {
-        bio: '单亲妈妈，带着女儿重新出发',
+      '袁隆平': {
+        real: true,
+        lifespan: '1930—2021',
+        place: '生于北平，江西德安人',
+        bio: '杂交水稻之父。找到关键材料那天，他做的第一件事是把种子分送给全国。',
+        quote: '「我不能躺在功劳簿上，要尽量发挥新的贡献。」',
+        legacy: '三系法',
         entries: [
-          { age: 28, year: 2016, message: '离婚了。带着两岁的女儿搬出那个家，租了一个三十平的房子。那天晚上女儿问我爸爸去哪了，我说爸爸去很远的地方工作了。她似懂非懂地点点头，我的心像被撕开一样。', date: '2024年1月' },
-          { age: 30, year: 2018, message: '白天上班，晚上做代购。女儿睡了以后，我在灯下打包发货，一干就是凌晨两点。累得有时候趴在桌上就睡着了，醒来脸上印着快递单的格子。', date: '2024年2月' },
-          { age: 32, year: 2020, message: '代购做大了，开了自己的小店。女儿上小学了，第一天送她去学校，她回头冲我挥手，笑得特别灿烂。那一刻觉得，所有的苦都值了。', date: '2024年3月' },
-          { age: 34, year: 2022, message: '小店扩成了三家。女儿今年八岁，昨天她跟我说：妈妈，你不用那么辛苦，我已经长大了。我背过身去，眼泪掉下来了。', date: '2024年4月' }
+          { age: 1, year: 1930, message: '1930年9月7日生于北平，江西德安人，父母皆是知识分子。战火纷飞的年代，他跟随家人辗转多地，目睹山河破碎、人民蒙难。', date: '据公开资料' },
+          { age: 23, year: 1953, message: '毕业于西南农学院作物遗传育种专业，到湖南安江农校任教。', date: '据公开资料' },
+          { age: 36, year: 1964, message: '顶着烈日一头扎进稻田，在茫茫稻海里一株一株排查，先后检查了十几万株稻穗，终于找到6株天然雄性不育株。', date: '据长沙晚报', featured: true },
+          { age: 36, year: 1966, message: '发表《水稻的雄性不孕性》，提出「三系法」配套设想，拉开中国杂交水稻研究的序幕。此后试验秧苗曾遭毁坏，研究资料多次丢失，连续多年进展缓慢。', date: '据公开资料' },
+          { age: 40, year: 1970, message: '他带着助手像候鸟一样，冬天奔赴海南，夏天返回湖南。这年11月，助手李必湖与南红农场技术员冯克珊在海南采集野生稻时，发现一株雄花败育的野生稻，他命名为「野败」。拿到材料后，他没有闭门独享，把种子毫无保留分送给全国科研单位，组织协同攻坚。', date: '据湖南杂交水稻研究中心', featured: true },
+          { age: 43, year: 1973, message: '在苏州召开的全国水稻科研会议上，他宣读《利用「野败」选育三系进展》，正式宣告中国籼型杂交水稻「三系」配套成功。', date: '据公开资料', featured: true },
+          { age: 46, year: 1976, message: '杂交水稻在全国大面积推广，比常规稻增产20%以上。中国成为世界首个在生产上利用水稻杂种优势的国家。', date: '据公开资料' },
+          { age: 89, year: 2019, message: '在人民大会堂接受共和国勋章。他一生被人念了半辈子的两个梦：禾下乘凉梦，杂交水稻覆盖全球梦。', date: '据公开报道' },
+          { age: 91, year: 2021, message: '2021年5月22日在长沙逝世。长沙那块他晚年天天打卡的试验田，稻子换了一茬又一茬，老人没再回来。', date: '据公开报道', featured: true }
         ]
       },
-      '张建国': {
-        bio: '退伍军人，现在是一名乡村教师',
+      '段红霞': {
+        real: true,
+        lifespan: '仍在坐诊',
+        place: '河南漯河',
+        bio: '中医。为了墓碑上的方子，她去过三次。',
+        quote: '「碑上治痛经的方子，临床上用得确实比较好。」',
+        legacy: '3次',
         entries: [
-          { age: 20, year: 2008, message: '入伍了。新兵连三个月，每天五公里武装越野，累到吐。但班长说了一句话我记到现在：当兵的人，骨头要比别人硬。', date: '2024年1月' },
-          { age: 25, year: 2013, message: '退伍了。在部队五年，学到了很多。最深刻的不是射击和战术，而是责任。离开那天，全连列队送别，我敬了最后一个军礼。', date: '2024年2月' },
-          { age: 28, year: 2016, message: '去了云南山区支教。学校只有两间教室，四十多个孩子，三个老师。第一天上课，一个女孩递给我一个煮鸡蛋，说老师你吃。那个鸡蛋我舍不得吃，放了一整天。', date: '2024年3月' },
-          { age: 32, year: 2020, message: '支教第四年。去年有三个孩子考上了县里的重点初中。他们走的时候，全村人来送，我站在村口，看着他们的背影，觉得自己这辈子做对了一件事。', date: '2024年4月' }
+          { age: 0, year: 2019, message: '第一次去盘龙桥村抄方。', date: '据今日头条引述报道' },
+          { age: 0, year: 2020, message: '后来又去了一次。', date: '据公开报道' },
+          { age: 0, year: 2026, message: '第三次专程赶去，是为了道谢。「碑上治痛经的方子，临床上用得确实比较好。」', date: '据公开报道', featured: true }
         ]
       },
-      '王思琪': {
-        bio: '北漂十年，从群演到编剧',
+      '黄仁勋': {
+        real: true,
+        lifespan: '1963—',
+        place: '英伟达创始人兼首席执行官',
+        bio: '用四十一年经营了一个顾家的自己，然后用一封信把它推翻。',
+        quote: '「我对妻子不忠。我的行为伤害了她和我们的孩子。我所做的一切没有任何借口。」',
+        legacy: '一封信',
         entries: [
-          { age: 22, year: 2014, message: '来北京了。拖着行李箱走出火车站，看着天安门的方向，心里想：我要在这里活下去。第一份工作是在剧组当群演，一天八十块，演尸体。', date: '2024年1月' },
-          { age: 24, year: 2016, message: '还在当群演，但开始写剧本了。每天晚上回到八平的地下室，在台灯下写。写了一个爱情短片，投了二十个比赛，全部石沉大海。', date: '2024年2月' },
-          { age: 26, year: 2018, message: '一个短片获奖了，虽然是个小奖。那天我哭了，不是因为奖，是因为终于有人看到了。妈妈打电话来说：闺女，不行就回来吧。我说再给我两年。', date: '2024年3月' },
-          { age: 28, year: 2020, message: '疫情来了，剧组全停了。积蓄花光了，开始接网文写手活儿，一天写八千字，写到手指发麻。但没放弃剧本，每晚还是写。', date: '2024年4月' },
-          { age: 30, year: 2022, message: '第一个长片剧本被一家公司买了。不多，五万块，但这是我十年北漂的第一笔剧本收入。那天去吃了顿好的，一个人，点了一瓶红酒。', date: '2024年5月' }
-        ]
-      },
-      '赵德海': {
-        bio: '老手艺人，做了一辈子木工',
-        entries: [
-          { age: 45, year: 2005, message: '开了自己的木工坊。父亲教的手艺，从十六岁开始学，做了快三十年了。现在机器越来越多了，手工的东西越来越不值钱了。但我还是觉得，手做出来的东西，有温度。', date: '2024年1月' },
-          { age: 50, year: 2010, message: '儿子不想学木工，要去学计算机。我没拦他。每个人有自己的路，不能因为这是我的手艺就绑住他。只是心里有点空。', date: '2024年2月' },
-          { age: 55, year: 2015, message: '有人在网上看到了我的作品，来找我定制家具。一个北京的客人，订了一套红木家具，说就喜欢手工的质感。那天我高兴得喝了半瓶白酒。', date: '2024年3月' },
-          { age: 60, year: 2020, message: '收了两个徒弟。都是年轻人，说喜欢木工。我教他们的时候，想起父亲教我的样子。手艺不能断，断了就没了。', date: '2024年4月' },
-          { age: 63, year: 2023, message: '儿子今年回来，说要帮我做线上推广。他给我拍了视频，发到网上，居然有几万人看。他说爸，你的手艺值得被更多人看到。我老了，眼睛花了，但心里亮堂了。', date: '2024年5月' }
-        ]
-      },
-      '刘美玲': {
-        bio: '抗癌五年，现在是一名志愿者',
-        entries: [
-          { age: 35, year: 2018, message: '确诊了，乳腺癌中期。拿到报告那天，我在医院走廊坐了一个小时。然后给老公打了个电话，他说马上过来。听到他声音的那一刻，我哭了。', date: '2024年1月' },
-          { age: 36, year: 2019, message: '化疗第八次，头发掉光了。女儿看到我，愣了一下，然后跑过来抱住我的头说：妈妈，光头也很漂亮。她不知道，那句话救了我。', date: '2024年2月' },
-          { age: 38, year: 2021, message: '复查结果出来了，没有复发。医生说我恢复得很好。走出医院，阳光特别好，我站在门口深吸了一口气，觉得活着真好。', date: '2024年3月' },
-          { age: 40, year: 2023, message: '开始做抗癌志愿者。去医院看望新确诊的病人，告诉她们我走过的路。有个女孩握着我的手说：看到你，我觉得我也有希望了。', date: '2024年4月' }
-        ]
-      },
-      '孙浩然': {
-        bio: '外卖骑手，跑了六年，见过城市的每一面',
-        entries: [
-          { age: 26, year: 2018, message: '开始送外卖了。第一天跑了十二个小时，赚了二百三。腿酸得下不了楼，但想到家里等着寄钱回去的爸妈，觉得还能再跑。', date: '2024年1月' },
-          { age: 28, year: 2020, message: '疫情最严重的时候，别人不敢出门，我们骑手成了城市的血管。那天送一个订单到医院，护士跟我说谢谢，我说应该的。其实心里挺暖的。', date: '2024年2月' },
-          { age: 30, year: 2022, message: '跑了六年，送了大概四万单。见过凌晨三点的烧烤摊，见过早上六点的早餐铺，见过深夜加班的年轻人。这个城市每个人都在拼命。', date: '2024年3月' },
-          { age: 32, year: 2024, message: '不送外卖了，开了个小面馆。位置不好，生意一般，但每天能按时回家陪孩子了。人生不一定非要赚大钱，安稳也是一种幸福。', date: '2024年5月' }
-        ]
-      },
-      '周雅琴': {
-        bio: '退休医生，退休后开始写回忆录',
-        entries: [
-          { age: 58, year: 2015, message: '退休了。在医院干了三十五年，接生了上万个孩子。最后一天上班，科室的孩子们给我送了花，我强忍着没哭。走出医院大门，突然不知道明天该干什么了。', date: '2024年1月' },
-          { age: 60, year: 2017, message: '开始写回忆录。把三十五年的故事写下来，那些深夜的急诊、那些新生命的第一声啼哭、那些没能救回来的人。写着写着，好像又回到了手术台旁。', date: '2024年2月' },
-          { age: 63, year: 2020, message: '回忆录写完了，打印了三本，给两个女儿和老伴一人一本。女儿看完哭了，说妈你从来没跟我们说过这些。我说有些话，写下来比说出来容易。', date: '2024年3月' },
-          { age: 65, year: 2022, message: '社区请我去讲健康课。站在讲台上，看着下面那些面孔，突然觉得，我这一辈子，值了。', date: '2024年4月' }
+          { age: 17, year: 1980, message: '在俄勒冈州立大学的电气工程实验课上，全系250名学生里只有3名女生，洛丽·米尔斯是其中之一。他想办法被分到同一组，拿做作业当接近她的机会，问她：「你想看看我的作业吗？」他许诺，只要每个星期天一起做作业，就保证她门门拿A。那年他约17岁，她约19岁。', date: '据驱动晚报、新浪财经', keep: true },
+          { age: 22, year: 1985, message: '两人结婚。此后四十一年，零绯闻。', date: '据驱动之家报道', keep: true },
+          { age: 30, year: 1993, message: '他二十岁那年许下的另一个承诺兑现了：30岁当CEO。这年他与克里斯·马拉科夫斯基、柯蒂斯·普里姆在圣何塞一家丹尼斯餐厅里共同创立英伟达。公司注册时间上的法定创始人是这三人，洛丽不在名单里。当时积蓄只够撑六个月，她辞掉硅谷的高薪工作回归家庭，帮公司核对账目，据报道还变卖过婚戒补充运营资金。', date: '据今日头条、驱动之家', keep: true },
+          { age: 36, year: 1999, message: '英伟达上市。整家公司都是在这段婚姻里长大的。', date: '据驱动之家' },
+          { age: 44, year: 2007, message: '夫妇俩共同创办家族慈善基金会。2024年报税文件显示其资产约92亿美元，洛丽长期掌管家族信托与基金会事务。', date: '据驱动之家' },
+          { age: 60, year: 2023, message: '英伟达市值突破一万亿美元。他多次把能全身心投入创业归功于妻子。在播客《How I Built This》里他说，洛丽照顾好了一切，他不记得她抱怨过一次，「这是她给我的礼物」。他常年穿的那件黑皮夹克，是妻子给他准备的。', date: '据快科技、驱动之家', keep: true },
+          { age: 63, year: 2026, message: '11月8日，他在英伟达官网发布致员工公开信：「我欠我的家人和你们所有人一个道歉。」「我对妻子不忠。我的行为伤害了她和我们的孩子。我所做的一切没有任何借口，我深感抱歉。」「我知道道歉无法撤销我所做的事情。」同日，英伟达董事会宣布启动独立调查，由独立董事组成委员会、聘请外部律师，重点核查是否存在利益输送与机密泄露风险。据报道，绯闻对象曾任新加坡数据中心企业Megaspeed International高管，该公司是英伟达客户，两年间累计采购约48亿美元芯片。他的长女黄敏珊以「家庭原因」取消了原定赴韩行程。美国众议院三个委员会要求他11月18日出席闭门简报会。消息公布后，英伟达市值一夜蒸发约12900亿元。', date: '据中国新闻社、羊城晚报、新浪财经', keep: true }
         ]
       }
     };
 
-    // Flatten stories for feed
+    // 黄仁勋这条：真实、有热度，但不放首页。它属于「话题」，属于让人想清楚产品意义的那个例子。
+    var topicCases = [
+      {
+        who: '黄仁勋',
+        year: 2026,
+        headline: '四十一年的公开形象，被一封信推翻',
+        body: '驱动之家在报道里写了一句很准的话：两个人41年零绯闻，神话最感人的部分是这一条，神话最脆弱的地方也是这一条。从1980年那间电气工程实验室，到2023年市值破万亿，他每一次公开演讲、每一次播客访谈、每一件皮夹克，都在反复加固同一个叙事——顾家、忠诚、把成就归功于妻子。2026年11月8日，他自己写了一封信，把这个叙事拆了。',
+        why: '这件事真正说明的是：能被随时改写的记录，等于没有记录。一个人花四十一年在外面堆起来的形象，和一个人真正活过的一生，不是一回事。',
+        rule: '所以我们把它做成不可修改的。你写下的那一年那一年，不许改，不许删。十年后你回头看，它还是当时那个你。',
+        src: [
+          { name: '中国新闻社·南都：英伟达CEO黄仁勋承认出轨', url: 'https://news.dayoo.com/finance/202611/09/171077_55021858.htm' },
+          { name: '驱动之家：黄仁勋出轨，英伟达抓鬼', url: 'https://m.mydrivers.com/newsview/1164266.html' },
+          { name: '新浪财经：黄仁勋自爆出轨女客户，马斯克：极其愚蠢', url: 'https://finance.sina.cn/2026-11-09/detail-iniycfmy3012346.d.html' }
+        ]
+      }
+    ];
+
+    // 袁淑芳墓碑验方（据其长孙王克中整理、授权大象新闻完整公布）
+    var prescriptions = [
+      {
+        cat: '气郁血滞化热型不孕',
+        text: '酒当归、酒白芍各30克，丹皮、栀子、白芥子各10克，柴胡、郁金、香附、黄芩、生甘草各20克，经前五天服用。',
+        note: '原文标注：受孕率90%'
+      },
+      {
+        cat: '肾阳虚疲不孕·补阳温经汤',
+        text: '淮山药、鹿茸各20克，鹿角霜、仙灵脾、菟丝子、肉桂各15克，合欢皮、紫石英、熟地、杞果、杜仲各12克，补骨脂、当归头10克，牛膝5克。',
+        note: '每日一剂，二十天一个疗程。原文标注：受孕率90%'
+      },
+      {
+        cat: '中阳不振血寒不孕',
+        text: '干姜、桑寄生各30克，当归、覆盆子各20克，白芍、川断各15克，茯苓、白术、蔓荆子、桃仁各10克，川芎、柴胡、甘草各9克。',
+        note: '每日一剂，60天自孕'
+      },
+      {
+        cat: '虚寒不孕·外贴方（乾元神膏）',
+        text: '肉桂、肉苁蓉、巴戟天、炮附子、菟丝子、补骨脂、葫芦巴、萸肉、细辛、干姜、红花、黄芪、元胡、石莲子、白术、党参、熟地、当归、龙骨、血竭、鳖甲各10克，麝香0.6克，香油250克、黄丹150克制膏备用。贴神阙、肾俞两穴。',
+        note: '原方另含山甲（穿山甲），系保护动物，现已禁用。原文标注：治愈率100%',
+        warn: true
+      },
+      {
+        cat: '寒湿内侵宫寒不孕',
+        text: '女子阴血之体，元阳偏弱，每月行经后亏虚、阳随血脱，天地之气中人风寒湿邪入侵导致不孕。',
+        note: '碑上原文对病因的表述，后附对应方剂'
+      }
+    ];
+
+    // 碑上验方涉及的病症分类（据长孙王克中整理公布材料）
+    var remedyIndex = ['不孕', '闭经', '痛经', '妊娠呕吐', '妊娠胎动不安', '妊娠咳嗽', '妊娠泄泻', '妊娠浮肿', '妊娠子淋', '妊娠头痛', '产后乳汁不下'];
+    var infertilityTypes = ['卵巢囊肿不孕', '不排卵不孕', '人流损伤不孕', '原发性不孕', '继发性不孕', '肥胖湿阻', '瘦弱血枯', '气旺血滞', '热邪内蕴', '寒湿内侵'];
+
+    // 真实事件：数字遗产已经上了法庭和遗嘱库
+    var realEvents = [
+      {
+        year: 2026, date: '2026年11月',
+        title: '儿子留下87个游戏账号，母亲能继承吗',
+        text: '北京市石景山区人民法院审结一起「87个网络游戏账号继承纠纷案」。母亲想继承这些账号补贴生活。法院认定，游戏账号属于网络虚拟财产，用户对账号享有使用权，而这个使用权「以财产利益为核心」。判决支持母亲继承，并判令游戏平台配合完成实名认证变更，为同类纠纷提供了裁判参照。',
+        src: '新浪财经、四川省保护消费者权益委员会',
+        url: 'https://finance.sina.cn/2026-10-19/detail-inivtiqx6931953.d.html'
+      },
+      {
+        year: 2026, date: '2026年10月11日',
+        title: '为了继承母亲的手机号，他把两位姐姐告上法庭',
+        text: '黑龙江齐齐哈尔的温先生为继承母亲手机号起诉两位姐姐，引发全网热议。手机号、微信、支付宝、银行卡短信，全拴在这串数字上。但律师提醒：想处理母亲微信钱包里的余额、理财资金或卡包权益，不能仅凭这张手机号的使用权继承调解书。',
+        src: '今日头条、中华遗嘱库',
+        url: 'https://m.toutiao.com/article/7696006227905479196/'
+      },
+      {
+        year: 2026, date: '2026年',
+        title: '41岁独身女子病逝，9名亲属争遗产，法院：收归国家',
+        text: '她生前没有订立遗嘱。九名亲属为遗产争执不下，最终法院依照法定继承规则和酌给制度分配，剩余部分收归国家。中华遗嘱库借此提示：对无配偶、无子女的独居人士，遗嘱是生前明确财产归属最重要的法律工具。',
+        src: '中华遗嘱库官网',
+        url: 'https://www.will.org.cn/index.php/details/3003.html'
+      },
+      {
+        year: 2025, date: '2025年',
+        title: '22岁，他把玩了7年的游戏账号写进了遗嘱',
+        text: '刚参加工作的冯先生，在中华遗嘱库把工资存款全部留给从小照顾自己的姐姐，还专门把使用了7年的游戏账号列为遗产进行分配。不是段子。2025年，30岁以下立遗嘱的人数同比增长42.3%，全国最小立遗嘱人17岁。',
+        src: '中华遗嘱库2025年度白皮书',
+        url: 'https://m.sohu.com/a/1065080142_121123770'
+      }
+    ];
+
+    // 真实数据：中华遗嘱库官方口径
+    var realStats = [
+      { num: '404,981', label: '份遗嘱已被登记保管', sub: '截至2025年12月31日' },
+      { num: '675,537', label: '人次接受遗嘱咨询', sub: '中华遗嘱库，2013年启动' },
+      { num: '67.64', label: '岁，立遗嘱人平均年龄', sub: '连续13年下降，2013年为77.43岁' },
+      { num: '196', label: '名30岁以下立遗嘱者', sub: '2016年这一数字是35人，十年涨近5倍' },
+      { num: '61.42%', label: '立遗嘱老人是空巢', sub: '2025年，子女不在身边' }
+    ];
+
+    // 案例来源，逐条可查
+    var caseSources = {
+      '袁淑芳': [
+        { name: '大河报·豫视频｜河南97岁老中医墓碑刻满药方', url: 'https://www.163.com/dy/article/LB53673U05149E7M.html' },
+        { name: '大象新闻｜驻马店老中医墓碑刻百方，中医世家传至第十九代', url: 'https://view.inews.qq.com/a/20261105A0AMRO00' },
+        { name: '中新社｜河南「墓碑上的药方籍」火了，家属澄清药方数量', url: 'https://m.toutiao.com/article/7705334089897738806/' },
+        { name: '墓碑验方全文（长孙王克中整理，授权大象新闻公布）', url: 'https://m.toutiao.com/w/1881189692030090/' }
+      ],
+      '袁隆平': [
+        { name: '湖南杂交水稻研究中心｜袁隆平生平', url: 'https://www.hlhl.org.cn/contents/2/2.html' },
+        { name: '长沙晚报｜一粒种子，福泽天下', url: 'https://www.icswb.com/h/100848/20260918/996068.html' }
+      ],
+      '段红霞': [
+        { name: '今日头条｜一块刻满药方的墓碑', url: 'https://m.toutiao.com/w/1881225639673867/' }
+      ],
+      '黄仁勋': [
+        { name: '羊城晚报·南都｜英伟达CEO黄仁勋承认出轨，全球AI产业或迎新一轮博弈', url: 'https://news.dayoo.com/finance/202611/09/171077_55021858.htm' },
+        { name: '驱动之家｜黄仁勋出轨，英伟达抓鬼', url: 'https://m.mydrivers.com/newsview/1164266.html' },
+        { name: '新浪财经｜黄仁勋自爆出轨女客户，马斯克：极其愚蠢', url: 'https://finance.sina.cn/2026-11-09/detail-iniycfmy3012346.d.html' },
+        { name: '搜狐｜黄仁勋承认婚外情，英伟达董事会宣布启动内部调查', url: 'https://m.sohu.com/a/1099281844_701814/' }
+      ]
+    };
+
+    // Flatten stories for feed — 真实案例按时间线排列，置顶有分量的几条
     var allStories = [];
     Object.keys(users).forEach(function(username) {
       users[username].entries.forEach(function(entry) {
@@ -1974,41 +2489,35 @@
           year: entry.year,
           message: entry.message,
           date: entry.date,
-          user: username
+          user: username,
+          featured: !!entry.featured
         });
       });
     });
 
-    // Shuffle for feed
-    function shuffle(arr) {
-      var a = arr.slice();
-      for (var i = a.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var t = a[i]; a[i] = a[j]; a[j] = t;
-      }
-      return a;
-    }
-
-    var feedStories = shuffle(allStories);
+    var feedStories = allStories.filter(function(s) { return s.featured; });
 
     // Render feed
     function renderFeed() {
       var container = document.getElementById('feedContainer');
       container.innerHTML = feedStories.map(function(story, i) {
-        return '<div class="story-card">' +
+        var u = users[story.user];
+        var badge = (story.age > 0 ? story.age + '岁 · ' : '') + (story.year ? story.year + '年' : '');
+        return '<div class="story-card' + (i === 0 ? ' story-card-lead' : '') + '">' +
           '<div class="story-card-top">' +
             '<div class="story-card-user" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">' +
               '<div class="story-card-avatar">' + story.user.charAt(0) + '</div>' +
               '<span class="story-card-name">' + story.user + '</span>' +
+              (u && u.lifespan ? '<span class="story-card-life">' + u.lifespan + '</span>' : '') +
             '</div>' +
-            '<span class="story-card-badge">' + story.age + '岁 · ' + story.year + '</span>' +
+            '<span class="story-card-badge">' + badge + '</span>' +
           '</div>' +
           '<div class="story-card-text">' + story.message + '</div>' +
           '<div class="story-card-footer">' +
             '<span class="story-card-date">' + story.date + '</span>' +
             '<div style="display:flex;gap:12px;align-items:center">' +
               '<button class="story-card-action invite" onclick="event.stopPropagation();showWrite()">我也要记录</button>' +
-              '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的人生 →</button>' +
+              '<button class="story-card-action" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">查看他的一生 →</button>' +
             '</div>' +
           '</div>' +
         '</div>';
@@ -2024,26 +2533,82 @@
 
       document.getElementById('profileName').textContent = username;
       document.getElementById('profileAvatar').textContent = username.charAt(0);
-      document.getElementById('profileBio').textContent = user.bio;
+      document.getElementById('profileBio').textContent =
+        (user.lifespan ? user.lifespan + '　' : '') + (user.place ? user.place + '　' : '');
+      document.getElementById('profileQuote').textContent = user.quote || '';
 
-      var years = user.entries.length;
-      var span = years > 1 ? (user.entries[years - 1].year - user.entries[0].year) : 0;
-      document.getElementById('profileStatYears').textContent = years;
-      document.getElementById('profileStatSpan').textContent = span + '年';
-      document.getElementById('profileStatStorage').textContent = '1/1';
+      var first = user.entries[0].year || 0;
+      var last = user.entries[user.entries.length - 1].year || 0;
+      document.getElementById('profileStatYears').textContent = user.entries.length;
+      document.getElementById('profileStatSpan').textContent = (last - first) + '年';
+      document.getElementById('profileStatStorage').textContent = user.legacy || '—';
+      document.getElementById('profileStatStorageLabel').textContent = user.legacy ? '留下了什么' : '记录条数';
 
       var timeline = document.getElementById('profileTimeline');
       timeline.innerHTML = user.entries.map(function(entry) {
         return '<div class="timeline-item">' +
-          '<div class="timeline-year">' + entry.year + '年</div>' +
-          '<div class="timeline-age">' + entry.age + '岁</div>' +
+          '<div class="timeline-year">' + (entry.year ? entry.year + '年' : '') + '</div>' +
+          '<div class="timeline-age">' + (entry.age > 0 ? entry.age + '岁' : '') + '</div>' +
           '<div class="timeline-message">' + entry.message + '</div>' +
+          '<div class="timeline-src">' + entry.date + '</div>' +
         '</div>';
       }).join('');
+
+      // 袁淑芳专属：墓碑验方
+      var rxView = document.getElementById('prescriptionView');
+      if (username === '袁淑芳' && rxView) {
+        rxView.innerHTML = renderPrescriptions();
+        rxView.style.display = '';
+      } else if (rxView) {
+        rxView.style.display = 'none';
+        rxView.innerHTML = '';
+      }
+
+      // 资料来源
+      var srcBox = document.getElementById('profileSources');
+      if (srcBox) {
+        var list = caseSources[username] || [];
+        srcBox.innerHTML = list.length
+          ? '<div class="src-title">以上内容由以下公开报道整理，逐条可查</div>' +
+            list.map(function(s) {
+              return '<a class="src-link" href="' + s.url + '" target="_blank" rel="noopener">' + s.name + ' ↗</a>';
+            }).join('')
+          : '';
+      }
 
       document.getElementById('profileView').classList.add('active');
       document.getElementById('profileView').scrollTop = 0;
       history.pushState({ view: 'profile' }, '');
+    }
+
+    function renderPrescriptions() {
+      var html = '<div class="rx-block">' +
+        '<h3 class="rx-title">碑上的方子</h3>' +
+        '<p class="rx-lead">旧时民间中医有个老规矩：传方不传量。方子可以给你看，克数是压箱底的看家本事。袁淑芳不一样，药名、配伍、剂量，连克数一起刻在石头上。她说，祖国的医学不是属于她一个人的，是大家的。</p>' +
+        '<div class="rx-index">' +
+          '<div class="rx-index-label">碑上验方涉及病症</div>' +
+          remedyIndex.map(function(r) { return '<span class="rx-tag">' + r + '</span>'; }).join('') +
+        '</div>' +
+        '<div class="rx-index">' +
+          '<div class="rx-index-label">其中「不孕」按证型细分</div>' +
+          infertilityTypes.map(function(r) { return '<span class="rx-tag">' + r + '</span>'; }).join('') +
+        '</div>' +
+      '</div>';
+
+      html += prescriptions.map(function(p) {
+        return '<div class="rx-card' + (p.warn ? ' rx-card-warn' : '') + '">' +
+          '<div class="rx-card-cat">' + p.cat + '</div>' +
+          '<div class="rx-card-text">' + p.text + '</div>' +
+          '<div class="rx-card-note">' + p.note + '</div>' +
+        '</div>';
+      }).join('');
+
+      html += '<div class="rx-disclaimer">' +
+        '<strong>重要提醒</strong>　以上为民间中医经验资料整理，其中「受孕率」「有效率」「治愈率」均为原文表述，未经现代医学验证。中医讲究辨证施治，同样的症状，体质、病因不同，方子就要调整；剂量、配伍、药材炮制方式出现偏差，可能引发过敏，甚至损伤肝肾。请勿自行照方抓药，必须在执业中医师面诊辨证后规范使用。原方中「山甲」为穿山甲，属国家重点保护动物，现已禁用。' +
+        '<a class="rx-src" href="https://m.toutiao.com/w/1881189692030090/" target="_blank" rel="noopener">方剂来源：长孙王克中整理，授权大象新闻完整公布 ↗</a>' +
+      '</div>';
+
+      return html;
     }
 
     function hideProfile() {
@@ -2071,14 +2636,16 @@
 
     function renderYears() {
       var grid = document.getElementById('yearGrid');
-      var years = [];
-      for (var y = 2024; y >= 2008; y--) years.push(y);
+      // 只列真正有记录的年份，不做假格子
+      var seen = {};
+      allStories.forEach(function(s) { if (s.year) seen[s.year] = (seen[s.year] || 0) + 1; });
+      var years = Object.keys(seen).map(Number).sort(function(a, b) { return b - a; });
 
       grid.innerHTML = years.map(function(year) {
-        var count = allStories.filter(function(s) { return s.year === year; }).length;
-        var cls = count > 0 ? 'year-card has-content' : 'year-card';
-        var countHtml = count > 0 ? '<span class="count">' + count + ' 条</span>' : '';
-        return '<div class="' + cls + '" onclick="showYearStories(' + year + ')">' + year + countHtml + '</div>';
+        var count = seen[year];
+        return '<div class="year-card has-content" onclick="showYearStories(' + year + ')">' +
+          year + '<span class="count">' + count + ' 条</span>' +
+        '</div>';
       }).join('');
     }
 
@@ -2096,7 +2663,7 @@
                 '<div class="story-card-avatar">' + story.user.charAt(0) + '</div>' +
                 '<span class="story-card-name">' + story.user + '</span>' +
               '</div>' +
-              '<span class="story-card-badge">' + story.age + '岁</span>' +
+              '<span class="story-card-badge">' + (story.age > 0 ? story.age + '岁 · ' : '') + year + '年</span>' +
             '</div>' +
             '<div class="story-card-text">' + story.message + '</div>' +
           '</div>';
@@ -2156,7 +2723,14 @@
 
       var username = '我';
       if (!users[username]) {
-        users[username] = { bio: '新用户', entries: [] };
+        users[username] = {
+          lifespan: '记录中',
+          place: '你自己的一生',
+          bio: '新用户',
+          quote: '',
+          legacy: '',
+          entries: []
+        };
       }
       users[username].entries.push({
         age: currentDraft.age,
@@ -2170,7 +2744,8 @@
         year: currentDraft.year,
         message: currentDraft.message,
         user: '我',
-        date: '刚刚'
+        date: '刚刚',
+        featured: true
       });
 
       feedStories.unshift(allStories[allStories.length - 1]);
@@ -2180,7 +2755,7 @@
 
       var count = parseInt(localStorage.getItem('publishedCount') || '0') + 1;
       localStorage.setItem('publishedCount', count);
-      document.getElementById('counterNum').textContent = (10000 + count).toLocaleString();
+      initHeroCounter();
       document.getElementById('previewView').classList.remove('active');
 
       document.getElementById('writeAge').value = '';
@@ -2265,26 +2840,79 @@
       setTimeout(function() { toast.remove(); }, 3000);
     }
 
-    // Trace wall
+    // Trace wall — 只用真实案例，随机取非重复的短句
     function renderTraceWall() {
       var grid = document.getElementById('traceWallGrid');
-      var samples = shuffle(allStories).slice(0, 9);
+      var pool = allStories.slice();
+      for (var i = pool.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+      }
+      var samples = pool.slice(0, 9);
       grid.innerHTML = samples.map(function(story) {
+        var txt = story.message.length > 52 ? story.message.slice(0, 52) + '…' : story.message;
         return '<div class="trace-wall-item" onclick="showProfile(\'' + story.user.replace(/'/g, "\\'") + '\')">' +
-          '<div class="trace-wall-text">' + story.message + '</div>' +
-          '<div class="trace-wall-meta"><span>' + story.user + '</span> · ' + story.age + '岁 · ' + story.year + '</div>' +
+          '<div class="trace-wall-text">' + txt + '</div>' +
+          '<div class="trace-wall-meta"><span>' + story.user + '</span> · ' + (story.year ? story.year + '年' : '') + '</div>' +
         '</div>';
       }).join('');
     }
     renderTraceWall();
 
-    // Hero counter
+    // 真实数据 + 真实事件
+    function renderReality() {
+      var s = document.getElementById('realityStats');
+      if (s) s.innerHTML = realStats.map(function(x) {
+        return '<div class="reality-stat">' +
+          '<div class="reality-stat-num">' + x.num + '</div>' +
+          '<div class="reality-stat-label">' + x.label + '</div>' +
+          '<div class="reality-stat-sub">' + x.sub + '</div>' +
+        '</div>';
+      }).join('');
+
+      var e = document.getElementById('realityEvents');
+      if (e) e.innerHTML = realEvents.map(function(x) {
+        return '<a class="reality-event" href="' + x.url + '" target="_blank" rel="noopener">' +
+          '<div class="reality-event-date">' + x.date + '</div>' +
+          '<div class="reality-event-title">' + x.title + '</div>' +
+          '<div class="reality-event-text">' + x.text + '</div>' +
+          '<div class="reality-event-src">来源：' + x.src + ' ↗</div>' +
+        '</a>';
+      }).join('');
+    }
+    renderReality();
+
+    // 话题页：真实案例讨论
+    function renderTopicCases() {
+      var box = document.getElementById('topicCases');
+      if (!box) return;
+      box.innerHTML = topicCases.map(function(t) {
+        return '<article class="topic-case">' +
+          '<div class="topic-case-head">' +
+            '<button class="topic-case-who" onclick="showProfile(\'' + t.who.replace(/'/g, "\\'") + '\'); hideServices();">' + t.who + '的一生 →</button>' +
+            '<span class="topic-case-year">' + t.year + '</span>' +
+          '</div>' +
+          '<h4 class="topic-case-title">' + t.headline + '</h4>' +
+          '<p class="topic-case-body">' + t.body + '</p>' +
+          '<div class="topic-case-split">' +
+            '<div class="topic-case-col"><span>这件事说明了什么</span><p>' + t.why + '</p></div>' +
+            '<div class="topic-case-col accent"><span>所以我们的规则是</span><p>' + t.rule + '</p></div>' +
+          '</div>' +
+          '<div class="topic-case-sources">' +
+            t.src.map(function(s) { return '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.name + ' ↗</a>'; }).join('') +
+          '</div>' +
+        '</article>';
+      }).join('');
+    }
+    renderTopicCases();
+
+    // Hero counter — 不再编造人数，只说清这个页面是什么
     function initHeroCounter() {
-      var base = 10000;
-      var published = parseInt(localStorage.getItem('publishedCount') || '0');
-      var total = base + published;
       var el = document.getElementById('heroCounter');
-      el.innerHTML = '已有 <span id="counterNum">' + total.toLocaleString() + '</span> 人记录了这世界，我来过';
+      var mine = parseInt(localStorage.getItem('publishedCount') || '0');
+      el.innerHTML = mine > 0
+        ? '你在本机记录过 <span id="counterNum">' + mine + '</span> 条　·　这里没有虚构案例，每一条都可查证'
+        : '这里没有虚构案例　·　每一个人都确有其人，每一件事都确有其事';
     }
     initHeroCounter();
 
