@@ -2475,7 +2475,7 @@
     renderFeed();
 
     // Profile
-    function showProfile(username) {
+    function showProfile(username, noPush) {
       var user = users[username];
       if (!user) return;
 
@@ -2521,7 +2521,7 @@
 
       document.getElementById('profileView').classList.add('active');
       document.getElementById('profileView').scrollTop = 0;
-      history.pushState({ view: 'profile' }, '');
+      if (!noPush) pushOverlay({ view: 'profile', user: username });
     }
 
     function renderPrescriptions() {
@@ -2562,12 +2562,12 @@
     }
 
     // Year explorer
-    function showYears() {
+    function showYears(noPush) {
       document.getElementById('yearExplorer').classList.add('active');
       document.getElementById('yearStories').classList.remove('active');
       document.getElementById('yearGrid').style.display = '';
       renderYears();
-      history.pushState({ view: 'years' }, '');
+      if (!noPush) pushOverlay({ view: 'years' });
     }
 
     function hideYears() {
@@ -2618,10 +2618,10 @@
     }
 
     // Write
-    function showWrite() {
+    function showWrite(noPush) {
       document.getElementById('writeView').classList.add('active');
       document.getElementById('writeView').scrollTop = 0;
-      history.pushState({ view: 'write' }, '');
+      if (!noPush) pushOverlay({ view: 'write' });
     }
 
     function hideWrite() {
@@ -2650,7 +2650,7 @@
       document.getElementById('writeView').classList.remove('active');
       document.getElementById('previewView').classList.add('active');
       document.getElementById('previewView').scrollTop = 0;
-      history.pushState({ view: 'preview' }, '');
+      pushOverlay({ view: 'preview' });
     }
 
     function hidePreview() {
@@ -2712,10 +2712,10 @@
     }
 
     // Search
-    function showSearch() {
+    function showSearch(noPush) {
       document.getElementById('searchView').classList.add('active');
-      setTimeout(function() { document.getElementById('searchInput').focus(); }, 100);
-      history.pushState({ view: 'search' }, '');
+      if (!noPush) setTimeout(function() { document.getElementById('searchInput').focus(); }, 100);
+      if (!noPush) pushOverlay({ view: 'search' });
     }
 
     function hideSearch() {
@@ -2728,10 +2728,10 @@
     }
 
     // Services
-    function showServices() {
+    function showServices(noPush) {
       document.getElementById('servicesView').classList.add('active');
       document.getElementById('servicesView').scrollTop = 0;
-      history.pushState({ view: 'services' }, '');
+      if (!noPush) pushOverlay({ view: 'services' });
     }
 
     function hideServices() {
@@ -2763,14 +2763,9 @@
     }
 
     function showHome() {
-      hideProfile();
-      hideYears();
-      hideWrite();
-      hidePreview();
-      hideSearch();
-      hideServices();
-      hidePayModal();
-      history.replaceState(null, '');
+      if (overlayDepth > 0) history.go(-overlayDepth);
+      closeAllOverlays();
+      overlayDepth = 0;
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -2851,19 +2846,48 @@
       if (e.key === 'Escape') showHome();
     });
 
-    // Browser back button
+    // ── 浮层路由：进一层压一步，后退一步即回原处 ──────────────
+    var OVERLAY_IDS = ['profileView', 'yearExplorer', 'writeView', 'previewView',
+                     'searchView', 'servicesView', 'payModal'];
+    var overlayDepth = 0;
+
+    function closeAllOverlays() {
+      OVERLAY_IDS.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.remove('active');
+      });
+    }
+
+    function pushOverlay(state) {
+      overlayDepth += 1;
+      state.depth = overlayDepth;
+      history.pushState(state, '');
+    }
+
+    // 首页那一条历史记录也要有状态，否则后退一步没人认领
+    history.replaceState({ view: 'home', depth: 0 }, '');
+
     window.addEventListener('popstate', function(e) {
-      if (e.state && e.state.view) {
-        // Close the overlay
-        document.getElementById('profileView').classList.remove('active');
-        document.getElementById('yearExplorer').classList.remove('active');
-        document.getElementById('writeView').classList.remove('active');
-        document.getElementById('previewView').classList.remove('active');
-        document.getElementById('searchView').classList.remove('active');
-        document.getElementById('servicesView').classList.remove('active');
-        document.getElementById('payModal').classList.remove('active');
+      var st = e.state || {};
+      overlayDepth = st.depth || 0;
+      closeAllOverlays();
+      // 后退到首页就只回首页；退进某一层则把那一层原样重新打开
+      switch (st.view) {
+        case 'profile': if (st.user && users[st.user]) showProfile(st.user, true); break;
+        case 'years': showYears(true); break;
+        case 'search': showSearch(true); break;
+        case 'services': showServices(true); break;
+        case 'write': showWrite(true); break;
+        case 'preview':
+          if (currentDraft) {
+            document.getElementById('previewAge').textContent = currentDraft.age + '岁 · ' + currentDraft.year;
+            document.getElementById('previewMessage').textContent = currentDraft.message;
+            document.getElementById('previewView').classList.add('active');
+          } else { showWrite(true); }
+          break;
       }
     });
-  </script>
+
+  </script>  </script>
 </body>
 </html>
